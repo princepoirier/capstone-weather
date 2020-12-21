@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@400;700&display=swap');
+
+html {
+	/*--col-a: rgb(67, 143, 36);*/ /* #438f24  */
+	--col-b: rgb(255, 255, 247); /* #fffff7  */
+	--col-c: rgb(177, 213, 255); /* #b1d5ff  */
+	--col-d: rgb(0, 0, 0); /* #000000  */
+	
+	/* REMOVE THESE? Or get a default colour... */
+	/* --grad-light:rgb(90, 154, 232);
+	--grad-dark:rgb(21, 101, 162); */
+}
+.day {
+	--grad-light:rgb(90, 154, 232);
+	--grad-dark:rgb(21, 101, 162);
+}
+.day-precip {
+	--grad-light: rgb(53, 84, 131);
+	--grad-dark: rgb(51, 82, 120);
+}
+.night {
+	--grad-light: rgb(63, 113, 205);
+	--grad-dark: rgb(28, 19, 40);
+}
+.night-precip {
+	--grad-light: rgb(45, 58, 74);
+	--grad-dark: rgb(29, 38, 51);
+}
+
+body {
+	background-color: var(--grad-light);
+	background-image: linear-gradient(var(--grad-light), var(--grad-dark));
+	background-attachment: fixed;
+	color: var(--col-b);
+	/* font: normal 400 1rem/1 'HelveticaNeue'; */
+	font: normal 400 1rem/1 Roboto, helvetica, arial, sans-serif;
+	text-align: center;
+	margin: 0;
+	padding: 0 1rem;
+}
+
+/* Shared classes? unstyle list? */
+.unstyle-list, ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin: 1rem 0;
+}
+
+.logo {
+	font: 700 2rem helvetica, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: -0.1rem;
+	margin-right: 1rem;
+}
+
+.units {
+	display: flex;
+	place-content: flex-end;
+	/* .unstyle-list */
+	margin: 0;
+}
+
+
+.current::after {
+	content: "";
+	display: block;
+	background-image: url('../img/wavy-line.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 1rem;
+	/* width: 200px; */
+	margin: 2rem 0;
+	/* text-align: center;
+	text-decoration-line: underline;
+	text-decoration-style: wavy; */
+}
+
+
+.btn {
+	background-color: transparent;
+	color: white;
+	text-align: center;
+	line-height: 1;
+	padding: 0.75rem 1rem;
+	border: 0.25rem solid transparent; /* Must start with transparent as not to shift the layout */
+	border-radius: 0.25rem;
+	font-weight: 700;
+	font-size: 1rem;
+	text-transform: capitalize;
+}
+
+/* Selected, or "shown"?? */
+.btn.active {
+	border-color: var(--col-b);
+}
+.btn:hover {
+	/* background-color: var(--col-b) ; */
+	background-color: rgba(255,255,255,0.1);
+	/* color: var(--col-d); */
+}
+
+.condition {
+	margin: 1rem 0;
+}
+.weather {
+	font-size: 1.25rem;
+	font-weight: 400;
+}
+.city {
+	font-weight: 700;
+}
+.temp {
+	font-size: 2.75rem;
+	font-weight: 700;
+	margin: 1rem 0;
+	display: block;
+}
+.unit {
+	font-size: 2rem;
+}
+.range {
+	font-size: 2rem;
+	margin: 1rem 0;
+}
+.low {
+	color: var(--col-c);
+}
+
+
+.forecast-range {
+	display: flex;
+	justify-content: space-around;
+}
+
+.forecast {
+  background-color: rgba(0,0,0,0.1);
+	border-radius: 0.5rem;
+	/* border-spacing: 1rem; */
+	border-spacing: 0;
+  margin: 1rem 0;
+	width: 100%;
+	padding: 1rem;
+}
+.forecast tbody {
+	display: none;
+}
+.forecast tbody.active {
+	/* Or use "Hidden" instead? */
+	/* Good use of "inspect" here */
+	display: table-row-group;
+}
+.forecast tbody tr:hover {
+	background-color: rgba(0,0,0,0.1);
+}
+.forecast th {
+	font-weight: 400;
+	color: var(--col-c);
+	line-height: 2;
+}
+/* .forecast td { background-color: red; } */
+.forecast-time {
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.forecast-time small {
+	font-weight: 400;
+}
+.forecast-temp {
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+.icon-xs {
+	height: 3rem;
+}
+
+
+/* @media screen and (min-width: 640px) { */
+@media screen and (min-width: 40rem) {
+	.container {
+		display: flex;
+		max-width: 70rem;
+		margin: 0 auto;
+	}
+	.current {
+		flex-grow: 1;
+		margin-right: 2rem;
+	}
+} 
