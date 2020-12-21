@@ -337,7 +337,7 @@ let createUnitToggle = () => {
 
 
 window.addEventListener(`load`, async (event) => {
-	let json = await loadJson(`/data/forecast.json`)
+	let json = await loadJson(`../data/forecast.json`)
 	
 	createUnitToggle()
 
