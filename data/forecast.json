@@ -31,19 +31,19 @@
           },
           "chanceOfPrecipitation": 0.0,
           "temp": 30
-        },{
-          "time": {
-            "label": "3pm",
-            "hour": 15,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Cloudy conditions",
-            "type": "cloudy"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": 32
-        },{
+          },{
+            "time": {
+              "label": "3pm",
+              "hour": 15,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Cloudy conditions",
+              "type": "cloudy"
+            },
+            "chanceOfPrecipitation": 0.0,
+            "temp": 32
+          },{
           "time": {
             "label": "4pm",
             "hour": 16,
@@ -132,19 +132,19 @@
           },
           "chanceOfPrecipitation": 0.0,
           "temp": -22
-        },{
-          "time": {
-            "label": "Afternoon",
-            "hour": 12,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Sleet conditions",
-            "type": "cloudy"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": -78
-        },{
+          },{
+            "time": {
+              "label": "Afternoon",
+              "hour": 12,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Sleet conditions",
+              "type": "cloudy"
+            },
+            "chanceOfPrecipitation": 0.0,
+            "temp": -78
+          },{
           "time": {
             "label": "Evening",
             "hour": 18,
