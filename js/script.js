@@ -31,6 +31,7 @@
 // 
 // let current = document.querySelector(`.current`)
 let condition = document.querySelector(`.condition`)
+let happening = document.querySelector(`.happening`)
 let city = document.querySelector(`.city`)
 let unit = document.querySelector(`.unit`)
 let temp = document.querySelector(`.number`)
@@ -94,16 +95,31 @@ let setCurrentWeather = (data) => {
 
 	// <img srcset="img/mixing-ingredients-480w.jpg 480w, img/mixing-ingredients-960w.jpg 960w, img/mixing-ingredients-1920w.jpg 1920w" src="img/mixing-ingredients-960w.jpg" alt="All ingredients mixed to form a shaggy dough">
 
+	/*
 	let img = document.createElement(`img`)
-	img.setAttribute(`src`, `img/${time}-${data.current.condition.type}-sm.svg`)
+	img.setAttribute(`src`, `img/${time}-${data.current.condition.type}-sm.png`)
 	// img.setAttribute(`sizes`, `(max-width: 639px) 640px, 960px`)
 	img.setAttribute(`srcset`, `
-		img/${time}-${data.current.condition.type}-sm.svg 640w,
-		img/${time}-${data.current.condition.type}-lg.svg 1960w`)
+		img/${time}-${data.current.condition.type}-sm.png 800w,
+		img/${time}-${data.current.condition.type}-lg.png 1960w`)
+	*/
+
+	let img = document.createElement(`picture`)
+	// <picture>
+	// 		<source srcset="/media/cc0-images/surfer-240-200.jpg"
+	// 						media="(min-width: 800px)">
+	// 		<img src="/media/cc0-images/painted-hand-298-332.jpg" alt="" />
+	// </picture>
+	
+	img.innerHTML = `
+	<source srcset="img/${time}-${data.current.condition.type}-lg.svg" media="(min-width: 800px)">
+	<img src="img/${time}-${data.current.condition.type}-sm.svg" alt="${data.current.condition.desc}">
+	`
 	img.setAttribute(`alt`, data.current.condition.desc)
 	// img.classList.add(`condition`)
 	condition.append(img)
 
+	happening.textContent = data.current.condition.desc
 	city.textContent = data.location
 
 

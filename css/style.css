@@ -29,8 +29,24 @@ html {
 
 body {
 	background-color: var(--grad-light);
-	background-image: linear-gradient(var(--grad-light), var(--grad-dark));
+	background-image: 
+		repeating-linear-gradient(
+			45deg,
+			rgba(255,255,255,0.1),
+			rgba(255,255,255,0.1) 1px,
+			transparent 1px,
+			transparent 3px
+		), 
+		repeating-linear-gradient(
+			135deg,
+			rgba(255,255,255,0.1),
+			rgba(255,255,255,0.1) 1px,
+			transparent 1px,
+			transparent 3px
+		),
+		linear-gradient(var(--grad-light), var(--grad-dark));
 	background-attachment: fixed;
+	background-size: 24px;
 	color: var(--col-b);
 	/* font: normal 400 1rem/1 'HelveticaNeue'; */
 	font: normal 400 1rem/1 Roboto, helvetica, arial, sans-serif;
@@ -69,7 +85,7 @@ body {
 .current::after {
 	content: "";
 	display: block;
-	background-image: url('../img/wavy-line.png');
+	background-image: url('../img/squiggly-line.svg');
 	background-position: center center;
 	background-repeat: no-repeat;
 	height: 1rem;
@@ -104,8 +120,12 @@ body {
 	/* color: var(--col-d); */
 }
 
+h1 {
+	font-size: 1rem;
+}
 .condition {
-	margin: 1rem 0;
+	margin: 1rem auto;
+	max-width: 20rem;
 }
 .weather {
 	font-size: 1.25rem;
@@ -135,6 +155,7 @@ body {
 .forecast-range {
 	display: flex;
 	justify-content: space-around;
+	/* justify-content: space-between; */
 }
 
 .forecast {
@@ -145,6 +166,7 @@ body {
   margin: 1rem 0;
 	width: 100%;
 	padding: 1rem;
+	/* table-layout: fixed; */
 }
 .forecast tbody {
 	display: none;
@@ -161,6 +183,12 @@ body {
 	font-weight: 400;
 	color: var(--col-c);
 	line-height: 2;
+	/* width: 25%; */
+}
+.forecast th:nth-child(1), .forecast td:nth-child(1) {
+	/* width: 8rem; */
+	/* text-align: left; */
+	width: 25%;
 }
 /* .forecast td { background-color: red; } */
 .forecast-time {
@@ -180,14 +208,24 @@ body {
 
 
 /* @media screen and (min-width: 640px) { */
-@media screen and (min-width: 40rem) {
+@media screen and (min-width: 50rem) {
 	.container {
 		display: flex;
 		max-width: 70rem;
 		margin: 0 auto;
 	}
+	.header {
+		max-width: 70rem;
+		margin: 1rem auto;
+	}
 	.current {
 		flex-grow: 1;
 		margin-right: 2rem;
+	}
+	.condition {
+		max-width: 100%;
+	}
+	.forecast {
+		min-width: 25rem;
 	}
 } 
