@@ -207,14 +207,17 @@ let buildForecastTableBody = (data) => {
 		tab.append(mode)
 		modes.append(tab)
 
-		let addForecastRows = (row) => {
+		let addForecastRow = (row) => {
 
 			let tr = tbody.insertRow()
+			// tr.classList.add(`row`)
 
 			// Time
 			// let td = tr.insertCell()
 			// td.append(row.time)
-			tr.insertCell().textContent = row.time.label
+			// tr.insertCell().textContent = row.time.label
+			// tr.insertCell().textContent = row.time.label
+			tr.insertCell().innerHTML = `<b>${row.time.label}</b>`
 
 			let time = `day` // (or `night`)
 
@@ -230,12 +233,12 @@ let buildForecastTableBody = (data) => {
 
 			// Temp
 			// tr.insertCell().append(`${row.temp}&deg;`)
-			tr.insertCell().innerHTML = `<data value="${row.temp}">${row.temp}&deg;</data>`
+			tr.insertCell().innerHTML = `<data value="${row.temp}"><b>${row.temp}&deg;</b></data>`
 
 			// Add the "panel" for this forecast type to the tbody
 		}
 
-		type.record.forEach(addForecastRows)
+		type.record.forEach(addForecastRow)
 
 		// Add the panel to the ~<tbody>~ <table>
 		console.log(i);
