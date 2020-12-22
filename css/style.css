@@ -30,7 +30,7 @@ html {
 body {
 	background-color: var(--grad-light);
 	background-image: 
-		repeating-linear-gradient(
+		/* repeating-linear-gradient(
 			45deg,
 			rgba(255,255,255,0.1),
 			rgba(255,255,255,0.1) 1px,
@@ -43,10 +43,12 @@ body {
 			rgba(255,255,255,0.1) 1px,
 			transparent 1px,
 			transparent 3px
-		),
+		), */
+		url('../img/bg-pattern.svg'),
 		linear-gradient(var(--grad-light), var(--grad-dark));
 	background-attachment: fixed;
-	background-size: 24px;
+	/* background-size: 1px;
+	background-repeat: repeat; */
 	color: var(--col-b);
 	/* font: normal 400 1rem/1 'HelveticaNeue'; */
 	font: normal 400 1rem/1 Roboto, helvetica, arial, sans-serif;

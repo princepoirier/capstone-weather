@@ -112,7 +112,7 @@ let setCurrentWeather = (data) => {
 	// </picture>
 	
 	img.innerHTML = `
-	<source srcset="img/${time}-${data.current.condition.type}-lg.svg" media="(min-width: 800px)">
+	<source srcset="img/${time}-${data.current.condition.type}-lg.svg" media="(min-width: 50rem)">
 	<img src="img/${time}-${data.current.condition.type}-sm.svg" alt="${data.current.condition.desc}">
 	`
 	img.setAttribute(`alt`, data.current.condition.desc)
