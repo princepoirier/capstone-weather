@@ -29,20 +29,21 @@ html {
 
 body {
 	background-color: var(--grad-light);
-	background-image: 
+	background-image:
+
+/* repeating-linear-gradient(
+	45deg,
+	rgba(255,255,255,0.03),
+	rgba(255,255,255,0.03) 1px,
+	transparent 2px,
+	transparent 4px
+),  */
 		/* repeating-linear-gradient(
-			45deg,
-			rgba(255,255,255,0.1),
-			rgba(255,255,255,0.1) 1px,
-			transparent 1px,
-			transparent 3px
-		), 
-		repeating-linear-gradient(
 			135deg,
-			rgba(255,255,255,0.1),
-			rgba(255,255,255,0.1) 1px,
-			transparent 1px,
-			transparent 3px
+			rgba(255,255,255,0.03),
+			rgba(255,255,255,0.03) 1px,
+			transparent 2px,
+			transparent 4px
 		), */
 		url('../img/bg-pattern.svg'),
 		linear-gradient(var(--grad-light), var(--grad-dark));
@@ -101,7 +102,7 @@ body {
 
 .btn {
 	background-color: transparent;
-	color: white;
+	color: var(--col-b);
 	text-align: center;
 	line-height: 1;
 	padding: 0.75rem 1rem;
@@ -113,15 +114,21 @@ body {
 }
 
 /* Selected, or "shown"?? */
-.btn.active {
-	border-color: var(--col-b);
-	font-weight: 700;
-}
+
 .btn:hover {
 	/* background-color: var(--col-b) ; */
 	background-color: rgba(255,255,255,0.1);
 	/* color: var(--col-d); */
 }
+.btn:focus {
+	border: 3px solid var(--col-c);
+	outline: none;
+}
+.btn.active {
+	border-color: var(--col-b);
+	font-weight: 700;
+}
+
 
 h1 {
 	font-size: 1rem;
