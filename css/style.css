@@ -115,7 +115,7 @@ body {
 
 /* Selected, or "shown"?? */
 
-.btn:hover {
+.btn:hover, .btn:focus {
 	/* background-color: var(--col-b) ; */
 	background-color: rgba(255,255,255,0.1);
 	/* color: var(--col-d); */
@@ -125,6 +125,7 @@ body {
 	outline: none;
 }
 .btn.active {
+	background-color: transparent;
 	border-color: var(--col-b);
 	font-weight: 700;
 }
