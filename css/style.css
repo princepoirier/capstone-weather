@@ -105,9 +105,9 @@ body {
 	text-align: center;
 	line-height: 1;
 	padding: 0.75rem 1rem;
-	border: 0.25rem solid transparent; /* Must start with transparent as not to shift the layout */
+	border: 3px solid transparent; /* Must start with transparent as not to shift the layout */
 	border-radius: 0.25rem;
-	font-weight: 700;
+	
 	font-size: 1rem;
 	text-transform: capitalize;
 }
@@ -115,6 +115,7 @@ body {
 /* Selected, or "shown"?? */
 .btn.active {
 	border-color: var(--col-b);
+	font-weight: 700;
 }
 .btn:hover {
 	/* background-color: var(--col-b) ; */
