@@ -220,8 +220,6 @@ let buildForecastTableBody = (data) => {
 			tr.insertCell().innerHTML = `<b>${row.time.label}</b>`
 
 
-			tr.insertCell().textContent = row.time.label
-
 			let time = `day` // (or `night`)
 
 			// Icon
