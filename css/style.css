@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@400;700&display=swap');
 
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+
 html {
 	/*--col-a: rgb(67, 143, 36);*/ /* #438f24  */
 	--col-b: rgb(255, 255, 247); /* #fffff7  */
 	--col-c: rgb(177, 213, 255); /* #b1d5ff  */
 	--col-d: rgb(0, 0, 0); /* #000000  */
-	
+	/* 184 187 205 */
+
+
 	/* REMOVE THESE? Or get a default colour... */
 	/* --grad-light:rgb(90, 154, 232);
 	--grad-dark:rgb(21, 101, 162); */
@@ -55,7 +62,6 @@ repeating-linear-gradient(
 	font: normal 400 1rem/1 Roboto, helvetica, arial, sans-serif;
 	text-align: center;
 	margin: 0;
-	padding: 0 1rem;
 }
 
 /* Shared classes? unstyle list? */
@@ -68,6 +74,7 @@ repeating-linear-gradient(
 	display: flex;
 	justify-content: space-between;
 	margin: 1rem 0;
+	padding: 0 1rem;
 }
 
 .logo {
@@ -84,6 +91,9 @@ repeating-linear-gradient(
 	margin: 0;
 }
 
+.container {
+	padding: 0 1rem;
+}
 
 .current::after {
 	content: "";
@@ -236,8 +246,31 @@ h1 {
 }
 
 
+.footer {
+	color: var(--col-c);
+	background-color: rgba(0,0,0,0.1);
+	padding: 1rem;
+	text-align: right;
+	line-height: 1.5;
+}
+.footer * {
+	margin: 0;
+}
+
+
+
 /* @media screen and (min-width: 640px) { */
 @media screen and (min-width: 50rem) {
+
+	html {
+		height: 100%;
+	}
+	body {
+		padding-bottom: 3rem;
+		position: relative;
+		height: 100%;
+	}
+
 	.container {
 		display: flex;
 		max-width: 70rem;
@@ -256,5 +289,18 @@ h1 {
 	}
 	.forecast {
 		min-width: 25rem;
+	}
+	.footer {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	.footer .container {
+		max-width: 70rem;
+		display: flex;
+		justify-content: space-between;
+		line-height: 1;
 	}
 } 
