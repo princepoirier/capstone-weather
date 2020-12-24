@@ -6,6 +6,7 @@
 
 
 html {
+	background-color: var(--grad-light);
 	/*--col-a: rgb(67, 143, 36);*/ /* #438f24  */
 	--col-b: rgb(255, 255, 247); /* #fffff7  */
 	--col-c: rgb(177, 213, 255); /* #b1d5ff  */
