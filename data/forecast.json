@@ -15,250 +15,291 @@
     "high": 12,
     "low": -10
   },
-  "forecast": [
-    {
-      "mode": "hourly",
-      "record": [
-        {
-          "time": {
-            "label": "2pm",
-            "hour": 14,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Partly cloudy conditions",
-            "type": "partlycloudy"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": 30
-          },{
+  "forecast": {
+    "columns": [
+      {
+        "label": "Time",
+        "full": null
+      },{
+        "label": "Conditions",
+        "full": null
+      },{
+        "label": "PoP",
+        "full": "Probability of precipitation"
+      },{
+        "label": "Temp",
+        "full":  "Temperature"
+      }
+    ],
+    "ranges": [
+      {
+        "mode": "hourly",
+        "records": [
+          {
             "time": {
-              "label": "3pm",
-              "hour": 15,
+              "label": "2pm",
+              "hour": 14,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Partly cloudy conditions",
+              "type": "partlycloudy"
+            },
+            "precipitation": 0.0,
+            "temp": 30
+            },{
+              "time": {
+                "label": "3pm",
+                "hour": 15,
+                "minute": 0
+              },
+              "condition": {
+                "desc": "Cloudy conditions",
+                "type": "cloudy"
+              },
+              "precipitation": 0.0,
+              "temp": 32
+            },{
+            "time": {
+              "label": "4pm",
+              "hour": 16,
               "minute": 0
             },
             "condition": {
               "desc": "Cloudy conditions",
-              "type": "cloudy"
+              "type": "clear"
             },
-            "chanceOfPrecipitation": 0.0,
-            "temp": 32
-          },{
-          "time": {
-            "label": "4pm",
-            "hour": 16,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Cloudy conditions",
-            "type": "clear"
-          },
-          "chanceOfPrecipitation": 0.20,
-          "temp": 34
-        },{
-          "time": {
-            "label": "5pm",
-            "hour": 17,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Rainy conditions",
-            "type": "rainy"
-          },
-          "chanceOfPrecipitation": 0.25,
-          "temp": 30
-        },{
-          "time": {
-            "label": "6pm",
-            "hour": 18,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Rainy conditions",
-            "type": "foggy"
-          },
-          "chanceOfPrecipitation": 0.25,
-          "temp": 28
-        },{
-          "time": {
-            "label": "7pm",
-            "hour": 19,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Windy conditions",
-            "type": "windy"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": 27
-        },{
-          "time": {
-            "label": "8pm",
-            "hour": 20,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Partly cloudy conditions",
-            "type": "snowy"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": 26
-        },{
-          "time": {
-            "label": "9pm",
-            "hour": 21,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Clear conditions",
-            "type": "sleety"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": 24
-        }
-      ]
-    },{
-      "mode": "tomorrow",
-      "record": [
-        {
-          "time": {
-            "label": "Morning",
-            "hour": 8,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Clear conditions",
-            "type": "clear"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": -22
+            "precipitation": 0.20,
+            "temp": 34
           },{
             "time": {
-              "label": "Afternoon",
+              "label": "5pm",
+              "hour": 17,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Rainy conditions",
+              "type": "rainy"
+            },
+            "precipitation": 0.25,
+            "temp": 30
+          },{
+            "time": {
+              "label": "6pm",
+              "hour": 18,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Rainy conditions",
+              "type": "foggy"
+            },
+            "precipitation": 0.25,
+            "temp": 28
+          },{
+            "time": {
+              "label": "7pm",
+              "hour": 19,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Windy conditions",
+              "type": "windy"
+            },
+            "precipitation": 0.0,
+            "temp": 27
+          },{
+            "time": {
+              "label": "8pm",
+              "hour": 20,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Partly cloudy conditions",
+              "type": "snowy"
+            },
+            "precipitation": 0.0,
+            "temp": 26
+          },{
+            "time": {
+              "label": "9pm",
+              "hour": 21,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Clear conditions",
+              "type": "sleety"
+            },
+            "precipitation": 0.0,
+            "temp": 24
+          },{
+            "time": {
+              "label": "10pm",
+              "hour": 21,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Clear conditions",
+              "type": "sleety"
+            },
+            "precipitation": 0.0,
+            "temp": 24
+          },{
+            "time": {
+              "label": "11pm",
+              "hour": 21,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Clear conditions",
+              "type": "sleety"
+            },
+            "precipitation": 0.0,
+            "temp": 24
+          }
+        ]
+      },{
+        "mode": "tomorrow",
+        "records": [
+          {
+            "time": {
+              "label": "Morning",
+              "hour": 8,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Clear conditions",
+              "type": "clear"
+            },
+            "precipitation": 0.0,
+            "temp": -22
+            },{
+              "time": {
+                "label": "Afternoon",
+                "hour": 12,
+                "minute": 0
+              },
+              "condition": {
+                "desc": "Sleet conditions",
+                "type": "cloudy"
+              },
+              "precipitation": 0.0,
+              "temp": -78
+            },{
+            "time": {
+              "label": "Evening",
+              "hour": 18,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Sleet conditions",
+              "type": "sleety"
+            },
+            "precipitation": 0.0,
+            "temp": -78
+          },{
+            "time": {
+              "label": "Overnight",
+              "hour": 20,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Sleet conditions",
+              "type": "foggy"
+            },
+            "precipitation": 0.0,
+            "temp": -78
+          }
+        ]
+      },{
+        "mode": "week",
+        "records": [
+          {
+            "time": {
+              "label": "Sun",
+              "hour": 12,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Clear conditions",
+              "type": "windy"
+            },
+            "precipitation": 0.0,
+            "temp": 2
+          },{
+            "time": {
+              "label": "Mon",
               "hour": 12,
               "minute": 0
             },
             "condition": {
               "desc": "Sleet conditions",
-              "type": "cloudy"
+              "type": "snowy"
             },
-            "chanceOfPrecipitation": 0.0,
-            "temp": -78
+            "precipitation": 0.0,
+            "temp": 16
           },{
-          "time": {
-            "label": "Evening",
-            "hour": 18,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Sleet conditions",
-            "type": "sleety"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": -78
-        },{
-          "time": {
-            "label": "Overnight",
-            "hour": 20,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Sleet conditions",
-            "type": "foggy"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": -78
-        }
-      ]
-    },{
-      "mode": "week",
-      "record": [
-        {
-          "time": {
-            "label": "Sun",
-            "hour": 12,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Clear conditions",
-            "type": "windy"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": 2
-        },{
-          "time": {
-            "label": "Mon",
-            "hour": 12,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Sleet conditions",
-            "type": "snowy"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": 16
-        },{
-          "time": {
-            "label": "Tue",
-            "hour": 12,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Windy conditions",
-            "type": "windy"
-          },
-          "chanceOfPrecipitation": 0.20,
-          "temp": -4
-        },{
-          "time": {
-            "label": "Wed",
-            "hour": 12,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Rainy conditions",
-            "type": "rainy"
-          },
-          "chanceOfPrecipitation": 0.25,
-          "temp": 0
-        },{
-          "time": {
-            "label": "Thu",
-            "hour": 12,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Partly cloud conditions",
-            "type": "partlycloudy"
-          },
-          "chanceOfPrecipitation": 0.25,
-          "temp": 2
-        },{
-          "time": {
-            "label": "Fri",
-            "hour": 12,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Windy conditions",
-            "type": "windy"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": 47
-        },{
-          "time": {
-            "label": "Sat",
-            "hour": 12,
-            "minute": 0
-          },
-          "condition": {
-            "desc": "Snowy conditions",
-            "type": "snowy"
-          },
-          "chanceOfPrecipitation": 0.0,
-          "temp": 26
-        }
-      ]
-    }
-  ]
+            "time": {
+              "label": "Tue",
+              "hour": 12,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Windy conditions",
+              "type": "windy"
+            },
+            "precipitation": 0.20,
+            "temp": -4
+          },{
+            "time": {
+              "label": "Wed",
+              "hour": 12,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Rainy conditions",
+              "type": "rainy"
+            },
+            "precipitation": 0.25,
+            "temp": 0
+          },{
+            "time": {
+              "label": "Thu",
+              "hour": 12,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Partly cloud conditions",
+              "type": "partlycloudy"
+            },
+            "precipitation": 0.25,
+            "temp": 2
+          },{
+            "time": {
+              "label": "Fri",
+              "hour": 12,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Windy conditions",
+              "type": "windy"
+            },
+            "precipitation": 0.0,
+            "temp": 47
+          },{
+            "time": {
+              "label": "Sat",
+              "hour": 12,
+              "minute": 0
+            },
+            "condition": {
+              "desc": "Snowy conditions",
+              "type": "snowy"
+            },
+            "precipitation": 0.0,
+            "temp": 26
+          }
+        ]
+      }
+    ]
+  }
 }

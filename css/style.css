@@ -4,13 +4,13 @@
 	box-sizing: border-box;
 }
 
-
 html {
-	background-color: var(--grad-light);
+	/* background-color: var(--grad-light); */
 	/*--col-a: rgb(67, 143, 36);*/ /* #438f24  */
 	--col-b: rgb(255, 255, 247); /* #fffff7  */
 	--col-c: rgb(177, 213, 255); /* #b1d5ff  */
 	--col-d: rgb(0, 0, 0); /* #000000  */
+	--col-e: rgb(184, 187, 205);
 	/* 184 187 205 */
 
 
@@ -35,83 +35,42 @@ html {
 	--grad-dark: rgb(29, 38, 51);
 }
 
-body {
 
-	padding-top: 1rem;
+body {
 	background-color: var(--grad-light);
 	background-image:
-
-repeating-linear-gradient(
-	45deg,
-	rgba(255,255,255,0.03),
-	rgba(255,255,255,0.03) 1px,
-	transparent 2px,
-	transparent 4px
-), 
-		/* repeating-linear-gradient(
-			135deg,
+		repeating-linear-gradient(
+			45deg,
 			rgba(255,255,255,0.03),
 			rgba(255,255,255,0.03) 1px,
 			transparent 2px,
 			transparent 4px
-		), */
-		/* url('../img/bg-pattern.svg'), */
+		),
 		linear-gradient(var(--grad-light), var(--grad-dark));
 	background-attachment: fixed;
-	/* background-size: 1px;
-	background-repeat: repeat; */
-	color: var(--col-b);
-	/* font: normal 400 1rem/1 'HelveticaNeue'; */
 	font: normal 400 1rem/1 Roboto, helvetica, arial, sans-serif;
+	color: var(--col-b);
 	text-align: center;
 	margin: 0;
+	/* padding-top: 1rem; */
 }
 
 /* Shared classes? unstyle list? */
-.unstyle-list, ul {
+ul {
 	list-style: none;
 	padding-left: 0;
 }
-
-.header {
-	display: flex;
-	justify-content: space-between;
-	/* margin: 1rem 0; */
-	padding: 0 1rem;
-}
-
-.logo {
-	font: 700 2rem helvetica, sans-serif;
-	text-transform: uppercase;
-	letter-spacing: -0.1rem;
-	margin-right: 1rem;
-}
-
-.units {
-	display: flex;
-	place-content: flex-end;
-	/* .unstyle-list */
+p {
 	margin: 0;
 }
 
 .container {
+	max-width: 70rem;
+	margin: 0 auto;
 	padding: 0 1rem;
+	justify-content: space-between;
+	width: 100%;
 }
-
-.current::after {
-	content: "";
-	display: block;
-	background-image: url('../img/squiggly-line.svg');
-	background-position: center center;
-	background-repeat: no-repeat;
-	height: 1rem;
-	/* width: 200px; */
-	margin: 2rem 0;
-	/* text-align: center;
-	text-decoration-line: underline;
-	text-decoration-style: wavy; */
-}
-
 
 .btn {
 	background-color: transparent;
@@ -121,12 +80,9 @@ repeating-linear-gradient(
 	padding: 0.75rem 1rem;
 	border: 3px solid transparent; /* Must start with transparent as not to shift the layout */
 	border-radius: 0.25rem;
-	
 	font-size: 1rem;
 	text-transform: capitalize;
 }
-
-/* Selected, or "shown"?? */
 
 .btn:hover, .btn:focus {
 	/* background-color: var(--col-b) ; */
@@ -144,14 +100,38 @@ repeating-linear-gradient(
 }
 
 
+/*************** HEADER ***************/
+
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo {
+	font: 700 2rem helvetica, sans-serif;
+	text-transform: uppercase;
+	letter-spacing: -0.1rem;
+	margin: 1rem 1rem 1rem 0;
+}
+
+.units {
+	display: flex;
+}
+
+
+
+/*************** CURRENT ***************/
+
 h1 {
 	font-size: 1rem;
+	text-transform: uppercase;
+	color: var(--col-c)
 }
 .condition {
 	margin: 1rem auto;
 	max-width: 20rem;
 }
-.weather {
+.description {
 	font-size: 1.25rem;
 	font-weight: 400;
 }
@@ -167,22 +147,49 @@ h1 {
 .unit {
 	font-size: 2rem;
 }
-.range {
+/* .high-low {
+	font-size: 2rem;
+	margin: 1rem 0;
+	display: flex;
+	justify-content: center;
+} */
+.high-low {
 	font-size: 2rem;
 	margin: 1rem 0;
 }
+.high-low li {
+	display: inline-block;
+}
+
 .low {
 	color: var(--col-c);
 }
 
-
-.forecast-range {
-	display: flex;
-	justify-content: space-around;
-	/* justify-content: space-between; */
+.current {
+	max-width: 30rem;
+	margin: 0 auto;
 }
 
-.forecast {
+/* .squiggly { */
+.current::after {
+	content: "";
+	display: block;
+	background-image: url('../img/squiggly-line.svg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 1rem;
+	margin: 2rem 0;
+}
+
+
+/*************** FORECAST ***************/
+
+.tabs {
+	display: flex;
+	justify-content: space-around;
+}
+
+.ranges {
   background-color: rgba(0,0,0,0.1);
 	border-radius: 0.5rem;
 	/* border-spacing: 1rem; */
@@ -192,76 +199,45 @@ h1 {
 	padding: 1rem;
 	/* table-layout: fixed; */
 }
-.forecast tbody {
-	display: none;
-	font-size: 1.25rem;
-}
-.forecast tbody.active {
-	/* Or use "Hidden" instead? */
-	/* Good use of "inspect" here */
-	display: table-row-group;
-}
-.forecast tbody tr:hover {
-	background-color: rgba(0,0,0,0.1);
-	
-}
-.forecast th {
+.ranges th {
 	font-weight: 400;
 	color: var(--col-c);
 	line-height: 2;
-	width: 20%;
+	/* width: 20%; */
 }
-.forecast th:nth-child(1), .forecast td:nth-child(1) {
-	/* width: 8rem; */
-	/* text-align: left; */
-	/* width: 6em; */
-	width: 30%;
-	/* background-color: red; */
-	/* background-color: rgba(0,0,0,0.1); */
-}
-/* .forecast th:nth-child(2) {
+.ranges th:nth-child(1) {
+	/* width: 7.5rem; */
 	width: 30%;
 }
-.forecast th:nth-child(3) {
-	width: 20%;
-}
-.forecast th:nth-child(4) {
-	width: 20%;	
-} */
-.forecast td:nth-child(4) {
-	font-size: 1.75rem;
-}
 
-
-/* .forecast td { background-color: red; } */
-.forecast-time {
-	font-weight: 700;
-	text-transform: uppercase;
+.panel {
+	display: none;
+	font-size: 1.25rem;
 }
-.forecast-time small {
-	font-weight: 400;
+.panel.active {
+	display: table-row-group;
 }
-.forecast-temp {
+.panel tr:hover {
+	background-color: rgba(0,0,0,0.1);
+}
+.panel td:nth-child(4) {
 	font-size: 1.5rem;
-	font-weight: 700;
 }
+
 .icon-xs {
 	height: 3rem;
 }
 
 
+/*************** FOOTER ***************/
 .footer {
-	color: var(--col-c);
+	color: var(--col-e);
 	background-color: rgba(0,0,0,0.1);
 	padding: 1rem 0 2rem 0;
 	text-align: center;
 	line-height: 1.5;
 	margin-top: 2rem;
 }
-.footer * {
-	margin: 0;
-}
-
 
 
 /* @media screen and (min-width: 640px) { */
@@ -271,43 +247,43 @@ h1 {
 		height: 100%;
 	}
 	body {
-		padding-bottom: 4rem;
-		position: relative;
 		height: 100%;
 	}
 
-	.container {
+	.layout {
 		display: flex;
-		max-width: 70rem;
-		margin: 0 auto;
+		flex-direction: column;
+		justify-items: center;
+		min-height: 100%;
 	}
-	.header {
-		max-width: 70rem;
-		/* margin: 1rem auto; */
-		margin: 0 auto;
+
+	/*************** FOOTER ***************/
+	.weather {
+		display: flex;
+		flex-grow: 1;
 	}
 	.current {
+		max-width: none;
 		flex-grow: 1;
 		margin-right: 2rem;
 	}
 	.condition {
-		max-width: 100%;
-	}
-	.forecast {
-		min-width: 25rem;
-	}
-	.footer {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		padding: 1rem 0;
+		max-width: none;
 	}
 
+	/*************** FORECAST ***************/
+	.ranges {
+		min-width: 25rem;
+	}
+
+	/*************** FOOTER ***************/
+	.footer {
+		width: 100%;
+		padding: 1rem 0;
+		line-height: 1;
+	}
 	.footer .container {
-		max-width: 70rem;
 		display: flex;
 		justify-content: space-between;
-		line-height: 1;
 	}
 } 

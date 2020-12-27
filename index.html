@@ -3,126 +3,109 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Document</title>
+		<title>Weatherful Weather</title>
+		<meta name="description" content="A weatherful weather app">
+		<!-- Icon/Logo? -->
 		<link rel="stylesheet" href="css/style.css">
-		<style>
-			body{background-color: #e2e2e2;}
-		</style>
 	</head>
 	<body>
-		
 
-		<header class="header">
-			<div class="logo"><a href="index.html"><img src="img/weather-logo.svg" alt="Weather logo"></a></div>
-			<ul class="units">
-				<!-- Aria roles required?? -->
-				<li><button class="btn active" id="setC"><abbr title="Degrees celsius">C</abbr></button></li>
-				<li><button class="btn" id="setF"><abbr title="Degrees fahrenheit">F</abbr></button></li>
-			</ul>
-		</header>
+		<main class="layout">
 
+			<header class="header container">
+				<div class="logo"><a href="index.html"><img src="img/weather-logo.svg" height="46" width="160" alt="Weather logo"></a></div>
+				<ul class="units">
+					<li><button class="btn active" id="setC"><abbr title="Degrees celsius">C</abbr></button></li>
+					<li><button class="btn" id="setF"><abbr title="Degrees fahrenheit">F</abbr></button></li>
+				</ul>
+			</header>
 
-		<!-- <main class="weather"> -->
-      <!-- <header class="graphic">
-        <img 
-            sizes="(min-width: 600px) 1x, 
-                    (max-width: 599px) 1x" 
-            srcset="img/sunny_clouds_desktop-copy.svg 500w, 
-                    img/sunny_clouds_mobile-copy.svg 400w" 
-             src="img/sunny_clouds_mobile-copy.svg" alt="Sunny with some clouds">
-      </header> -->
-<!-- 
-		<main class="current">
-			<div class="condition"><img src="img/day-clear-lg.svg" alt="Sunny with some clouds" class="condition"></div>		
-			<h1 class="weather">Current conditions in <strong class="city">Toronto, ON</strong></h1>
-			<data value="30" class="temp">30&deg;<small><abbr title="Degrees celsius">C</abbr></small></data>
-			<footer class="range">
-				<data value="34" class="high">34&deg;</date>
-				<data value="26" class="low">26&deg;</data>
+			<main class="weather container">
+
+				<article class="current">
+					<div class="condition"></div>
+					<picture>
+						<source srcset="" class="icon-lg" media="(min-width: 50rem)">
+						<img src="" class="icon-sm" alt="">
+					</picture>
+					<h1>Current Conditions</h1>
+					<p class="description"><span class="happening"></span> in <strong class="city"></strong></p>
+					<data value="" class="temp"></data>
+					<ul class="high-low">
+						<li>
+							<img src="img/temp-high.svg" height="23" width="8" alt="Daily high">
+							<data value="" class="high"></data>
+						</li>
+						<li>
+							<data value="" class="low"></data>
+							<img src="img/temp-low.svg" height="23" width="8" alt="Daily low">
+						</li>
+					</ul>
+				</article>
+
+				<!-- <hr class="squiggly"> -->
+
+				<aside class="forecast">
+						<!-- Aria roles required -->
+					<ul class="tabs">
+						<!-- Could also be subheadings (h3) with roles, compare -->
+						<!-- <li> -->
+							<!-- Aria roles required -->
+							<!-- <input type="radio" name="foretab" value="h" id="h" class="fore-radio" checked> -->
+							<!-- <label for="h" class="fore-type btn">Hourly</label> -->
+							<!-- <button class="btn active">Hourly</button> -->
+						<!-- </li> -->
+						<!-- <li> -->
+							<!-- Aria roles required -->
+							<!-- <input type="radio" name="foretab" value="t" id="t" class="fore-radio"> -->
+							<!-- <label for="t" class="fore-type btn">Tomorrow</label> -->
+							<!-- <button class="btn">Tomorrow</button> -->
+						<!-- </li> -->
+						<!-- <li> -->
+							<!-- Aria roles required -->
+							<!-- <input type="radio" name="foretab" value="w" id="w" class="fore-radio"> -->
+							<!-- <label for="w" class="fore-type btn">Weekly</label> -->
+							<!-- <button class="btn">Week</button> -->
+						<!-- </li> -->
+						<!-- <li><button class="btn outline">Week</button></li> -->
+					</ul>
+
+					<table class="ranges">
+						<!-- <thead>
+							<tr>
+								<th>Time</th>
+								<th>Conditions</th>
+								<th><abbr title="Chance of precipitation">CoP</abbr></th>
+								<th><abbr title="Temperature">Temp</abbr></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="forecast-time"><time datetime="2011-11-18 14:00">2<small>pm</small></time></td>
+								<td><img src="img/sunny-clouds-copy-2.svg" alt="" class="fore-icon"></td>
+								<td>0%</td>
+								<td class="forecast-temp">30&deg;</td>
+							</tr>
+							<tr>
+								<td class="forecast-time"><time datetime="2011-11-18 15:00">3<small>pm</small></time></td>
+								<td><img src="img/sunny-clouds-copy-2.svg" alt="" class="fore-icon"></td>
+								<td>0%</td>
+								<td class="forecast-temp">30&deg;</td>
+							</tr>
+						</tbody> -->
+					</table>
+				</aside>
+
+			</main>
+
+			<footer class="footer">
+				<div class="container">
+					<!-- Anchor here? -->
+					<p class="tagline">It’s not always wonderful, but it is always <em>Weatherful</em></p>
+					<p class="madeby">Created with ❤️ by [name]</p>
+				</div>
 			</footer>
-		</main> -->
-
-<div class="container">
-
-		<main class="current">
-			<div class="condition"></div>		
-			<h1>Current Conditions</h1>
-			<h2 class="weather"><span class="happening"></span> in <strong class="city"></strong></h2>
-			<div class="temp">
-				<data value="30" class="number"><abbr title="Degrees celsius" class="unit"></abbr></data>
-			</div>
-			<footer class="range">
-				<img src="img/temp-high.svg" alt="">
-				<data class="high"></data>
-				<data class="low"></data>
-				<img src="img/temp-low.svg" alt="">
-			</footer>
-		</main>
-
-		<!-- <hr class="squiggly"> -->
-
-		<aside class="right">
-				<!-- Aria roles required -->
-			<ul class="forecast-range">
-				<!-- Could also be subheadings (h3) with roles, compare -->
-				<!-- <li> -->
-					<!-- Aria roles required -->
-					<!-- <input type="radio" name="foretab" value="h" id="h" class="fore-radio" checked> -->
-					<!-- <label for="h" class="fore-type btn">Hourly</label> -->
-					<!-- <button class="btn active">Hourly</button> -->
-				<!-- </li> -->
-				<!-- <li> -->
-					<!-- Aria roles required -->
-					<!-- <input type="radio" name="foretab" value="t" id="t" class="fore-radio"> -->
-					<!-- <label for="t" class="fore-type btn">Tomorrow</label> -->
-					<!-- <button class="btn">Tomorrow</button> -->
-				<!-- </li> -->
-				<!-- <li> -->
-					<!-- Aria roles required -->
-					<!-- <input type="radio" name="foretab" value="w" id="w" class="fore-radio"> -->
-					<!-- <label for="w" class="fore-type btn">Weekly</label> -->
-					<!-- <button class="btn">Week</button> -->
-				<!-- </li> -->
-				<!-- <li><button class="btn outline">Week</button></li> -->
-			</ul>
-
-			<table class="forecast">
-				<!-- <thead>
-					<tr>
-						<th>Time</th>
-						<th>Conditions</th>
-						<th><abbr title="Chance of precipitation">CoP</abbr></th>
-						<th><abbr title="Temperature">Temp</abbr></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="forecast-time"><time datetime="2011-11-18 14:00">2<small>pm</small></time></td>
-						<td><img src="img/sunny-clouds-copy-2.svg" alt="" class="fore-icon"></td>
-						<td>0%</td>
-						<td class="forecast-temp">30&deg;</td>
-					</tr>
-					<tr>
-						<td class="forecast-time"><time datetime="2011-11-18 15:00">3<small>pm</small></time></td>
-						<td><img src="img/sunny-clouds-copy-2.svg" alt="" class="fore-icon"></td>
-						<td>0%</td>
-						<td class="forecast-temp">30&deg;</td>
-					</tr>
-				</tbody> -->
-			</table>
-			
-		</aside>
-
-	</div>
-
-	<footer class="footer">
-		<div class="container">
-			<!-- Anchor here? -->
-			<p>It’s not always wonderful, but it is always <em>Weatherful</em></p>
-			<p>Created with ❤️ by [name]</p>
 		</div>
-	</footer>
-
 
 		<script src="js/script.js"></script>
 	</body>

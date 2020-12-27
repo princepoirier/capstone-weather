@@ -32,15 +32,18 @@
 // let current = document.querySelector(`.current`)
 let condition = document.querySelector(`.condition`)
 let happening = document.querySelector(`.happening`)
+let img = document.querySelector(`picture`)
+let iconSm = document.querySelector(`.icon-sm`)
+let iconLg = document.querySelector(`.icon-lg`)
 let city = document.querySelector(`.city`)
 let unit = document.querySelector(`.unit`)
-let temp = document.querySelector(`.number`)
+let temp = document.querySelector(`.temp`)
 let high = document.querySelector(`.high`)
 let low = document.querySelector(`.low`)
 
 
-let modes = document.querySelector(`.forecast-range`)
-let table = document.querySelector(`.forecast`)
+let tabs = document.querySelector(`.tabs`)
+let table = document.querySelector(`.ranges`)
 
 
 let loadJson = async (url) => {
@@ -71,6 +74,8 @@ let setCurrentWeather = (data) => {
 			<data value="26" class="low">26&deg;</data>
 		</footer>
 	</main> */
+
+	
 	let time = `night`
 
 	if (data.current.time.hour >= 8 && data.current.time.hour < 20) {
@@ -92,36 +97,15 @@ let setCurrentWeather = (data) => {
 	}
 	
 
+	// Condition image
+	iconLg.setAttribute(`srcset`, `img/${time}-${data.current.condition.type}-lg.svg`)
 
-	// <img srcset="img/mixing-ingredients-480w.jpg 480w, img/mixing-ingredients-960w.jpg 960w, img/mixing-ingredients-1920w.jpg 1920w" src="img/mixing-ingredients-960w.jpg" alt="All ingredients mixed to form a shaggy dough">
+	iconSm.setAttribute(`src`, `img/${time}-${data.current.condition.type}-sm.svg`)
+	iconSm.setAttribute(`alt`, data.current.condition.desc)
 
-	/*
-	let img = document.createElement(`img`)
-	img.setAttribute(`src`, `img/${time}-${data.current.condition.type}-sm.png`)
-	// img.setAttribute(`sizes`, `(max-width: 639px) 640px, 960px`)
-	img.setAttribute(`srcset`, `
-		img/${time}-${data.current.condition.type}-sm.png 800w,
-		img/${time}-${data.current.condition.type}-lg.png 1960w`)
-	*/
-
-	let img = document.createElement(`picture`)
-	// <picture>
-	// 		<source srcset="/media/cc0-images/surfer-240-200.jpg"
-	// 						media="(min-width: 800px)">
-	// 		<img src="/media/cc0-images/painted-hand-298-332.jpg" alt="" />
-	// </picture>
-	
-	img.innerHTML = `
-	<source srcset="img/${time}-${data.current.condition.type}-lg.svg" media="(min-width: 50rem)">
-	<img src="img/${time}-${data.current.condition.type}-sm.svg" alt="${data.current.condition.desc}">
-	`
-	img.setAttribute(`alt`, data.current.condition.desc)
-	// img.classList.add(`condition`)
-	condition.append(img)
 
 	happening.textContent = data.current.condition.desc
 	city.textContent = data.location
-
 
 	// Explain the different between textContent and innerHTML
 	temp.innerHTML = `${data.current.temp}&deg;`
@@ -134,30 +118,22 @@ let setCurrentWeather = (data) => {
 
 	if (data.unit === "metric") {
 		// unit.textContent = `C`
-		temp.innerHTML += `<abbr title="Degrees celcius" class="unit">C</abbr>`
+		temp.innerHTML += `<abbr title="Degrees celsius" class="unit">C</abbr>`
 	} else if (data.unit === "imperial") {
 		// unit.textContent = `F`
-		temp.innerHTML += `<abbr title="Degrees farenheit" class="unit">F</abbr>`
+		temp.innerHTML += `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`
 	}
 
 }
 
 
-let buildForecastTableHeader = () => {
-
-	// Sort this out...
-	let headings = [
-		{label:`Time`, full:null}, 
-		{label:`Conditions`, full:null},
-		{label:`PoP`, full:`Probability of precipitation`},
-		{label:`Temp`, full: `Temperature`}
-	]
+let buildForecastTableHeader = (data) => {
 
 	// Table Head
 	let thead = table.createTHead() // Both creates and inserts! (because they don't hold content)
 	let tr = thead.insertRow() // Both creates and inserts! (because they don't hold content))
 
-	headings.forEach((heading) => {
+	data.forecast.columns.forEach((heading) => {
 		let th = document.createElement("th")
 
 		if (heading.full) {
@@ -172,7 +148,6 @@ let buildForecastTableHeader = () => {
 		tr.append(th)
 	})
 }
-
 
 let buildForecastTableBody = (data) => {
 	// is a <tbody> necessary here?
@@ -196,6 +171,7 @@ let buildForecastTableBody = (data) => {
 		// CAN I HAVE A DIV IN A TBODY
 		let tbody = document.createElement(`tbody`)
 		tbody.setAttribute(`id`, type.mode)
+		tbody.classList.add(`panel`)
 
 		let tab = document.createElement(`li`)
 		tab.classList.add('tab')
@@ -205,7 +181,7 @@ let buildForecastTableBody = (data) => {
 		mode.setAttribute(`aria-controls`, type.mode)
 		mode.setAttribute(`aria-label`, type.mode)
 		tab.append(mode)
-		modes.append(tab)
+		tabs.append(tab)
 
 		let addForecastRow = (row) => {
 
@@ -219,18 +195,19 @@ let buildForecastTableBody = (data) => {
 			tr.insertCell().textContent = row.time.label
 			// tr.insertCell().innerHTML = `<b>${row.time.label}</b>`
 
-
 			let time = `day` // (or `night`)
 
 			// Icon
 			let img = document.createElement(`img`)
 			img.setAttribute(`src`, `img/${time}-${row.condition.type}-xs.svg`)
 			img.setAttribute(`alt`, row.condition.desc)
+			img.setAttribute(`height`, `48`) //explain this
+			img.setAttribute(`width`, `60`) //explain this
 			img.classList.add(`icon-xs`)
 			tr.insertCell().append(img)
 
 			// CoP
-			tr.insertCell().textContent = `${row.chanceOfPrecipitation * 100}%`
+			tr.insertCell().textContent = `${row.precipitation * 100}%`
 
 			// Temp
 			// tr.insertCell().append(`${row.temp}&deg;`)
@@ -239,10 +216,11 @@ let buildForecastTableBody = (data) => {
 			// Add the "panel" for this forecast type to the tbody
 		}
 
-		type.record.forEach(addForecastRow)
+		type.records.forEach(addForecastRow)
 
 		// Add the panel to the ~<tbody>~ <table>
-		console.log(i);
+
+		
 		if (i === 0) {
 			mode.classList.add(`active`)
 			tbody.classList.add(`active`)
@@ -250,7 +228,7 @@ let buildForecastTableBody = (data) => {
 		table.append(tbody)
 	}
 
-	data.forecast.forEach(addForecastType)
+	data.forecast.ranges.forEach(addForecastType)
 	// table.querySelector('tbody').classList.add(`shown`) // First one
 	// table.querySelector('tbody').toggleAttribute(`hidden`, false)
 }
@@ -278,7 +256,7 @@ let handleModesClicked = (event) => {
     modelBtn.classList.add(`active`)
   }
 }
-modes.addEventListener(`click`, handleModesClicked)
+tabs.addEventListener(`click`, handleModesClicked)
 
 
 // **********************************************
@@ -321,7 +299,7 @@ let displayImperialUnits = () => {
 
 	document.querySelectorAll(`data`).forEach((ele) => {
 		// .value needs to be set as well
-		if (ele.matches(`.number`))
+		if (ele.matches(`.temp`))
 			ele.innerHTML = getImperialStr(ele.value, true)
 		else
 			ele.innerHTML = getImperialStr(ele.value, false)
@@ -335,7 +313,7 @@ let displayMetricUnits = () => {
 
 	document.querySelectorAll(`data`).forEach((ele) => {
 		// .value needs to be set as well
-		if (ele.matches(`.number`))
+		if (ele.matches(`.temp`))
 			ele.innerHTML = getMetricStr(ele.value, true)
 		else
 			ele.innerHTML = getMetricStr(ele.value, false)
@@ -345,7 +323,7 @@ let displayMetricUnits = () => {
 let createUnitToggle = () => {
   // Where will this event occur?           btnImperial
   // What type of event will it be?         `click`
-  // How do we handle it, when it occurs?   displayImperialUnits
+	// How do we handle it, when it occurs?   displayImperialUnits
   setF.addEventListener(`click`, displayImperialUnits)
   setC.addEventListener(`click`, displayMetricUnits)
 }
@@ -361,13 +339,13 @@ window.addEventListener(`load`, async (event) => {
 	
 	createUnitToggle()
 
-	buildForecastTableHeader()  // Put this in the table
+	buildForecastTableHeader(json)  // Put this in the table
 	buildForecastTableBody(json)
 	setCurrentWeather(json)
 })
 
 
-
+// Custom icon and title
 
 
 /* 

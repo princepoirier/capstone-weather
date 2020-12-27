@@ -1,5 +1,14 @@
 # Weather (design only)
 
+## Presentation
+
+- "Now we will", think of it like a slide with points
+- Get clean screenshots of the design ahead of time - put in the folder?
+- Guiding with comments in place already?
+
+
+
+
 ## Questions
 
 - "Weather Logo" (replacing the "search", looked naked without it)
