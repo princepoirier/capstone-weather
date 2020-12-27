@@ -5,18 +5,14 @@
 }
 
 html {
-	/* background-color: var(--grad-light); */
-	/*--col-a: rgb(67, 143, 36);*/ /* #438f24  */
-	--col-b: rgb(255, 255, 247); /* #fffff7  */
-	--col-c: rgb(177, 213, 255); /* #b1d5ff  */
-	--col-d: rgb(0, 0, 0); /* #000000  */
-	--col-e: rgb(184, 187, 205);
-	/* 184 187 205 */
-
-
-	/* REMOVE THESE? Or get a default colour... */
+	--col-a: rgb(255, 255, 247);
+	--col-b: rgb(177, 213, 255);
+	--col-c: rgb(184, 187, 205);	
+	
 	/* --grad-light:rgb(90, 154, 232);
 	--grad-dark:rgb(21, 101, 162); */
+
+	background-color: var(--grad-light);
 }
 .day {
 	--grad-light:rgb(90, 154, 232);
@@ -35,7 +31,6 @@ html {
 	--grad-dark: rgb(29, 38, 51);
 }
 
-
 body {
 	background-color: var(--grad-light);
 	background-image:
@@ -49,10 +44,9 @@ body {
 		linear-gradient(var(--grad-light), var(--grad-dark));
 	background-attachment: fixed;
 	font: normal 400 1rem/1 Roboto, helvetica, arial, sans-serif;
-	color: var(--col-b);
+	color: var(--col-a);
 	text-align: center;
 	margin: 0;
-	/* padding-top: 1rem; */
 }
 
 /* Shared classes? unstyle list? */
@@ -74,7 +68,7 @@ p {
 
 .btn {
 	background-color: transparent;
-	color: var(--col-b);
+	color: var(--col-a);
 	text-align: center;
 	line-height: 1;
 	padding: 0.75rem 1rem;
@@ -85,20 +79,19 @@ p {
 }
 
 .btn:hover, .btn:focus {
-	/* background-color: var(--col-b) ; */
+	/* background-color: var(--col-a) ; */
 	background-color: rgba(255,255,255,0.1);
 	/* color: var(--col-d); */
 }
 .btn:focus {
-	border: 3px solid var(--col-c);
+	border: 3px solid var(--col-b);
 	outline: none;
 }
 .btn.active {
 	background-color: transparent;
-	border-color: var(--col-b);
+	border-color: var(--col-a);
 	font-weight: 700;
 }
-
 
 /*************** HEADER ***************/
 
@@ -118,14 +111,12 @@ p {
 	display: flex;
 }
 
-
-
 /*************** CURRENT ***************/
 
 h1 {
 	font-size: 1rem;
 	text-transform: uppercase;
-	color: var(--col-c)
+	color: var(--col-b)
 }
 .condition {
 	margin: 1rem auto;
@@ -162,7 +153,7 @@ h1 {
 }
 
 .low {
-	color: var(--col-c);
+	color: var(--col-b);
 }
 
 .current {
@@ -201,7 +192,7 @@ h1 {
 }
 .ranges th {
 	font-weight: 400;
-	color: var(--col-c);
+	color: var(--col-b);
 	line-height: 2;
 	/* width: 20%; */
 }
@@ -231,7 +222,7 @@ h1 {
 
 /*************** FOOTER ***************/
 .footer {
-	color: var(--col-e);
+	color: var(--col-c);
 	background-color: rgba(0,0,0,0.1);
 	padding: 1rem 0 2rem 0;
 	text-align: center;

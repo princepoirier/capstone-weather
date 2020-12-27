@@ -25,14 +25,8 @@
  
 
 
-
-
-// https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement
-// 
-// let current = document.querySelector(`.current`)
 let condition = document.querySelector(`.condition`)
 let happening = document.querySelector(`.happening`)
-let img = document.querySelector(`picture`)
 let iconSm = document.querySelector(`.icon-sm`)
 let iconLg = document.querySelector(`.icon-lg`)
 let city = document.querySelector(`.city`)
@@ -75,7 +69,7 @@ let setCurrentWeather = (data) => {
 		</footer>
 	</main> */
 
-	
+
 	let time = `night`
 
 	if (data.current.time.hour >= 8 && data.current.time.hour < 20) {
