@@ -8,6 +8,34 @@
 
 
 
+## Older notes
+
+Reminders or questions for me
+- datetime format: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#Valid_datetime_Values
+- Would it be easier to convert the units by just changing a class (::after)?
+- Image names should be brought in from the JSON on the forecast, not determined dynamically based on time
+- Does attr around C and F create clickable issues?
+- Before and after? Was covered (for the thermometer icons)
+- Does converting the C/F create a lot of work to reload the table?
+*/
+
+/* "Questioms"
+- Regarding current-weather "day" vs "night" icons
+	- Should the icon be determined by the true time (requires code that wasn't previously discuses, though not challenging), or simply provide a fake `currentTime` in the JSON file (typical of weather data)?
+- "Helvetica Neue" is used in he Zeplin, but is a paid Linotype font.
+	- Do the designers have a preferred Google Font to use in place?
+- Zeplin does not show a forecast view other than "Hourly", but also has tabs for "Tomorrow" and "Week"
+	- Can I assume 12 hours is enough for hourly (or is less better here?)
+	- "Tomorrow" might have "Morning", "Afternoon", "Evening", "Night", but that's only 4, so when flipping from one tab to another, the table size (and page length) will contract in height. "Week" also would only have 6 at most. Any preference from the designers for how to deal with that?
+	- Table have both "CoP" (Chance) and "PoP" (Percent) on different versions, any preference?
+
+
+----- NEW
+	- Should we crop height of big images?
+	- This assumes "metric" by default, need to work that out.
+
+
+
 
 ## Questions
 
