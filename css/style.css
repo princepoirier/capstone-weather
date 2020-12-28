@@ -9,9 +9,11 @@ html {
 	--col-b: rgb(177, 213, 255);
 	--col-c: rgb(184, 187, 205);
 
+	--shade-white: rgba(255, 255, 255, 0.1);
+	--shade-black: rgba(0, 0, 0, 0.1);
 	
-	/* --grad-light:rgb(90, 154, 232);
-	--grad-dark:rgb(21, 101, 162); */
+	--grad-light:rgb(90, 154, 232);
+	--grad-dark:rgb(21, 101, 162);
 
 	background-color: var(--grad-light);
 }
@@ -81,7 +83,7 @@ p {
 
 .btn:hover, .btn:focus {
 	/* background-color: var(--col-a) ; */
-	background-color: rgba(255,255,255,0.1);
+	background-color: var(--shade-white);
 	/* color: var(--col-d); */
 }
 .btn:focus {
@@ -179,7 +181,7 @@ h1 {
 }
 
 .ranges {
-  background-color: rgba(0,0,0,0.1);
+  background-color: var(--shade-black);
 	border-radius: 0.5rem;
 	/* border-spacing: 1rem; */
 	border-spacing: 0;
@@ -207,7 +209,7 @@ h1 {
 	display: table-row-group;
 }
 .range tr:hover {
-	background-color: rgba(0,0,0,0.1);
+	background-color: var(--shade-black);
 }
 .range td:nth-child(4) {
 	font-size: 1.5rem;
@@ -220,7 +222,7 @@ h1 {
 /*************** FOOTER ***************/
 .footer {
 	color: var(--col-c);
-	background-color: rgba(0,0,0,0.1);
+	background-color: var(--shade-black);
 	padding: 1rem 0 2rem 0;
 	text-align: center;
 	line-height: 1.5;
