@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Weatherful Weather</title>
+		<meta name="description" content="A weatherful weather app">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+
+		<div class="layout">
+
+			<header class="header container">
+				<div class="logo"><a href="index.html"><img src="img/weather-logo.svg" height="46" width="160" alt="Weather logo"></a></div>
+				<ul class="no-markers units">
+					<li><button class="btn" id="setC"><abbr title="Degrees celsius">C</abbr></button></li>
+					<li><button class="btn" id="setF"><abbr title="Degrees fahrenheit">F</abbr></button></li>
+				</ul>
+			</header>
+
+			<main class="weather container">
+
+				<article class="current">
+					<picture>
+						<source srcset="" class="icon-lg" media="(min-width: 50rem)">
+						<img src="" class="icon-sm" alt="">
+					</picture>
+					<h1>Current Conditions</h1>
+					<p class="desc"></p>
+					<data value="" class="temp"></data>
+					<ul class="no-markers high-low">
+						<li>
+							<img src="img/temp-low.svg" height="23" width="8" alt="Daily low">
+							<data value="" class="low"></data>
+						</li>
+						<li>
+							<data value="" class="high"></data>
+							<img src="img/temp-high.svg" height="23" width="8" alt="Daily high">
+						</li>
+					</ul>
+				</article>
+
+				<!-- <hr class="squiggly"> -->
+
+				<aside class="forecast">
+					<ul class="no-markers tabs">
+					</ul>
+					<table class="ranges">
+					</table>
+				</aside>
+
+			</main>
+
+			<footer class="footer">
+				<div class="container">
+					<!-- Anchor here? -->
+					<p class="tagline">It’s not always wonderful, but it is always <em>Weatherful</em></p>
+					<p class="madeby">Created with ❤️ by 1hr Coach</p>
+				</div>
+			</footer>
+		</div>
+
+		<div class="modal show">loading...</div>
+
+		<script src="js/script.js"></script>
+	</body>
+</html>
