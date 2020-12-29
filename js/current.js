@@ -10,6 +10,9 @@ export let setCurrentWeather = (data) => {
 	let low = document.querySelector(`.low`)
 	// document.body
 
+	// Dynamically set the page title with the city name
+	document.title = `Weatherful weather for ${data.location}`
+
 	// Set the current "time" based on incoming data
 	let time = data.current.time.light
 	

@@ -27,13 +27,12 @@ let setCurrentWeather = (data) => {
 	let temp = document.querySelector(`.temp`)
 	let high = document.querySelector(`.high`)
 	let low = document.querySelector(`.low`)
-	// document.body
 
 	// Set the current "time" based on incoming data
 	let time = `day`  //! HERE
 	
 	// Set the background gradient based on the current time
-	document.body.classList.add(`${time}-precip`) //! HERE (precip or not)
+	//document.body.classList.add(`${time}-precip`) //! HERE (precip or not)  //! Actually, leave this out until E
 
 	// Condition image (large)
 	iconLg.setAttribute(`srcset`, `img/${time}-${data.condition.type}-lg.svg`)
