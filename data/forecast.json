@@ -95,7 +95,7 @@
               "light": "day"
             },
             "condition": {
-              "desc": "Rainy conditions",
+              "desc": "Foggy conditions",
               "type": "foggy"
             },
             "precipitation": 0.25,
@@ -121,7 +121,7 @@
               "light": "day"
             },
             "condition": {
-              "desc": "Partly cloudy conditions",
+              "desc": "Snowy conditions",
               "type": "snowy"
             },
             "precipitation": 0.0,
@@ -134,7 +134,7 @@
               "light": "night"
             },
             "condition": {
-              "desc": "Clear conditions",
+              "desc": "Sleet conditions",
               "type": "sleety"
             },
             "precipitation": 0.0,
@@ -147,7 +147,7 @@
               "light": "night"
             },
             "condition": {
-              "desc": "Clear conditions",
+              "desc": "Sleet conditions",
               "type": "sleety"
             },
             "precipitation": 0.0,
@@ -160,7 +160,7 @@
               "light": "night"
             },
             "condition": {
-              "desc": "Clear conditions",
+              "desc": "Sleet conditions",
               "type": "sleety"
             },
             "precipitation": 0.0,
@@ -191,7 +191,7 @@
               "light": "day"
             },
             "condition": {
-              "desc": "Sleet conditions",
+              "desc": "Cloudy conditions",
               "type": "cloudy"
             },
             "precipitation": 0.0,
@@ -217,7 +217,7 @@
               "light": "night"
             },
             "condition": {
-              "desc": "Sleet conditions",
+              "desc": "Foggy conditions",
               "type": "foggy"
             },
             "precipitation": 0.0,
@@ -235,7 +235,7 @@
               "light": "day"
             },
             "condition": {
-              "desc": "Clear conditions",
+              "desc": "Windy conditions",
               "type": "windy"
             },
             "precipitation": 0.0,
@@ -248,7 +248,7 @@
               "light": "day"
             },
             "condition": {
-              "desc": "Sleet conditions",
+              "desc": "Snowy conditions",
               "type": "snowy"
             },
             "precipitation": 0.0,

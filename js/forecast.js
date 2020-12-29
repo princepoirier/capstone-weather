@@ -75,6 +75,7 @@ let buildForecastTableBody = (table, data) => {
 			// FOURTH column (temperature)
 			let data = document.createElement(`data`)
 			data.setAttribute(`value`, row.temp)
+			data.classList.add(`range-temp`)
 			data.innerHTML = `&deg;`
 			data.prepend(row.temp)
 			tr.insertCell().append(data)

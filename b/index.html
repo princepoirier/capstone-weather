@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		
+		<title>Weatherful Weather</title>
+		<meta name="description" content="A weatherful weather app">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+
+		<!-- <div class="layout"> -->
+
+			<header class="header container">
+				<div class="logo"><a href="index.html"><img src="img/weather-logo.svg" height="46" width="160" alt="Weather logo"></a></div>
+				<ul class="no-markers units">
+					<li><button class="btn active" id="setC"><abbr title="Degrees celsius">C</abbr></button></li>
+					<li><button class="btn" id="setF"><abbr title="Degrees fahrenheit">F</abbr></button></li>
+				</ul>
+			</header>
+
+			<main class="weather container">
+
+				<article class="current">
+					<!-- <picture> -->
+						<!-- <source srcset="img/day-windy-lg.svg" class="icon-lg" media="(min-width: 50rem)"> -->
+						<img src="img/day-windy-sm.svg" class="icon-sm" alt="Gusty winds in Toronto!">
+					<!-- </picture> -->
+					<h1>Current Conditions</h1>
+					<p class="desc">Gusty winds in Toronto!</p>
+					<data value="8" class="temp">8&deg;<abbr title="Degrees celsius" class="unit">C</abbr></data>
+					<ul class="no-markers high-low">
+						<li>
+							<img src="img/temp-low.svg" height="23" width="8" alt="Daily low">
+							<data value="5" class="low">5&deg;</data>
+						</li>
+						<li>
+							<data value="9" class="high">9&deg;</data>
+							<img src="img/temp-high.svg" height="23" width="8" alt="Daily high">
+						</li>
+					</ul>
+				</article>
+
+				<!-- <hr class="squiggly"> -->
+				<img src="img/squiggly-line.svg" alt="A squiggly line">
+
+				<aside class="forecast">
+					<ul class="no-markers tabs">
+						<!-- For each button: aria-controls="hourly" aria-label="hourly" -->
+						<li class="tab"><button class="btn active">hourly</button></li>
+						<li class="tab"><button class="btn">tomorrow</button></li>
+						<li class="tab"><button class="btn">week</button></li>
+					</ul>
+					
+					<table class="ranges">
+						<thead>
+							<tr>
+								<th>Time</th>
+								<th>Conditions</th>
+								<th><abbr title="Probability of precipitation">PoP</abbr></th>
+								<th><abbr title="Temperature">Temp</abbr></th>
+							</tr>
+						</thead>
+						<tbody id="hourly" class="range active">
+							<!-- class="icon-xs" for all <img> -->
+							<tr>
+								<td>2:00 pm</td>
+								<td><img src="img/day-clear-xs.svg" alt="Clear conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="8" class="range-temp">8&deg;</data></td>
+							</tr>
+							<tr>
+								<td>3:00 pm</td>
+								<td><img src="img/day-cloudy-xs.svg" alt="Cloudy conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="9" class="range-temp">9&deg;</data></td>
+							</tr>
+							<tr>
+								<td>4:00 pm</td>
+								<td><img src="img/day-foggy-xs.svg" alt="Foggy conditions" height="48" width="60"></td>
+								<td>20%</td>
+								<td><data value="9" class="range-temp">9&deg;</data></td>
+							</tr>
+							<tr>
+								<td>5:00 pm</td>
+								<td><img src="img/day-partlycloudy-xs.svg" alt="Partly cloudy conditions" height="48" width="60"></td>
+								<td>25%</td>
+								<td><data value="9" class="range-temp">9&deg;</data></td>
+							</tr>
+							<tr>
+								<td>6:00 pm</td>
+								<td><img src="img/day-rainy-xs.svg" alt="Rainy conditions" height="48" width="60"></td>
+								<td>25%</td>
+								<td><data value="8" class="range-temp">8&deg;</data></td>
+							</tr>
+							<tr>
+								<td>7:00 pm</td>
+								<td><img src="img/day-windy-xs.svg" alt="Windy conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="8" class="range-temp">8&deg;</data></td>
+							</tr>
+							<tr>
+								<td>8:00 pm</td>
+								<td><img src="img/day-snowy-xs.svg" alt="Partly cloudy conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="7" class="range-temp">7&deg;</data></td>
+							</tr>
+							<tr>
+								<td>9:00 pm</td>
+								<td><img src="img/night-sleety-xs.svg" alt="Clear conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="6" class="range-temp">6&deg;</data></td>
+							</tr>
+							<tr>
+								<td>10:00 pm</td>
+								<td><img src="img/night-sleety-xs.svg" alt="Clear conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="6" class="range-temp">6&deg;</data></td>
+							</tr>
+							<tr>
+								<td>11:00 pm</td>
+								<td><img src="img/night-sleety-xs.svg" alt="Clear conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="5" class="range-temp">5&deg;</data></td>
+							</tr>
+						</tbody>
+						<!-- <tbody id="tomorrow" class="range">
+							<tr>
+								<td>Morning</td>
+								<td><img src="img/day-clear-xs.svg" alt="Clear conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="8">8&deg;</data></td>
+							</tr>
+							<tr>
+								<td>Afternoon</td>
+								<td><img src="img/day-cloudy-xs.svg" alt="Sleet conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="12">12&deg;</data></td>
+							</tr>
+							<tr>
+								<td>Evening</td>
+								<td><img src="img/night-sleety-xs.svg" alt="Sleet conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="9">9&deg;</data></td>
+							</tr>
+							<tr>
+								<td>Overnight</td>
+								<td><img src="img/night-foggy-xs.svg" alt="Sleet conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="4">4&deg;</data></td>
+							</tr>
+						</tbody>
+						<tbody id="week" class="range">
+							<tr>
+								<td>Sunday</td>
+								<td><img src="img/day-windy-xs.svg" alt="Clear conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="9">9&deg;</data></td>
+							</tr>
+							<tr>
+								<td>Monday</td>
+								<td><img src="img/day-snowy-xs.svg" alt="Sleet conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="12">12&deg;</data></td>
+							</tr>
+							<tr>
+								<td>Tuesday</td>
+								<td><img src="img/day-windy-xs.svg" alt="Windy conditions" height="48" width="60"></td>
+								<td>20%</td>
+								<td><data value="5">5&deg;</data></td>
+							</tr>
+							<tr>
+								<td>Wednesday</td>
+								<td><img src="img/day-rainy-xs.svg" alt="Rainy conditions" height="48" width="60"></td>
+								<td>25%</td>
+								<td><data value="11">11&deg;</data></td>
+							</tr>
+							<tr>
+								<td>Thursday</td>
+								<td><img src="img/day-partlycloudy-xs.svg" alt="Partly cloud conditions" height="48" width="60"></td>
+								<td>25%</td>
+								<td><data value="12">12&deg;</data></td>
+							</tr>
+							<tr>
+								<td>Friday</td>
+								<td><img src="img/day-windy-xs.svg" alt="Windy conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="14">14&deg;</data></td>
+							</tr>
+							<tr>
+								<td>Saturday</td>
+								<td><img src="img/day-snowy-xs.svg" alt="Snowy conditions" height="48" width="60"></td>
+								<td>0%</td>
+								<td><data value="10">10&deg;</data></td>
+							</tr>
+						</tbody> -->
+					</table>
+				</aside>
+
+			</main>
+
+			<footer class="footer container">
+				<!-- <div class="container"> -->
+					<p class="tagline">It’s not always wonderful, but it is always <em>Weatherful</em></p>
+					<p class="madeby">Created with ❤️ by 1hr Coach</p>
+				<!-- </div> -->
+			</footer>
+		<!-- </div> -->
+
+		<!-- <div class="modal show">loading...</div> -->
+
+		<!-- <script src="js/script.js" type="module"></script> -->
+	</body>
+</html>
