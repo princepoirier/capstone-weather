@@ -12,8 +12,8 @@ html {
 	--shade-white: rgba(255, 255, 255, 0.1);
 	--shade-black: rgba(0, 0, 0, 0.1);
 	
-	--grad-light:rgb(90, 154, 232);
-	--grad-dark:rgb(21, 101, 162);
+	/* --grad-light:rgb(90, 154, 232);
+	--grad-dark:rgb(21, 101, 162); */
 
 	background-color: var(--grad-light);
 	/* height: 100%; */

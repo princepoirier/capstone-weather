@@ -13,6 +13,7 @@ export let setCurrentWeather = (data) => {
 	// Set the current "time" based on incoming data
 	let time = data.current.time.light
 	
+	// Set the background gradient based on the current time
 	// let type = data.current.condition.type
 	// if (type === `rainy` || type === `sleety` || type === `snowy`) {
 	let precipitation = [`rainy`, `sleety`, `snowy`]
