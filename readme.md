@@ -6,6 +6,7 @@
 - Get clean screenshots of the design ahead of time - put in the folder?
 - Guiding with comments in place already?
 - Will quick page transitions be an issue?
+- ° or &deg;
 
 
 ## Older notes
