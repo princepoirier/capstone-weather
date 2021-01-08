@@ -66,7 +66,7 @@ let displayMetricUnits = () => {
 	document.querySelectorAll(`data`).forEach(convertToC)
 }
 
-export let createUnitToggle = (unit) => {
+let createUnitToggle = (unit) => {
 	// Where will this event occur?           setF / setC
   // What type of event will it be?         `click`
 	// How do we handle it, when it occurs?   displayImperialUnits / displayMetricUnits
@@ -80,3 +80,5 @@ export let createUnitToggle = (unit) => {
 		setC.addEventListener(`click`, displayMetricUnits)
 	}
 }
+
+export {createUnitToggle}

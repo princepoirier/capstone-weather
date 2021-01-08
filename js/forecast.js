@@ -127,7 +127,7 @@ let buildForecastTableBody = (table, data) => {
 
 
 // Build the forecast table
-export let setForecastWeather = (data) => {
+let setForecastWeather = (data) => {
 	// Select the table
 	let table = document.querySelector(`.ranges`)
 
@@ -140,3 +140,4 @@ export let setForecastWeather = (data) => {
 
 
 // DO THE BODY FIRST TO SHOW HOW INSERTCELL WORKS!!
+export {setForecastWeather}

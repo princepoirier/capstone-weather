@@ -1,5 +1,5 @@
 // Setup the current weather UI given the supplied data
-export let setCurrentWeather = (data) => {
+let setCurrentWeather = (data) => {
 
 	// Select document elements
 	let iconSm = document.querySelector(`.icon-sm`)
@@ -55,3 +55,5 @@ export let setCurrentWeather = (data) => {
 	low.setAttribute(`value`, data.current.low)
 
 }
+
+export {setCurrentWeather}

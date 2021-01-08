@@ -11,9 +11,6 @@ html {
 
 	--shade-white: rgba(255, 255, 255, 0.1);
 	--shade-black: rgba(0, 0, 0, 0.1);
-	
-	/* --grad-light:rgb(90, 154, 232);
-	--grad-dark:rgb(21, 101, 162); */
 
 	background-color: var(--grad-light);
 	height: 100%;
@@ -39,9 +36,9 @@ body {
 	background-image:
 		repeating-linear-gradient(
 			45deg,
-			rgba(255,255,255,0.03),
+			rgba(255,255,255,0.03) 0px,
 			rgba(255,255,255,0.03) 1px,
-			transparent 2px,
+			transparent 1px,
 			transparent 4px
 		),
 		linear-gradient(var(--grad-light), var(--grad-dark));
@@ -64,6 +61,7 @@ body {
 }
 .btn {
 	background-color: transparent;
+	font: normal 400 1rem/1 'Roboto', helvetica, arial, sans-serif;
 	color: var(--col-a);
 	text-align: center;
 	line-height: 1;
@@ -71,7 +69,7 @@ body {
 	border: 3px solid transparent; /* Must start with transparent as not to shift the layout */
 	border-radius: 0.25rem;
 	font-size: 1rem;
-	text-transform: capitalize;
+	/* text-transform: capitalize; */
 }
 .btn:hover, .btn:focus {
 	background-color: var(--shade-white);
@@ -98,9 +96,6 @@ body {
 	justify-content: space-between;
 }
 .logo {
-	font: 700 2rem helvetica, sans-serif;
-	text-transform: uppercase;
-	letter-spacing: -0.1rem;
 	margin: 1rem 1rem 1rem 0;
 }
 .units {
@@ -123,7 +118,6 @@ h1 {
 }
 .desc {
 	font-size: 1.25rem;
-	font-weight: 400;
 }
 .temp {
 	font-size: 2.75rem;
@@ -136,7 +130,6 @@ h1 {
 }
 .high-low {
 	font-size: 2rem;
-	margin: 1rem 0;
 }
 .high-low li {
 	display: inline;
@@ -243,9 +236,6 @@ h1 {
 		flex-grow: 1;
 		margin-right: 2rem;
 	}
-	.condition {
-		max-width: none;
-	}
 
 	/*************** FORECAST ***************/
 	.ranges {
@@ -254,11 +244,10 @@ h1 {
 
 	/*************** FOOTER ***************/
 	.footer {
-		width: 100%;
 		padding: 1rem 0;
 		line-height: 1;
 	}
-	.footer .container {
+	.footer-group {
 		display: flex;
 		justify-content: space-between;
 	}
