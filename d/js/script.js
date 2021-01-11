@@ -7,12 +7,12 @@ let current = {
 		light: "day"
 	},
 	condition: {
-		desc: "Gusty winds in Toronto!",
-		type: "windy"
+		desc: "Get your shovels ready, Toronto. Today it's going to snow!",
+		type: "snow"
 	},
-	temp: 8,
-	high: 9,
-	low: 5
+	temp: 0,
+	high: 3,
+	low: -1
 }
 
 
@@ -29,16 +29,16 @@ let setCurrentWeather = (data) => {
 	let low = document.querySelector(`.low`)
 
 	// Set the current "time" based on incoming data
-	let time = `day`  //! HERE
+	// let time = `day`  //! HERE
 	
 	// Set the background gradient based on the current time
 	//document.body.classList.add(`${time}-precip`) //! HERE (precip or not)  //! Actually, leave this out until E
 
 	// Condition image (large)
-	iconLg.setAttribute(`srcset`, `img/${time}-${data.condition.type}-lg.svg`)
+	iconLg.setAttribute(`srcset`, `img/${data.time.light}-${data.condition.type}-lg.svg`)
 
 	// Condition image (small)
-	iconSm.setAttribute(`src`, `img/${time}-${data.condition.type}-sm.svg`)
+	iconSm.setAttribute(`src`, `img/${data.time.light}-${data.condition.type}-sm.svg`)
 	iconSm.setAttribute(`alt`, data.condition.desc)
 
 	// Assign the weather description
@@ -80,7 +80,7 @@ let toFahrenheit = (celsius) => {
 let toCelsius = (fahrenheit) => {
   return (fahrenheit - 32) * 5/9
 }
-
+/*
 // Convert everything to F
 let displayImperialUnits = () => {
   // Remove the "active" from the "C" button and make ready for an upcoming click
@@ -148,4 +148,49 @@ let displayMetricUnits = () => {
 
 setC.classList.add(`active`)
 setF.addEventListener(`click`, displayImperialUnits)
+*/
 
+let tempEle = document.querySelector(`.temp`)
+let highEle = document.querySelector(`.high`)
+let lowEle = document.querySelector(`.low`)
+
+
+let setTempToUnit = (ele, toUnit, unit=``) => {
+	let currValue = ele.getAttribute(`value`) // Get the value stored in the element
+	let newValue = toUnit(currValue) 				  // Convert
+
+	ele.setAttribute(`value`, newValue)  	// The real value, not rounded
+	ele.innerHTML = `${Math.round(newValue)}&deg;${unit}` // For the main temp, add the unit with it
+
+	// return Math.round(newTemp)
+}
+
+
+let displayMetricUnits = () => {
+	setF.classList.remove(`active`)
+	setC.classList.add(`active`)
+	setC.removeEventListener(`click`, displayMetricUnits)
+	setF.addEventListener(`click`, displayImperialUnits)
+	// temp.innerHTML = `${setTempToUnit(temp, toCelsius)}&deg;<abbr title="Degrees celsius" class="unit">C</abbr>`
+	// high.innerHTML = `${setTempToUnit(high, toCelsius)}&deg;`
+	// low.innerHTML = `${setTempToUnit(low, toCelsius)}&deg;`
+	setTempToUnit(tempEle, toCelsius, `<abbr title="Degrees celsius" class="unit">C</abbr>`)
+	setTempToUnit(highEle, toCelsius)
+	setTempToUnit(lowEle, toCelsius)
+}
+let displayImperialUnits = () => {
+	setC.classList.remove(`active`)
+	setF.classList.add(`active`)
+	setF.removeEventListener(`click`, displayImperialUnits)
+	setC.addEventListener(`click`, displayMetricUnits)
+	// temp.innerHTML = `${setTempToUnit(temp, toFahrenheit)}&deg;<abbr title="Fahrenheit celsius" class="unit">F</abbr>`
+	// high.innerHTML = `${setTempToUnit(high, toFahrenheit)}&deg;`
+	// low.innerHTML = `${setTempToUnit(low, toFahrenheit)}&deg;`
+	setTempToUnit(tempEle, toFahrenheit, `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`)
+	setTempToUnit(highEle, toFahrenheit)
+	setTempToUnit(lowEle, toFahrenheit)
+}
+
+setC.classList.add(`active`)
+// setC.addEventListener(`click`, displayMetricUnits)
+setF.addEventListener(`click`, displayImperialUnits)
