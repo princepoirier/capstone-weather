@@ -2,12 +2,14 @@
 let setCurrentWeather = (data) => {
 
 	// Select document elements
-	let iconSm = document.querySelector(`.icon-sm`)
-	let iconLg = document.querySelector(`.icon-lg`)
-	let desc = document.querySelector(`.desc`)
-	let temp = document.querySelector(`.temp`)
-	let high = document.querySelector(`.high`)
-	let low = document.querySelector(`.low`)
+
+	let tempEle = document.querySelector(`#currTemp`)
+	let highEle = document.querySelector(`#highTemp`)
+	let lowEle = document.querySelector(`#lowTemp`)
+	let descEle = document.querySelector(`#desc`)
+	let iconSm = document.querySelector(`#iconSm`)
+	let iconLg = document.querySelector(`#iconLg`)
+
 	// document.body
 
 	// Dynamically set the page title with the city name
@@ -26,34 +28,35 @@ let setCurrentWeather = (data) => {
 		document.body.classList.add(time)
 	}
 
+
+
+	// TODO: Explain the different between textContent and innerHTML
+	// TODO: Option + shift + 8 = °,   Windows: Alt + 0176
+	// Current temp
+	if (data.unit === "metric") {
+		tempEle.innerHTML = `${data.current.temp}&deg;<abbr title="Degrees celsius" class="unit">C</abbr>`
+	} else if (data.unit === "imperial") {
+		tempEle.innerHTML = `${data.current.temp}&deg;<abbr title="Degrees fahrenheit" class="unit">F</abbr>`
+	}
+	tempEle.setAttribute(`value`, data.current.temp)
+
+	// Daily high
+	highEle.innerHTML = `${data.current.high}&deg;`
+	highEle.setAttribute(`value`, data.current.high)
+
+	// Daily low
+	lowEle.innerHTML = `${data.current.low}&deg;`
+	lowEle.setAttribute(`value`, data.current.low)
+
+	// Assign the weather description
+	descEle.textContent = data.current.condition.desc
+
 	// Condition image (large)
 	iconLg.setAttribute(`srcset`, `img/${time}-${data.current.condition.type}-lg.svg`)
 
 	// Condition image (small)
 	iconSm.setAttribute(`src`, `img/${time}-${data.current.condition.type}-sm.svg`)
 	iconSm.setAttribute(`alt`, data.current.condition.desc)
-
-	// Assign the weather description
-	desc.textContent = data.current.condition.desc
-
-	// TODO: Explain the different between textContent and innerHTML
-	// TODO: Option + shift + 8 = °,   Windows: Alt + 0176
-	// Current temp
-	if (data.unit === "metric") {
-		temp.innerHTML = `${data.current.temp}&deg;<abbr title="Degrees celsius" class="unit">C</abbr>`
-	} else if (data.unit === "imperial") {
-		temp.innerHTML = `${data.current.temp}&deg;<abbr title="Degrees fahrenheit" class="unit">F</abbr>`
-	}
-	temp.setAttribute(`value`, data.current.temp)
-
-	// Daily high
-	high.innerHTML = `${data.current.high}&deg;`
-	high.setAttribute(`value`, data.current.high)
-
-	// Daily low
-	low.innerHTML = `${data.current.low}&deg;`
-	low.setAttribute(`value`, data.current.low)
-
 }
 
 export {setCurrentWeather}
