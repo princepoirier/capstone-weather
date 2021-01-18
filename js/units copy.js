@@ -12,7 +12,7 @@ let toCelsius = (fahrenheit) => {
   return (fahrenheit - 32) * 5/9
 }
 
-/* // Convert everything to F
+// Convert everything to F
 let displayImperialUnits = () => {
   // Remove the "active" from the "C" button and make ready for an upcoming click
 	setC.classList.remove(`active`)
@@ -37,18 +37,7 @@ let displayImperialUnits = () => {
 
 	// Find all of the <data> elements and convert them
 	document.querySelectorAll(`data`).forEach(convertToF)
-} */
-
-let setTempToUnit = (ele, toUnit, unit=``) => {
-  let currValue = ele.getAttribute(`value`)
-  let newValue = toUnit(currValue)
-
-  // Set the new value to the value attribute of the data element
-  ele.setAttribute(`value`, newValue)
-  // Assign the rounded temp to the UI
-  ele.innerHTML = `${Math.round(newValue)}&deg;${unit}`
 }
-
 
 // Convert everything to C
 let displayMetricUnits = () => {
@@ -75,31 +64,6 @@ let displayMetricUnits = () => {
 
 	// Find all of the <data> elements and convert them
 	document.querySelectorAll(`data`).forEach(convertToC)
-}
-
-let displayImperialUnits = () => {
-  // Move the "active" UI
-  setC.classList.remove(`active`)
-  setF.classList.add(`active`)
-
-  // Move the event listeners
-  setF.removeEventListener(`click`, displayImperialUnits)
-  setC.addEventListener(`click`, displayMetricUnits)
-
-  // Do the conversions
-  // setTempToUnit(tempEle, toFahrenheit, `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`)
-  // setTempToUnit(highEle, toFahrenheit)
-	// setTempToUnit(lowEle, toFahrenheit)
-
-	var convertToF = (ele) => {
-		if (ele.matches(`.temp`)) {
-			setTempToUnit(ele, toFahrenheit, `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`)
-		} else {
-			setTempToUnit(ele, toFahrenheit)
-		}
-	}
-	
-	document.querySelectorAll(`data`).forEach(convertToF)
 }
 
 let createUnitToggle = (unit) => {

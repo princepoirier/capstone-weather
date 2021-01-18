@@ -23,19 +23,19 @@
 
 				<article class="current">
 					<picture>
-						<source srcset="" class="icon-lg" media="(min-width: 50rem)">
-						<img src="" class="icon-sm" alt="">
+						<source srcset="" class="icon-lg" id="iconLg" media="(min-width: 50rem)">
+						<img src="" class="icon-sm" id="iconSm" alt="">
 					</picture>
 					<h1>Current Conditions</h1>
-					<p class="desc"></p>
-					<data value="" class="temp"></data>
+					<p class="desc" id="desc"></p>
+					<data value="" class="temp" id="currTemp"></data>
 					<ul class="no-markers high-low">
 						<li>
 							<img src="img/temp-low.svg" height="23" width="8" alt="Daily low">
-							<data value="" class="low"></data>
+							<data value="" class="low" id="lowTemp"></data>
 						</li>
 						<li>
-							<data value="" class="high"></data>
+							<data value="" class="high" id="highTemp"></data>
 							<img src="img/temp-high.svg" height="23" width="8" alt="Daily high">
 						</li>
 					</ul>
@@ -47,6 +47,14 @@
 					<ul class="no-markers tabs">
 					</ul>
 					<table class="ranges">
+						<thead>
+              <tr>
+                <th>Time</th>
+                <th>Conditions</th>
+                <th><abbr title="Probability of precipitation">PoP</abbr></th>
+                <th><abbr title="Temperature">Temp</abbr></th>
+              </tr>
+            </thead>
 					</table>
 				</aside>
 

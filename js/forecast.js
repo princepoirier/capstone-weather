@@ -1,4 +1,4 @@
-let buildForecastTableHeader = (table, data) => {
+/* let buildForecastTableHeader = (table, data) => {
 
 	// Table Head
 	let thead = table.createTHead() // Both creates and inserts! (because they don't hold content)
@@ -20,10 +20,13 @@ let buildForecastTableHeader = (table, data) => {
 
 		tr.append(th)
 	})
-}
+} */
 
 // Build the forecast table body, given a table reference and a dataset
-let buildForecastTableBody = (table, data) => {
+let buildForecastTableBody = (data) => {
+
+	// Select the table
+	let table = document.querySelector(`.ranges`)
 
 	// Find the existing button tabs
 	let tabs = document.querySelector(`.tabs`)
@@ -31,14 +34,15 @@ let buildForecastTableBody = (table, data) => {
 	// Run one for each of ranges: Hourly, Tomorrow, Week
 	let addForecastRange = (type, i) => { 
 
+		// ************* TABLE
 		// Build a tbody for the range
 		let tbody = document.createElement(`tbody`)
 		tbody.setAttribute(`id`, type.mode)
 		tbody.classList.add(`range`)
 
+		// ************* BUTTON
 		// Create a corresponding "tab" button to be added to the list
 		let tab = document.createElement(`li`)
-		tab.classList.add('tab')
 
 		let mode = document.createElement('button')
 		mode.classList.add(`btn`)
@@ -49,6 +53,7 @@ let buildForecastTableBody = (table, data) => {
 		tab.append(mode) // <button> -> <li>
 		tabs.append(tab) // <li> -> <ul>
 
+		// ************* ROWS
 		// Build a <tr> row from each record
 		let addForecastRow = (row) => {
 
@@ -128,14 +133,12 @@ let buildForecastTableBody = (table, data) => {
 
 // Build the forecast table
 let setForecastWeather = (data) => {
-	// Select the table
-	let table = document.querySelector(`.ranges`)
 
 	// Build the header
-	buildForecastTableHeader(table, data)
+	//buildForecastTableHeader(table, data)
 
 	// Build the body
-	buildForecastTableBody(table, data)
+	buildForecastTableBody(data)
 }
 
 

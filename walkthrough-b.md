@@ -45,11 +45,11 @@ Prototyped the entire mobile interface and layout, aside from inlining a few com
 
 <!-- 
 
-Get your shovels ready, Toronto. Today it’s going to snow :snowman:
-Don’t forget your umbrellas, London. It’s going to be brisk and rainy tonight!
-Dress lightly tonight, Lagos. It’s going to be clear and hot.
-It’s cloudy today, Kyoto. Don’t forget to dress warmly.
-Hang onto your hats, San Francisco. No, seriously. It’s a windy day! -->
+Get your shovels ready, Toronto. Today it's going to snow :snowman:
+Don't forget your umbrellas, London. It's going to be brisk and rainy tonight!
+Dress lightly tonight, Lagos. It's going to be clear and hot.
+It's cloudy today, Kyoto. Don't forget to dress warmly.
+Hang onto your hats, San Francisco. No, seriously. It's a windy day. -->
 
 
 # Final Code
