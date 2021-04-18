@@ -43,6 +43,7 @@ let buildForecastTableBody = (data) => {
 		// ************* BUTTON
 		// Create a corresponding "tab" button to be added to the list
 		let tab = document.createElement(`li`)
+		tab.classList.add(`tab`)
 
 		let mode = document.createElement('button')
 		mode.classList.add(`btn`)
