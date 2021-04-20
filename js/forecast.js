@@ -26,10 +26,13 @@
 let buildForecastTableBody = (data) => {
 
 	// Select the table
-	let table = document.querySelector(`.ranges`)
+	let table = document.querySelector(`.ranges`)	
+	// table.innerHTML = ``
+	table.querySelectorAll(`.range`).forEach(tbody => table.removeChild(tbody))
 
 	// Find the existing button tabs
 	let tabs = document.querySelector(`.tabs`)
+	tabs.innerHTML = ``
 
 	// Run one for each of ranges: Hourly, Tomorrow, Week
 	let addForecastRange = (type, i) => { 
