@@ -23,13 +23,13 @@ let loadJson = async (url) => {
 }
 
 
-let appIsLoaded = async (event) => {
+let loadDataFile = async (file = `data/toronto.json`) => {
 
 	// Show the loader
 	showModal(true)
 
 	// Fetch the data, wait for it to return before proceeding
-	let json = await loadJson(`data/toronto.json`)
+	let json = await loadJson(file)
 
 	// Build the current weather data
 	setCurrentWeather(json)
@@ -45,4 +45,5 @@ let appIsLoaded = async (event) => {
 }
 
 // Begin the application when the application loads
-window.addEventListener(`load`, appIsLoaded)
+window.addEventListener(`load`, (event) => loadDataFile())
+window.loadDataFile = loadDataFile
