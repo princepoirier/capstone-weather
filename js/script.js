@@ -29,7 +29,7 @@ let appIsLoaded = async (event) => {
 	showModal(true)
 
 	// Fetch the data, wait for it to return before proceeding
-	let json = await loadJson(`data/toronto.json`)
+	let json = await loadJson(`data/lagos.json`)
 
 	// Build the current weather data
 	setCurrentWeather(json)
