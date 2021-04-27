@@ -1,5 +1,6 @@
 Welcome back to our Weatherful Weather application development series...
 
+
 In this lesson...
 - Setting up the current weather using some sample data, structured as an object
    - Selecting elements and then manipulating them using their properties and methods
@@ -13,10 +14,11 @@ So if you're ready, let's dive into our code...
 
 <!-- *************************************** -->
 1. Attach JS
-
+- Test with console.log(`Hello world`)
+- Check in browser
 
 <!-- *************************************** -->
-2. Bring in sample dataset
+1. Bring in sample dataset
 ```js
 let current = {
 	time: {
@@ -33,10 +35,15 @@ let current = {
 	low: -1
 }
 ```
+- Explain the subobjects
+  - Time will refer to the local time and will change the image based on the time of day
+  - Condition will tell us what the weather looks like
+  - Combine together to create graphics
 
 
 <!-- *************************************** -->
 3. Empty out the HTML content (don't forget `value`)
+- Remove image srset
 
 
 <!-- *************************************** -->
