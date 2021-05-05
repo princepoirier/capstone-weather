@@ -306,7 +306,7 @@ let displayImperialUnits = () => {
             </li>
             <li class="high">
               <data value="" id="lowTemp"></data>
-              <img src="img/temp-high.svg" alt="Daily hight">
+              <img src="img/temp-high.svg" alt="Daily high">
             </li>
           </ul>
         </article>
@@ -485,6 +485,7 @@ body {
 .weather {
   flex-grow: 1;
 }
+
 /******** CURRENT ********/
 .current {
   max-width: 20rem;

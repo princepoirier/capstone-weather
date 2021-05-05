@@ -779,7 +779,6 @@ let setForecastWeather = (data) => {
 export {setForecastWeather}
 
 
-
 /************ UNITS.JS ************/
 //******* SELECTED ELEMENTS ******* 
 let setC = document.querySelector(`#setC`)

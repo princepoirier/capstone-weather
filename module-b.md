@@ -181,7 +181,7 @@
 1. The `<header>`, `<main>` and `<footer>` all use the `.container` class to add padding to the elements, add the following class definition to create uniform spacing around those elements:
    ```css
    .container {
-   padding: 0 1rem;
+      padding: 0 1rem;
    }
    ```
 1. Write a rule to select `no-marker` elements to clear default list styling
