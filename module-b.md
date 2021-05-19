@@ -274,7 +274,7 @@
    }
    ```
 
-#### E. Footer and header
+#### E. Header and footer
 1. Ensure the `.logo` has adequate spacing above and below to match the unit buttons:
    ```css
    .logo {
