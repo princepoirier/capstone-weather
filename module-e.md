@@ -491,12 +491,12 @@ setF.addEventListener(`click`, displayImperialUnits) // F
    window.addEventListener(`load`, appIsLoaded)
    ```
 
-1. Move the previous call to `setCurrentWeather()` into the `appIsLoaded` function, passing `json.current` as the argument
+1. Move the previous call to `setCurrentWeather()` into the `appIsLoaded` function, passing `json` as the argument
    ```javascript
-   setCurrentWeather(json.current)
+   setCurrentWeather(json)
    ```
 
-1. Remove the `current` sample data set at the top of `js/script.js`
+1. Remove the `current` sample data set (the object being used to seed the data to this point), from the top of the file `js/script.js`
 
 
 ### Part 2: Current weather
@@ -628,6 +628,163 @@ let setCurrentWeather = (data) => {
       document.body.classList.add(time)
    }
    ```
+
+
+### Part 3: Forecast weather
+
+#### A. Export/import
+
+1. Within the `js` folder, create a new file named `forecast.js`
+
+1. Inside of the new document `forecase.js`, write a new function named `setForecastWeather`, which will receive one argument, saving it to function's incoming parameter `data`
+   ```javascript
+   let setForecastWeather = (data) => {
+
+   }
+   ```
+
+1. As the last line of `forecast.js`, write an `export` statement for `setForecastWeather`
+   ```javascript
+   export {setForecastWeather}
+   ```
+
+1. Back in `script.js`, directly below the existing `import` statement at the top of the document, `import {setForecastWeather}` from the file `./forecast.js`
+   ```javascript
+   import {setForecastWeather} from './forecast.js'
+   ```
+
+1. Within `appIsLoaded`, `await fetch()` one of the data files (`data/toronto.json`, for example), then `await` the `response.json()`
+   ```javascript
+   let appIsLoaded = async () => {
+      let response = await fetch(`data/london.json`)
+      let json = await response.json()
+
+      setCurrentWeather(json)
+      setForecastWeather(json)
+   }
+   ```
+
+#### B. Prepare the HTML
+
+1. Remove the existing `<tbody>` element (currently holding sample forecast data) in its entirety, from within the `<table>` element, sitting inside of the `<aside class="forecast">`
+   - Be sure to leave the `<thead>` in place to keep the column headings for the table
+   ```html
+   <table class="ranges">
+      <thead>
+         <tr>
+            <th>Time</th>
+            <th>Conditions</th>
+            <th><abbr title="Probability of precipitation">PoP</abbr></th>
+            <th><abbr title="Temperature">Temp</abbr></th>
+         </tr>
+      </thead>
+      <!-- removed <tbody class="range">...</tbody> -->
+   </table>
+   ```
+
+1. Add an `id` attribute to the forecast `<table>`, giving it a value of `ranges`
+   ```html
+   <table class="ranges" id="ranges">
+      ...
+   </table>
+   ```
+
+1. Within the definition for the new function `setForecastWeather()`, `querySelector` the `ranges` element from the `document`, storing the reference as a variable named `table`
+   ```html
+   let table = document.querySelector(`#ranges`)
+   ```
+
+1. Remove the three `<li>` elements from the `<ul>` with the class `tabs` (used to hold the tabs labeled "Hourly", "Tomorrow" and "Week") from within `<aside class="forecast">`, leaving the `<ul>` itself in-place
+   ```html
+   <aside class="forecast">
+      <ul class="no-markers tabs">
+         <!-- removed three <li> elements-->
+      </ul>
+      ...
+   </aside>
+   ```   
+
+1. Add an `id` attribute to the `<ul>` that was holding the tabs, giving it a value of `tabs`
+   ```html
+   <ul class="no-markers tabs" id="tabs"></ul>
+   ```
+
+
+#### C. Create range tables and rows
+
+   Explain double loop for rows and columns??
+
+
+1. +++++++
+   ```js
+   let addForecastRange = (type) => {
+
+   }
+   data.forecast.ranges.forEach(addForecastRange)
+   ```
+
+
+1. Build an append +++++++
+   ```javascript
+   let tbody = document.createElement(`tbody`)
+   tbody.setAttribute(`id`, type.mode)
+
+
+   table.append(tbody)
+   ```
+
+1. +++++++
+   ```javascript
+   let addForecastRow = (row) => { 
+
+   }
+   type.records.forEach(addForecastRow)
+   ```
+
+1. At the top of the function `addForecastRow`, create a table row (<tr>) that will self-append itself to the table, using the `tbody` method `insertRow()`, storing its reference to a variable `tr` (so that we can add `<td>` columns to it)
+   ```javascript
+   let tr = tbody.insertRow()
+   ```
+
+#### D. Populate columns
+
+The method `insertCell()` (which is a method of a table row: `<tr>`) will be used for all four columns of data to both create and append a new cell to each table row being built
+
+1. Assign the value of `row.time.label` to assign the label
+
+// 1st column
+      tr.insertCell().textContent = row.time.label
+
+      // 2nd column
+      let img = document.createElement(`img`)
+      img.setAttribute(`src`, `img/${row.time.light}-${row.condition.type}-xs.svg`)
+      img.setAttribute(`alt`, row.condition.desc)
+      img.setAttribute(`height`, `48`)
+      img.setAttribute(`width`, `60`)
+      tr.insertCell().append(img)
+
+      // 3rd column
+      tr.insertCell().textContent = `${row.precipitation * 100}%`
+
+      // 4th column
+      let data = document.createElement(`data`)
+      data.setAttribute(`value`, row.temp)
+      data.innerHTML = `${row.temp}&deg;`
+      data.classList.add(`range-temp`)
+      tr.insertCell().append(data)
+
+
+
+
+
+### Part 4: Units weather
+
+
+### Part 5: Load modules
+
+
+
+
 
 
 ## Final code
