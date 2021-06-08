@@ -905,35 +905,35 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    1. The line of code that adds the `active` class to `setC`
    1. The `addEventListener()` that adds a `click` to the `setF` element
 
-   ```javascript
-   let setC = document.querySelector(`#setC`)
-   let setF = document.querySelector(`#setF`)
+   All together, the file will look like this:
+      ```javascript
+      let setC = document.querySelector(`#setC`)
+      let setF = document.querySelector(`#setF`)
 
-   let toCelsius = (fahrenheit) => {
-      // ...
-   }
-   let toFahrenheit = (celsius) => {
-      // ...
-   }
-   let setTempToUnit = (ele, toUnit, unit=``) => {
-      // ...
-   }
-   let displayMetricUnits = () => {
-      // ...
-   }
-   let displayImperialUnits = () => {
-      // ...
-   }
+      let toCelsius = (fahrenheit) => {
+         // ...
+      }
+      let toFahrenheit = (celsius) => {
+         // ...
+      }
+      let setTempToUnit = (ele, toUnit, unit=``) => {
+         // ...
+      }
+      let displayMetricUnits = () => {
+         // ...
+      }
+      let displayImperialUnits = () => {
+         // ...
+      }
 
-   setC.classList.add(`active`)
-   setF.addEventListener(`click`, displayImperialUnits)
-   ```
-
-1. At the bottom of the new document `units.js`, write a new function named `setUnitToggle` which will receive one argument, saving it to function's incoming parameter `unit`, then move the two final lines of code from the previous step, into the function:
-   ```javascript
-   let setUnitToggle = (unit) => {
       setC.classList.add(`active`)
       setF.addEventListener(`click`, displayImperialUnits)
+      ```
+
+1. At the bottom of the new document `units.js`, write a new function named `setUnitToggle` which will receive one argument, saving it to function's incoming parameter `unit`
+   ```javascript
+   let setUnitToggle = (unit) => {
+     
    }
    ```
 
@@ -959,22 +959,69 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    }
    ```
 
-#### B. Generalize conversions
+#### B. Assign starting unit
+
+1. In the new function named `setUnitToggle`, write a condition statement that will first check `if (unit === 'metric')`, otherwise, it will catch the case where `else if (unit === 'imperial')`
 
    ```javascript
-   // Do the conversions
+   let setUnitToggle = (unit) => {
+      if (unit === `metric`) {
+        
+      } else if (unit === `imperial`) {
+         
+      }
+   }
+   ```
+
+2. Within the `units.js` file, there are two lines of code written in a previous lesson, that will `add('active')` to the `C` button, and add a `click` listener to the `F` button. Move both of these lines (cut/paste) into the first condition (where `unit === 'metric'`)
+   ```javascript
+   if (unit === `metric`) {
+      setC.classList.add(`active`)
+      setF.addEventListener(`click`, displayImperialUnits)
+   } else if (unit === `imperial`) {
+         
+   }
+   ```
+
+3. Complete the code for the `else if` condition block, by inverting the procedures:
+   1. `add('active')` to the `classList` of the `setF` button
+   1. Add a `click` listener to the `setC` button that will call `displayMetricUnits` when it occurs
+      ```javascript
+      if (unit === `metric`) {
+         setC.classList.add(`active`)
+         setF.addEventListener(`click`, displayImperialUnits) 
+      } else if (unit === `imperial`) {
+         setF.classList.add(`active`)
+         setC.addEventListener(`click`, displayMetricUnits) 
+      }
+      ```
+
+#### C. Generalize conversions
+
+1. Within the existing function `displayMetricUnits`, replace the final three lines (that convert units for only `tempEle`, `highEle` and `lowEle`) with a function named `convertToC`, that will be called once `forEach()` element that's found in a query of all `data` elements (`document.querySelectorAll('data')`) and catches a reference to the found element as the parameter `ele`
+
+   ```javascript
    let convertToC = (ele) => {
+
+   }
+   document.querySelectorAll(`data`).forEach(convertToC)
+   ```
+
+1. Within the function `convertToC`, write a condition statement that will check if the `ele` element passed to the function `matches()` the selector `#currTemp` (it has `id="currTemp"`):
+   1. If it does match, call `setTempToUnit` as we did before, passing the third parameter to append the `<abbr>` element to the end, displaying the unit
+   2. If it does NOT match, simply call `setTempToUnit` with only the first two parameters: `(ele, toCelsius)`
+   
+      ```javascript
       if (ele.matches(`#currTemp`)) {
          setTempToUnit(ele, toCelsius, `<abbr title="Degrees celsius" class="unit">C</abbr>`)
       } else {
          setTempToUnit(ele, toCelsius)
       }
-   }
-   document.querySelectorAll(`data`).forEach(convertToC)
-   ```
+      ```
 
+1. Finally, replicate the previous two steps within the function `displayImperialUnits`, creating a new function named `convertToF`, this time checking the exact same parameters, but converting the opposite direction (from celsius, `toFahrenheit`)
+   
    ```javascript
-   // Do the conversions
    let convertToF = (ele) => {
       if (ele.matches(`#currTemp`)) {
       setTempToUnit(ele, toFahrenheit, `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`)
@@ -985,18 +1032,6 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    document.querySelectorAll(`data`).forEach(convertToF)
    ```
 
-   ```javascript
-   let setUnitToggle = (unit) => {
-      // Determine the starting unit
-      if (unit === `metric`) {
-         setC.classList.add(`active`)
-         setF.addEventListener(`click`, displayImperialUnits) 
-      } else if (unit === `imperial`) {
-         setF.classList.add(`active`)
-         setC.addEventListener(`click`, displayMetricUnits) 
-      }
-   }
-   ```
 
 
 
