@@ -482,7 +482,7 @@ setF.addEventListener(`click`, displayImperialUnits) // F
    window.addEventListener(`load`, appIsLoaded)
    ```
 
-1. Within `appIsLoaded`, `await fetch()` one of the data files (`data/toronto.json`, for example), then `await` the `response.json()`
+1. Within `appIsLoaded`, `await fetch()` one of the data files (`data/london.json`, for example), then `await` the `response.json()`
    ```javascript
    let appIsLoaded = async () => {
       let response = await fetch(`data/london.json`)
@@ -636,7 +636,7 @@ let setCurrentWeather = (data) => {
 
 1. Within the `js` folder, create a new file named `forecast.js`
 
-1. Inside of the new document `forecase.js`, write a new function named `setForecastWeather`, which will receive one argument, saving it to function's incoming parameter `data`
+1. Inside of the new document `forecast.js`, write a new function named `setForecastWeather`, which will receive one argument, saving it to function's incoming parameter `data`
    ```javascript
    let setForecastWeather = (data) => {
 
@@ -653,7 +653,7 @@ let setCurrentWeather = (data) => {
    import {setForecastWeather} from './forecast.js'
    ```
 
-1. Within `appIsLoaded`, `await fetch()` one of the data files (`data/toronto.json`, for example), then `await` the `response.json()`
+1. At the bottom of `appIsLoaded` (in `script.js`), call the function `setForecastWeather`, passing it the `json` object as an argument
    ```javascript
    let appIsLoaded = async () => {
       let response = await fetch(`data/london.json`)
@@ -807,35 +807,178 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    tr.insertCell().append(data)
    ```
 
-####
-    // Create the tab control buttons
-    let tab = document.createElement(`li`)
-    let mode = document.createElement(`button`)
-    mode.classList.add(`btn`)
-    mode.textContent = type.mode
-    mode.setAttribute(`aria-controls`, type.mode)
-    tab.append(mode) // <button> into <li>
-    tabs.append(tab) // <li> into <ul>
+#### E. Tab control buttons
 
+1. Within the `addForecastRange` function (directly above the `addForecastRow` function), create a `<li>` and a `<button>`, giving the button:
+   1. The class `btn` 
+   1. The `textContent` a value of `type.mode`
+   1. The `aria-controls` attribute a value of `type.mode`
 
-####
+   Once complete, `append()` the `button` within the `li`, then `append()` the `li` to the `tabs` element (stored in a previous step)
 
-// If this is the first weather range, have it be .active
-    if (i === 0) {
+   ```javascript
+   // Create the tab control buttons
+   let tab = document.createElement(`li`)
+   let mode = document.createElement(`button`)
+   mode.classList.add(`btn`)
+   mode.textContent = type.mode
+   mode.setAttribute(`aria-controls`, type.mode)
+   tab.append(mode) // <button> into <li>
+   tabs.append(tab) // <li> into <ul>
+   ```
+
+1. Update the `addForecastRange` function definition, adding a second parameter named `i`, which will automatically be stored with a Number representing the number of times the `forEach()` loop has run (starting from `0` for the first time)
+
+   ```javascript
+   let addForecastRange = (type, i) => {
+
+   }
+   ```
+
+1. Within the `addForecastRange` function (directly below the `addForecastRow` function), write a condition statement that checks if the `i` (representing the loop iteration number) exactly matches `0`, meaning its the first time the function is being called for this loop. In the condition block:
+
+   1. Add the class `active` to the `tbody` element's `classList`
+   1. Add the class `active` to the `mode` element's `classList`
+
+   ```javascript
+   if (i === 0) {
       tbody.classList.add(`active`)
       mode.classList.add(`active`)
-    }
+   }
+   ```
 
 
+   ```javascript
+   let handleModesClicked = (event) => {
+      let modeBtn = event.target
 
+      if (modeBtn.matches(`button.btn`)) {
+      // Remove the active class from the previously active button
+      let prevActiveTab = document.querySelector(`.tabs .btn.active`)
+      prevActiveTab.classList.remove(`active`)
+      // Add the active class to the new button target
+      modeBtn.classList.add(`active`)
+
+      // Remove the active class from the previously active tbody
+      let prevActiveTbody = document.querySelector(`.range.active`)
+      prevActiveTbody.classList.remove(`active`)
+      // Find the associated tbody, select it, make it active
+      let tbodyId = modeBtn.getAttribute(`aria-controls`)
+      let tbodyRange = document.querySelector(`#${tbodyId}`)
+      tbodyRange.classList.add(`active`)
+      }
+   }
+   tabs.addEventListener(`click`, handleModesClicked)
+   ```
 
 ### Part 4: Units weather
 
+#### A. Export/import
 
-### Part 5: Load modules
+1. Within the `js` folder, create a new file named `units.js`
 
+1. In `script.js`, cut all of the code that pertains to the `unit` conversion, then paste it into `units.js`:
+   1. The function `toCelsius`
+   1. The function `toFahrenheit`
+   1. The function `setTempToUnit`
+   1. The function `displayMetricUnits`
+   1. The function `displayImperialUnits`
+   1. The two element references `setC` and `setF`
+   1. The line of code that adds the `active` class to `setC`
+   1. The `addEventListener()` that adds a `click` to the `setF` element
 
+   ```javascript
+   let setC = document.querySelector(`#setC`)
+   let setF = document.querySelector(`#setF`)
 
+   let toCelsius = (fahrenheit) => {
+      // ...
+   }
+   let toFahrenheit = (celsius) => {
+      // ...
+   }
+   let setTempToUnit = (ele, toUnit, unit=``) => {
+      // ...
+   }
+   let displayMetricUnits = () => {
+      // ...
+   }
+   let displayImperialUnits = () => {
+      // ...
+   }
+
+   setC.classList.add(`active`)
+   setF.addEventListener(`click`, displayImperialUnits)
+   ```
+
+1. At the bottom of the new document `units.js`, write a new function named `setUnitToggle` which will receive one argument, saving it to function's incoming parameter `unit`, then move the two final lines of code from the previous step, into the function:
+   ```javascript
+   let setUnitToggle = (unit) => {
+      setC.classList.add(`active`)
+      setF.addEventListener(`click`, displayImperialUnits)
+   }
+   ```
+
+1. As the last line of `units.js`, write an `export` statement for `setUnitToggle`
+   ```javascript
+   export {setUnitToggle}
+   ```
+
+1. Back in `script.js`, directly below the two existing `import` statement at the top of the document, `import {setUnitToggle}` from the file `./units.js`
+   ```javascript
+   import {setUnitToggle} from './units.js'
+   ```
+
+1. At the bottom of `appIsLoaded` (in `script.js`), call the function `setUnitToggle`, passing it the `json.unit` object as an argument
+   ```javascript
+   let appIsLoaded = async () => {
+      let response = await fetch(`data/london.json`)
+      let json = await response.json()
+
+      setCurrentWeather(json)
+      setForecastWeather(json)
+      setForecastWeather(json.unit)
+   }
+   ```
+
+#### B. Generalize conversions
+
+   ```javascript
+   // Do the conversions
+   let convertToC = (ele) => {
+      if (ele.matches(`#currTemp`)) {
+         setTempToUnit(ele, toCelsius, `<abbr title="Degrees celsius" class="unit">C</abbr>`)
+      } else {
+         setTempToUnit(ele, toCelsius)
+      }
+   }
+   document.querySelectorAll(`data`).forEach(convertToC)
+   ```
+
+   ```javascript
+   // Do the conversions
+   let convertToF = (ele) => {
+      if (ele.matches(`#currTemp`)) {
+      setTempToUnit(ele, toFahrenheit, `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`)
+      } else {
+      setTempToUnit(ele, toFahrenheit)
+      }
+   }
+   document.querySelectorAll(`data`).forEach(convertToF)
+   ```
+
+   ```javascript
+   let setUnitToggle = (unit) => {
+      // Determine the starting unit
+      if (unit === `metric`) {
+         setC.classList.add(`active`)
+         setF.addEventListener(`click`, displayImperialUnits) 
+      } else if (unit === `imperial`) {
+         setF.classList.add(`active`)
+         setC.addEventListener(`click`, displayMetricUnits) 
+      }
+   }
+   ```
 
 
 
