@@ -689,8 +689,8 @@ let setCurrentWeather = (data) => {
    </table>
    ```
 
-1. Within the definition for the new function `setForecastWeather()`, `querySelector` the `ranges` element from the `document`, storing the reference as a variable named `table`
-   ```html
+1. Within the definition for the new function `setForecastWeather()`, `querySelector` the element with `id="ranges"` from the `document`, storing the reference as a variable named `table`
+   ```js
    let table = document.querySelector(`#ranges`)
    ```
 
@@ -709,70 +709,122 @@ let setCurrentWeather = (data) => {
    <ul class="no-markers tabs" id="tabs"></ul>
    ```
 
+1. Within the definition for the new function `setForecastWeather()`, `querySelector` the element with `id="tabs"` from the `document`, storing the reference as a variable named `tabs`
+   ```js
+   let tabs = document.querySelector(`#tabs`)
+   ```
 
 #### C. Create range tables and rows
 
-   Explain double loop for rows and columns??
-
-
-1. +++++++
+1. Within the new function `setForecastWeather`, write a function (yes, a function within a function!) named `addForecastRange`, that will receive a single argument, storing it as the incoming parameter `type`
    ```js
    let addForecastRange = (type) => {
 
    }
+   ```
+
+1. The function `addForecastRange` should be called once `forEach()` of the `data.forecast.ranges` objects
+   ```js
    data.forecast.ranges.forEach(addForecastRange)
    ```
 
-
-1. Build an append +++++++
+1. Create one `tbody` elements for each range, by using `document.createElement()` within the  `addForecastRange` function, storing the element reference as `tbody` and assigning it the `type.mode` value as its `id` using `setAttribute()`, and `add()` the class `range` to the element's `classList`
    ```javascript
    let tbody = document.createElement(`tbody`)
    tbody.setAttribute(`id`, type.mode)
+   tbody.classList.add(`range`)
+   ```
 
-
+1. Append the new `<tbody>` element created, to the `table` element, at the bottom of the `addForecastRange` function
+   ```javascript
    table.append(tbody)
    ```
 
-1. +++++++
+1. Create one more nested function (_a function, in a function, in a function!_) named `addForecastRow` that will receive a single argument, caught as the parameter `row`, then place it within the existing `addForecastRange`
    ```javascript
    let addForecastRow = (row) => { 
 
    }
+   ```
+
+1. The function `addForecastRow` should be called once `forEach()` of the `type.records` objects
+   ```javascript
    type.records.forEach(addForecastRow)
    ```
 
-1. At the top of the function `addForecastRow`, create a table row (<tr>) that will self-append itself to the table, using the `tbody` method `insertRow()`, storing its reference to a variable `tr` (so that we can add `<td>` columns to it)
+1. At the top of the new `addForecastRow` function, create a table row (<tr>) that will self-append itself to the table, using the `tbody` method `insertRow()`, storing its reference to a variable `tr` (so that we can add `<td>` columns to it)
    ```javascript
    let tr = tbody.insertRow()
    ```
 
 #### D. Populate columns
 
-The method `insertCell()` (which is a method of a table row: `<tr>`) will be used for all four columns of data to both create and append a new cell to each table row being built
+The method `insertCell()` (which is a method of a table row: `<tr>`) will be used for all four columns of data to both create and append a new cell to each table row being built.
 
-1. Assign the value of `row.time.label` to assign the label
+1. Insert a cell using `tr.insertCell()`, immediately assigning its `textContent` the value of `row.time.label`
+   ```javascript
+   // 1st column
+   tr.insertCell().textContent = row.time.label
+   ```
 
-// 1st column
-      tr.insertCell().textContent = row.time.label
+1. Create an `<img>` element using `document.createElement()`, assigning it to a variable `img`, then add the following attributes (using `setAttribute()` for each):
+   1. `src`: `img/${row.time.light}-${row.condition.type}-xs.svg`
+   1. `alt`: `row.condition.desc`
+   1. `height`: `48`
+   1. `width`: `60`
+   
+   Once created, insert a cell into the row using `tr.insertCell()`, then append to it the new `img` element just created
 
-      // 2nd column
-      let img = document.createElement(`img`)
-      img.setAttribute(`src`, `img/${row.time.light}-${row.condition.type}-xs.svg`)
-      img.setAttribute(`alt`, row.condition.desc)
-      img.setAttribute(`height`, `48`)
-      img.setAttribute(`width`, `60`)
-      tr.insertCell().append(img)
+   ```javascript
+   // 2nd column
+   let img = document.createElement(`img`)
+   img.setAttribute(`src`, `img/${row.time.light}-${row.condition.type}-xs.svg`)
+   img.setAttribute(`alt`, row.condition.desc)
+   img.setAttribute(`height`, `48`)
+   img.setAttribute(`width`, `60`)
+   tr.insertCell().append(img)
+   ```
 
-      // 3rd column
-      tr.insertCell().textContent = `${row.precipitation * 100}%`
+1. Insert a cell using `tr.insertCell()`, immediately assigning its `textContent` the formatted percentage value of `${row.precipitation * 100}%`
+   ```javascript
+   // 3rd column
+   tr.insertCell().textContent = `${row.precipitation * 100}%`
+   ```
 
-      // 4th column
-      let data = document.createElement(`data`)
-      data.setAttribute(`value`, row.temp)
-      data.innerHTML = `${row.temp}&deg;`
-      data.classList.add(`range-temp`)
-      tr.insertCell().append(data)
+1. Create a `<data>` element using `document.createElement()`, adding to it:
+   1. The `value` attribute, assigning it `row.temp`
+   1. Applying the `innerHTML` value of `${row.temp}&deg;`
+   1. Adding the `range-temp` class to the `classList`
 
+   Once created, insert a cell into the row using `tr.insertCell()`, then append to it the new `data` element just created
+
+   ```javascript
+   // 4th column
+   let data = document.createElement(`data`)
+   data.setAttribute(`value`, row.temp)
+   data.innerHTML = `${row.temp}&deg;`
+   data.classList.add(`range-temp`)
+   tr.insertCell().append(data)
+   ```
+
+####
+    // Create the tab control buttons
+    let tab = document.createElement(`li`)
+    let mode = document.createElement(`button`)
+    mode.classList.add(`btn`)
+    mode.textContent = type.mode
+    mode.setAttribute(`aria-controls`, type.mode)
+    tab.append(mode) // <button> into <li>
+    tabs.append(tab) // <li> into <ul>
+
+
+####
+
+// If this is the first weather range, have it be .active
+    if (i === 0) {
+      tbody.classList.add(`active`)
+      mode.classList.add(`active`)
+    }
 
 
 
