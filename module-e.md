@@ -847,29 +847,47 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    }
    ```
 
+1. Within `setForecastWeather` (directly under the function `addForecastRange`), write a function named `handleModesClicked`, which is the event handler for a `click` of the entire `tabs` unordered list that was just constructed (it should also catch the details of the click to a parameter named `event`)
 
    ```javascript
    let handleModesClicked = (event) => {
-      let modeBtn = event.target
 
-      if (modeBtn.matches(`button.btn`)) {
-      // Remove the active class from the previously active button
-      let prevActiveTab = document.querySelector(`.tabs .btn.active`)
-      prevActiveTab.classList.remove(`active`)
-      // Add the active class to the new button target
-      modeBtn.classList.add(`active`)
-
-      // Remove the active class from the previously active tbody
-      let prevActiveTbody = document.querySelector(`.range.active`)
-      prevActiveTbody.classList.remove(`active`)
-      // Find the associated tbody, select it, make it active
-      let tbodyId = modeBtn.getAttribute(`aria-controls`)
-      let tbodyRange = document.querySelector(`#${tbodyId}`)
-      tbodyRange.classList.add(`active`)
-      }
    }
    tabs.addEventListener(`click`, handleModesClicked)
    ```
+
+1. Within the `handleModesClicked` function, store the `event.target` as a variable `modeBtn`, then write a condition statement to check if `modeBtn.matches('button.btn')` (if what was clicked, is a `<button>` with a class of `btn`)
+   ```javascript
+   let modeBtn = event.target
+   if (modeBtn.matches(`button.btn`)) {
+
+   }
+   ```
+
+1. Inside of the condition statement written in the previous step, do the following:
+   
+   1. Query the `document` for any `.btn` within `.tabs` that's current `.active` (`.tabs .btn.active`), then remove the `active` class from the element's `classList`, and `add()` the `active` class to the `modeBtn` that was clicked
+
+      ```javascript
+      let prevActiveTab = document.querySelector(`.tabs .btn.active`)
+      prevActiveTab.classList.remove(`active`)
+      modeBtn.classList.add(`active`)
+      ```
+
+   2. Query the `document` for any `.range` element that's current `.active` (`.range.active`), then remove the `active` class from the element's `classList`
+
+      ```js
+      let prevActiveTbody = document.querySelector(`.range.active`)
+      prevActiveTbody.classList.remove(`active`)
+      ```
+
+   3. Activate the `tbody` that corresponds with the tab button clicked by storing the value of `getAttribute('aria-controls')` as a variable (`tbodyId`), then combining that `id` with a `#` symbol to build a selector query that will find the matching `tbody`. Once found, `add()` the `active` class to the `classList` of the `tbody`
+
+      ```javascript
+      let tbodyId = modeBtn.getAttribute(`aria-controls`)
+      let tbodyRange = document.querySelector(`#${tbodyId}`)
+      tbodyRange.classList.add(`active`)
+      ```
 
 ### Part 4: Units weather
 
