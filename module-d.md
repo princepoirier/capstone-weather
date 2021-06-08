@@ -381,7 +381,7 @@ body {
    let tempEle = document.querySelector(`#currTemp`)
    let highEle = document.querySelector(`#highTemp`)
    let lowEle = document.querySelector(`#lowTemp`)
-   let desc = document.querySelector(`#desc`)
+   let descEle = document.querySelector(`#desc`)
    let iconSm = document.querySelector(`#iconSm`)
    let iconLg = document.querySelector(`#iconLg`)
    ```
@@ -432,7 +432,7 @@ body {
 
 1. Within the `setCurrentWeather` function, assign the `condition.desc` to the appropriate HTML element:
    ```javascript
-   desc.textContent = data.condition.desc
+   descEle.textContent = data.condition.desc
    ```
 
 1. Using the `time.light` and `condition.type` values within the `setCurrentWeather` function, build a string that will point to the images in both `-lg` and `-sm` form, then apply the path to the `srcset` and `src` attribute values of the current weather condition images (don't forget to update the `alt` as well with the `condition.desc`!):
