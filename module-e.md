@@ -505,19 +505,19 @@ setF.addEventListener(`click`, displayImperialUnits) // F
 
 1. Within the `js` folder, create a new file named `current.js` and move the entire function `setCurrentWeather`, and all of the relevant element references
 
-```javascript
-// current.js
-let tempEle = document.querySelector(`#currTemp`)
-let highEle = document.querySelector(`#highTemp`)
-let lowEle = document.querySelector(`#lowTemp`)
-let descEle = document.querySelector(`#desc`)
-let iconSm = document.querySelector(`#iconSm`)
-let iconLg = document.querySelector(`#iconLg`)
+   ```javascript
+   // current.js
+   let tempEle = document.querySelector(`#currTemp`)
+   let highEle = document.querySelector(`#highTemp`)
+   let lowEle = document.querySelector(`#lowTemp`)
+   let descEle = document.querySelector(`#desc`)
+   let iconSm = document.querySelector(`#iconSm`)
+   let iconLg = document.querySelector(`#iconLg`)
 
-let setCurrentWeather = (data) => {
-  // MOVE THE ENTIRE FUNCTION
-}
-```
+   let setCurrentWeather = (data) => {
+   // MOVE THE ENTIRE FUNCTION
+   }
+   ```
 
 1. At the bottom of `js/current.js`, `export` the `setCurrentWeather` function
    ```javascript
@@ -716,43 +716,57 @@ let setCurrentWeather = (data) => {
 
 #### C. Create range tables and rows
 
-1. Within the new function `setForecastWeather`, write a function (yes, a function within a function!) named `addForecastRange`, that will receive a single argument, storing it as the incoming parameter `type`
+1. To setup for the dynamic weather range panels:
+   1. Update the definition for the rule that selects the `.range` elements in `style.css`, setting `display: none`, so they're all hidden by default
+   2. Write a new rule for `.range` panels that are also `.active`, which will overwrite the `display: none` declaration, by setting the `tbody` back to its default `display: table-row-group`
+
+      ```css
+      .range {
+         font-size: 1.25rem;
+         display: none;
+      }
+      .range.active {
+         display: table-row-group;
+      }
+      ```
+
+2. Within the new function `setForecastWeather`, write a function (yes, a function within a function!) named `addForecastRange`, that will receive a single argument, storing it as the incoming parameter `type`
    ```js
    let addForecastRange = (type) => {
 
    }
    ```
 
-1. The function `addForecastRange` should be called once `forEach()` of the `data.forecast.ranges` objects
+3. The function `addForecastRange` should be called once `forEach()` of the `data.forecast.ranges` objects
    ```js
    data.forecast.ranges.forEach(addForecastRange)
    ```
 
-1. Create one `tbody` elements for each range, by using `document.createElement()` within the  `addForecastRange` function, storing the element reference as `tbody` and assigning it the `type.mode` value as its `id` using `setAttribute()`, and `add()` the class `range` to the element's `classList`
+4. Create one `tbody` elements for each range, by using `document.createElement()` within the  `addForecastRange` function, storing the element reference as `tbody` and assigning it the `type.mode` value as its `id` using `setAttribute()`, and `add()` the class `range` to the element's `classList`
    ```javascript
    let tbody = document.createElement(`tbody`)
    tbody.setAttribute(`id`, type.mode)
    tbody.classList.add(`range`)
    ```
 
-1. Append the new `<tbody>` element created, to the `table` element, at the bottom of the `addForecastRange` function
+5. Append the new `<tbody>` element created, to the `table` element, at the bottom of the `addForecastRange` function
    ```javascript
    table.append(tbody)
    ```
 
-1. Create one more nested function (_a function, in a function, in a function!_) named `addForecastRow` that will receive a single argument, caught as the parameter `row`, then place it within the existing `addForecastRange`
+6. Create one more nested function (_a function, in a function, in a function!_) named `addForecastRow` that will receive a single argument, caught as the parameter `row`, then place it within the existing `addForecastRange`
    ```javascript
    let addForecastRow = (row) => { 
 
    }
    ```
 
-1. The function `addForecastRow` should be called once `forEach()` of the `type.records` objects
+7. The function `addForecastRow` should be called once `forEach()` of the `type.records` objects
    ```javascript
    type.records.forEach(addForecastRow)
    ```
 
-1. At the top of the new `addForecastRow` function, create a table row (<tr>) that will self-append itself to the table, using the `tbody` method `insertRow()`, storing its reference to a variable `tr` (so that we can add `<td>` columns to it)
+8. At the top of the new `addForecastRow` function, create a table row (<tr>) that will self-append itself to the table, using the `tbody` method `insertRow()`, storing its reference to a variable `tr` (so that we can add `<td>` columns to it)
    ```javascript
    let tr = tbody.insertRow()
    ```
@@ -805,6 +819,14 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    data.innerHTML = `${row.temp}&deg;`
    data.classList.add(`range-temp`)
    tr.insertCell().append(data)
+   ```
+
+2. Adjust the width of the new columns to better accommodate the information, by writing a new rule in `style.css` that will select the first `th` of the `.ranges` table, giving it a `width: 30%`:
+
+   ```css
+   .ranges th:nth-child(1) {
+      width: 30%;
+   }
    ```
 
 #### E. Tab control buttons
