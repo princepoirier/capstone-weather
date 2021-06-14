@@ -226,7 +226,7 @@ body {
 ### Part 1: Layout
 
 #### A. Document header
-1. Add the class value `header` to the `<header>` element at the top of the `<body>` in `index.html`, then write a rule to convert the element to a `flex` container with its two items weighted to each end of the container:
+1. Add the class value `header` to the `<header>` element at the top of the `<body>` in `index.html`. Next, write a rule to convert the element to a `flex` container with its two items weighted to each end of the container:
    ```css
    .header {
       display: flex;
@@ -247,7 +247,7 @@ body {
    ```
 
 #### B. Current Weather
-1. Align the `<li>` within the `.high-low` element by adding a `high` and `low` class value to the items, then write a rule for the `.high` and update the existing `.low` rule to make them both `inline` elements
+1. Align the `<li>` within the `.high-low` element by adding a `high` and `low` class value to the items. Then, write a rule for the `.high` and update the existing `.low` rule to make them both `inline` elements
    ```css
    .high {
       display: inline; 
@@ -275,7 +275,7 @@ body {
       justify-content: space-around;
    }
    ```
-1. Stretch the `width` of the `<table>` to use `100%` of the available space, as well as adding some `padding` around the inside, and remove spaces between the cells, by updating the `.ranges` rule:
+1. Stretch the `width` of the `<table>` to use `100%` of the available space, add some `padding` around the inside, and remove spaces between the cells. Do this by updating the `.ranges` rule:
    ```css
    .ranges {
       background-color: var(--shade-dark); /* existing declaration */
@@ -353,9 +353,9 @@ body {
 #### C. Responsive image
 
 ---
-**Note**: This exercises uses makes use of the `<picture>` element for responsive images, rather than simply updating the `srcset` of an `<img>`, as was demonstrated in the lesson videos. While the techniques have similarities and can often accomplish the same goal, it's more appropriate to use the `<picture>` element for this specific use case, as we are not just changing images to optimize download size for smaller screen sizes, but are actually loading a completely different graphic, with a different aspect ratio (the ratio of width:height).
+**Note**: This exercises makes use of the `<picture>` element for responsive images, rather than simply updating the `srcset` of an `<img>`, as was demonstrated in the lesson videos. While the techniques have similarities and can often accomplish the same goal, it's more appropriate to use the `<picture>` element for this specific use case, as we are not just changing images to optimize download size for smaller screen sizes. Rather, we are actually loading a completely different graphic with a different aspect ratio (the ratio of width:height).
 
-The `<picture>` element gives greater control for changing the image from one source to another at a specific breakpoint, forcing the `<source>` image to be activated at the breakpoint set by its `media` attribute. Simply providing additional source values to the `<img>` through the `srcset` method alone (as was shown in the lessons) allows the *browser* to make the decision about which image to use. In that case, it balances the file's download size with the quality required to fit the layout, based on what's been downloaded by the browser already. In this case, that is not sufficient to ensure the wrong image will not break the layout, as they have very different aspect ratios.
+The `<picture>` element gives greater control for changing the image from one source to another at a specific breakpoint, forcing the `<source>` image to be activated at the breakpoint set by its `media` attribute. Simply providing additional source values to the `<img>` through the `srcset` method alone (as was shown in the lessons) allows the *browser* to make the decision about which image to use. In that case, it balances the files' download size with the quality required to fit the layout, based on what's been downloaded by the browser already. In this case, that is not sufficient to ensure the wrong image will not break the layout, as they have very different aspect ratios.
 
 For more information on the topic, [please read MDN's documentation on the `<picture>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture).
 ---
@@ -369,7 +369,7 @@ For more information on the topic, [please read MDN's documentation on the `<pic
    </picture>
    ```
 
-1. Outside of the `@media` query, write a rule for the `.current` element that's wrapping around the weather condition image to control its width and center it when slimmer than its parent:
+1. Outside of the `@media` query, write a rule for the `.current` element that's wrapping around the weather condition image, to control its width and center it when slimmer than its parent:
    ```css
    .current {
       max-width: 20rem;
@@ -388,7 +388,7 @@ For more information on the topic, [please read MDN's documentation on the `<pic
 
 #### D. Footer
 
-1. Re organize the `<footer>` element in `index.html` so that the contents of the footer (two paragraphs) are wrapped in a `<div>` with a class attribute value of `footer-group`. Then move the `container` class to the new `<div>`, from the `<footer>`, to create a footer-bar that uses the entire width of the viewport, but whose content is restricted by the `.container` definition to the center of the layout:
+1. Re organize the `<footer>` element in `index.html` so that the contents of the footer (two paragraphs) are wrapped in a `<div>` with a class attribute value of `footer-group`. Then move the `container` class to the new `<div>` from the `<footer>`, to create a footer-bar that uses the entire width of the viewport, but whose content is restricted by the `.container` definition to the center of the layout:
    ```html
    <footer class="footer">
       <div class="container footer-group">
