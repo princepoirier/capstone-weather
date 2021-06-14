@@ -226,6 +226,13 @@ body {
 ### Part 1: Layout
 
 #### A. Document header
+1. Add the class value `units` to the `<ul>` within the `<header>`, then write a rule to convert the element to a `flex` container:
+   ```css
+   .units {
+      display: flex;
+   }
+   ```
+   
 1. Add the class value `header` to the `<header>` element at the top of the `<body>` in `index.html`, then write a rule to convert the element to a `flex` container with its two items weighted to each end of the container:
    ```css
    .header {
@@ -233,12 +240,7 @@ body {
       justify-content: space-between;
    }
    ```
-1. Add the class value `units` to the `<ul>` within the `<header>`, then write a rule to convert the element to a `flex` container:
-   ```css
-   .units {
-      display: flex;
-   }
-   ```
+
 1. Write a rule for the `.logo` element to add space around the element using the `margin` box-model property
    ```css
    .logo {
@@ -247,6 +249,15 @@ body {
    ```
 
 #### B. Current Weather
+1. Update the `.temp` rule to convert the `<data>` element (an `inline` element) to a `block`:
+   ```css
+   .temp {
+      font-size: 2.75rem; /* existing declaration */
+      font-weight: 700;   /* existing declaration */
+      margin: 1rem 0;     /* existing declaration */
+      display: block;
+   }
+   ```
 1. Align the `<li>` within the `.high-low` element by adding a `high` and `low` class value to the items, then write a rule for the `.high` and update the existing `.low` rule to make them both `inline` elements
    ```css
    .high {
@@ -255,15 +266,6 @@ body {
    .low {
       color: var(--col-b); /* existing declaration */
       display: inline; 
-   }
-   ```
-1. Update the `.temp` rule to convert the `<data>` element (an `inline` element) to a `block`:
-   ```css
-   .temp {
-      font-size: 2.75rem; /* existing declaration */
-      font-weight: 700;   /* existing declaration */
-      margin: 1rem 0;     /* existing declaration */
-      display: block;
    }
    ```
 
@@ -284,12 +286,6 @@ body {
       width: 100%;
       padding: 1rem;
       border-spacing: 0;
-   }
-   ```
-1. Have the color of each table row highlight when hovered over, by setting a rule for `range tr:hover`:
-   ```css
-   .range tr:hover {
-      background-color: var(--shade-dark);
    }
    ```
 
@@ -316,6 +312,12 @@ body {
 
 #### B. Media query
 
+1. Create a breakpoint at `min-width: 50rem` by adding a `@media` query
+   ```css
+   @media screen and (min-width: 50rem) {
+
+   }
+   ```
 1. Add the `<meta>` tag for `name="viewport"` to the top of `index.html` within the `<head>`:
    ```html
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -324,12 +326,6 @@ body {
    - `<main>`: `class="container weather"`
    - `<article>`: `class="current"`
    - `<aside>`: `class="forecast"`
-1. Create a breakpoint at `min-width: 50rem` by adding a `@media` query
-   ```css
-   @media screen and (min-width: 50rem) {
-
-   }
-   ```
 1. Within the `@media` query, write a rule to select the `.weather` element, setting it to a `flex` container:
    ```css
    .weather {
@@ -385,6 +381,28 @@ For more information on the topic, [please read MDN's documentation on the `<pic
       max-width: none;
    }
    ```
+1. Have the color of each table row highlight when hovered over, by setting a rule for `range tr:hover`:
+   ```css
+   .range tr:hover {
+      background-color: var(--shade-dark);
+   }
+   ```
+#### D. Buttons
+
+1. Write a rule that applies to `.btn` elements when they are in **both** the `:hover` and `:focus` pseudo state to update their `background-color`:
+   ```css
+   .btn:hover, .btn:focus {
+      background-color: var(--shade-white);
+   }
+   ```
+
+1. Write another rule that only selects the `.btn` in the `:focus` pseudo state, adding a border to accentuate the elements:
+   ```css
+   .btn:focus {
+      border: 3px solid var(--col-b);
+      outline: none;
+   }
+   ```
 
 #### D. Footer
 
@@ -398,6 +416,14 @@ For more information on the topic, [please read MDN's documentation on the `<pic
    </footer>
    ```
 
+1. Also within the `@media` query, write the rules to set the two `<p>` elements within the `.footer-group` on the outer edges:
+   ```css
+	.footer-group {
+		display: flex;
+		justify-content: space-between;
+	}
+   ```
+   
 1. Within the `@media` query, write a rule for the `.footer` to adjust its `padding` and `line-height`:
    ```css
    .footer {
@@ -406,25 +432,7 @@ For more information on the topic, [please read MDN's documentation on the `<pic
 	}
    ```
 
-1. Also within the `@media` query, write the rules to set the two `<p>` elements within the `.footer-group` on the outer edges:
-   ```css
-	.footer-group {
-		display: flex;
-		justify-content: space-between;
-	}
-   ```
-
 **Note**: Getting the `<footer>` to stick to the bottom of the viewport when the page is shorter than the full viewport can be accomplished a few ways, but one is to use a slight variation of the `flex` lessons where the flex container is turned sideways using `flex-direction: column` (the default is `flex-direction: row`). You can read more about [the `flex-direction` property here on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction).
-
-
-1. In `index.html` wrap the entire content within the `<body>` in a `<div>`, with a class of `layout` (this element will be the vertical `flex` container):
-   ```html
-   <body>
-      <div class="layout">
-         <!-- The entire site's content -->
-      </div>
-   </body>
-   ```
 
 1. Both the `html` and `body` elements need to take the full height of the viewport:
    ```css
@@ -443,6 +451,15 @@ For more information on the topic, [please read MDN's documentation on the `<pic
 
       height: 100%;
    }
+   ```
+
+1. In `index.html` wrap the entire content within the `<body>` in a `<div>`, with a class of `layout` (this element will be the vertical `flex` container):
+   ```html
+   <body>
+      <div class="layout">
+         <!-- The entire site's content -->
+      </div>
+   </body>
    ```
 
 1. Write a rule for the `.layout` to make it a vertical flex container (`column` direction) that uses *at least* the full viewport height:
@@ -464,24 +481,7 @@ For more information on the topic, [please read MDN's documentation on the `<pic
 
 ### Part 3: Wrap-up styling
 
-#### A. Buttons
-
-1. Write a rule that applies to `.btn` elements when they are in **both** the `:hover` and `:focus` pseudo state to update their `background-color`:
-   ```css
-   .btn:hover, .btn:focus {
-      background-color: var(--shade-white);
-   }
-   ```
-
-1. Write another rule that only selects the `.btn` in the `:focus` pseudo state, adding a border to accentuate the elements:
-   ```css
-   .btn:focus {
-      border: 3px solid var(--col-b);
-      outline: none;
-   }
-   ```
-
-#### B. Pinstripe pattern
+#### A. Pinstripe pattern
 
 1. Update the `background-image` for the `body` to also include a `repeating-linear-gradient()` before the existing `linear-gradient()` to add a pinstripe to the background:
    ```css
@@ -508,7 +508,7 @@ For more information on the topic, [please read MDN's documentation on the `<pic
    }
    ```
 
-#### C. Dividing line
+#### B. Dividing line
 
 1. Remove the "squiggly line" `<img>` dividing the current and forecast weather from `index.html`
    ```html
