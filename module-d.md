@@ -346,25 +346,11 @@ body {
 
 1. In preparation for dynamic content, make the following modifications to elements within the `.current` article block in `index.html`
 
-   1. Remove the static `srcset` and `src` values, the `alt` value, and add `id` attributes for the two children of the `<picture>` element:
-      ```html
-      <picture>
-         <source srcset="" media="(min-width: 50rem)" id="iconLg">
-         <img src="" alt="" id="iconSm">
-      </picture>
-      ```
-
-   1. Remove the contents of the `.desc` paragraph, then add an `id`:
-      ```html
-      <p class="desc" id="desc"></p>
-      ```
-
-   1. Remove the contents and `value` attribute of the `.temp` data, then add an `id`:
+    1. Remove the contents and `value` attribute of the `.temp` data, then add an `id`:
       ```html
       <data value="" class="temp" id="currTemp"></data>
       ```
-
-   1. For both the `.low` and `.high` list-items, remove the contents and `value` attribute of the `<data>` elements, then add an `id` to them both:
+    1. For both the `.low` and `.high` list-items, remove the contents and `value` attribute of the `<data>` elements, then add an `id` to them both:
       ```html
       <li class="low">
          <img src="img/temp-low.svg" alt="Daily low">
@@ -374,6 +360,18 @@ body {
          <data value="" id="highTemp"></data>
          <img src="img/temp-high.svg" alt="Daily high">
       </li>
+      ```
+    1. Remove the contents of the `.desc` paragraph, then add an `id`:
+      ```html
+      <p class="desc" id="desc"></p>
+      ```
+
+    1. Remove the static `srcset` and `src` values, the `alt` value, and add `id` attributes for the two children of the `<picture>` element:
+      ```html
+      <picture>
+         <source srcset="" media="(min-width: 50rem)" id="iconLg">
+         <img src="" alt="" id="iconSm">
+      </picture>
       ```
 
 1. In `js/script.js`, write a `document.querySelector()` for each of the modified elements, storing each reference as a variable
@@ -447,7 +445,7 @@ iconSm.setAttribute(`alt`, data.condition.desc)
 ```
 
 
-### Part 2: Converting temperature units
+### Part 3: Converting temperature units
 
 #### A. Prepare static HTML elements
 
@@ -579,8 +577,25 @@ iconSm.setAttribute(`alt`, data.condition.desc)
       ele.innerHTML = `${Math.round(newValue)}&deg;${unit}`
    }
    ```
+#### E. Execute the conversions
 
-#### E. Event management
+1. At the bottom of the function definition for `displayImperialUnits`, make three calls to `setTempToUnit` for `tempEle`, `highEle` and `lowEle`, each sending `toFahrenheit` as the second argument, and a "F" `<abbr>` for only `tempEle`:
+
+   ```javascript
+   setTempToUnit(tempEle, toFahrenheit, `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`)
+   setTempToUnit(highEle, toFahrenheit)
+   setTempToUnit(lowEle, toFahrenheit)
+   ```
+
+1. At the bottom of the function definition for `displayMetricUnits`, make three calls to `setTempToUnit` for `tempEle`, `highEle` and `lowEle`, each sending `toCelsius` as the second argument, and a "C" `<abbr>` for only `tempEle`:
+
+   ```javascript
+   setTempToUnit(tempEle, toCelsius, `<abbr title="Degrees celsius" class="unit">C</abbr>`)
+   setTempToUnit(highEle, toCelsius)
+   setTempToUnit(lowEle, toCelsius)
+   ```
+
+#### F. Event management
 
 Because the interface will begin displaying in metric units (`C`), the only option to click should be to set fahrenheit (and the inverse when `F` are set). Optimize the interface by using `addEventListener` and `removeEventListener` to only have one unit button listening for a click at any given time.
 
@@ -622,23 +637,6 @@ Because the interface will begin displaying in metric units (`C`), the only opti
    }
    ```
 
-#### F. Execute the conversions
-
-1. At the bottom of the function definition for `displayImperialUnits`, make three calls to `setTempToUnit` for `tempEle`, `highEle` and `lowEle`, each sending `toFahrenheit` as the second argument, and a "F" `<abbr>` for only `tempEle`:
-
-   ```javascript
-   setTempToUnit(tempEle, toFahrenheit, `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`)
-   setTempToUnit(highEle, toFahrenheit)
-   setTempToUnit(lowEle, toFahrenheit)
-   ```
-
-1. At the bottom of the function definition for `displayMetricUnits`, make three calls to `setTempToUnit` for `tempEle`, `highEle` and `lowEle`, each sending `toCelsius` as the second argument, and a "C" `<abbr>` for only `tempEle`:
-
-   ```javascript
-   setTempToUnit(tempEle, toCelsius, `<abbr title="Degrees celsius" class="unit">C</abbr>`)
-   setTempToUnit(highEle, toCelsius)
-   setTempToUnit(lowEle, toCelsius)
-   ```
 
 
 ## Final code
