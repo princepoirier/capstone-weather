@@ -561,8 +561,7 @@ setF.addEventListener(`click`, displayImperialUnits) // F
       iconSm.setAttribute(`alt`, data.current.condition.desc)
    }
    ```
-
-1. The cities loaded may default to either metric (C) or imperial (F). Within `setCurrentWeather`, store `data.unit` as a new variable simply named `unit` and then write a condition statement checking for the value of either `"metric"` or `"imperial"`, and assign the appropriate `<abbr>` element (for "C" or "F") to `tempEle.innerHTML`:
+ 1. The cities loaded may default to either metric (C) or imperial (F). Within `setCurrentWeather`, store `data.unit` as a new variable simply named `unit` and then write a condition statement checking for the value of either `"metric"` or `"imperial"`, and assign the appropriate `<abbr>` element (for "C" or "F") to `tempEle.innerHTML`:
    ```javascript
    let unit = data.unit
    
@@ -642,17 +641,15 @@ setF.addEventListener(`click`, displayImperialUnits) // F
 
    }
    ```
-
 1. As the last line of `forecast.js`, write an `export` statement for `setForecastWeather`
    ```javascript
    export {setForecastWeather}
    ```
-
+   
 1. Back in `script.js`, directly below the existing `import` statement at the top of the document, `import {setForecastWeather}` from the file `./forecast.js`
    ```javascript
    import {setForecastWeather} from './forecast.js'
    ```
-
 1. At the bottom of `appIsLoaded` (in `script.js`), call the function `setForecastWeather`, passing it the `json` object as an argument
    ```javascript
    let appIsLoaded = async () => {
@@ -688,10 +685,30 @@ setF.addEventListener(`click`, displayImperialUnits) // F
       ...
    </table>
    ```
+1. The function `addForecastRange` should be called once `forEach()` of the `data.forecast.ranges` objects
+   ```js
+   data.forecast.ranges.forEach(addForecastRange)
+   ```
+1. Within the new function `setForecastWeather`, write a function (yes, a function within a function!) named `addForecastRange`, that will receive a single argument, storing it as the incoming parameter `type`
+   ```js
+   let addForecastRange = (type) => {
+
+   }
+   ```
+1. Create one `tbody` elements for each range, by using `document.createElement()` within the  `addForecastRange` function, storing the element reference as `tbody` and assigning it the `type.mode` value as its `id` using `setAttribute()`
+   ```javascript
+   let tbody = document.createElement(`tbody`)
+   tbody.setAttribute(`id`, type.mode)
+   ```
 
 1. Within the definition for the new function `setForecastWeather()`, `querySelector` the element with `id="ranges"` from the `document`, storing the reference as a variable named `table`
    ```js
    let table = document.querySelector(`#ranges`)
+   ```
+   
+1. Append the new `<tbody>` element created, to the `table` element, at the bottom of the `addForecastRange` function
+   ```javascript
+   table.append(tbody)
    ```
 
 1. Remove the three `<li>` elements from the `<ul>` with the class `tabs` (used to hold the tabs labeled "Hourly", "Tomorrow" and "Week") from within `<aside class="forecast">`, leaving the `<ul>` itself in-place
@@ -718,55 +735,19 @@ setF.addEventListener(`click`, displayImperialUnits) // F
 
 1. To setup for the dynamic weather range panels:
    1. Update the definition for the rule that selects the `.range` elements in `style.css`, setting `display: none`, so they're all hidden by default
-   2. Write a new rule for `.range` panels that are also `.active`, which will overwrite the `display: none` declaration, by setting the `tbody` back to its default `display: table-row-group`
-
-      ```css
-      .range {
-         font-size: 1.25rem;
-         display: none;
-      }
-      .range.active {
-         display: table-row-group;
-      }
-      ```
-
-2. Within the new function `setForecastWeather`, write a function (yes, a function within a function!) named `addForecastRange`, that will receive a single argument, storing it as the incoming parameter `type`
-   ```js
-   let addForecastRange = (type) => {
-
-   }
-   ```
-
-3. The function `addForecastRange` should be called once `forEach()` of the `data.forecast.ranges` objects
-   ```js
-   data.forecast.ranges.forEach(addForecastRange)
-   ```
-
-4. Create one `tbody` elements for each range, by using `document.createElement()` within the  `addForecastRange` function, storing the element reference as `tbody` and assigning it the `type.mode` value as its `id` using `setAttribute()`, and `add()` the class `range` to the element's `classList`
-   ```javascript
-   let tbody = document.createElement(`tbody`)
-   tbody.setAttribute(`id`, type.mode)
-   tbody.classList.add(`range`)
-   ```
-
-5. Append the new `<tbody>` element created, to the `table` element, at the bottom of the `addForecastRange` function
-   ```javascript
-   table.append(tbody)
-   ```
-
-6. Create one more nested function (_a function, in a function, in a function!_) named `addForecastRow` that will receive a single argument, caught as the parameter `row`, then place it within the existing `addForecastRange`
+  
+1. Create one more nested function (_a function, in a function, in a function!_) named `addForecastRow` that will receive a single argument, caught as the parameter `row`, then place it within the existing `addForecastRange`
    ```javascript
    let addForecastRow = (row) => { 
 
    }
    ```
-
-7. The function `addForecastRow` should be called once `forEach()` of the `type.records` objects
+1. The function `addForecastRow` should be called once `forEach()` of the `type.records` objects
    ```javascript
    type.records.forEach(addForecastRow)
    ```
 
-8. At the top of the new `addForecastRow` function, create a table row (<tr>) that will self-append itself to the table, using the `tbody` method `insertRow()`, storing its reference to a variable `tr` (so that we can add `<td>` columns to it)
+1. At the top of the new `addForecastRow` function, create a table row (<tr>) that will self-append itself to the table, using the `tbody` method `insertRow()`, storing its reference to a variable `tr` (so that we can add `<td>` columns to it)
    ```javascript
    let tr = tbody.insertRow()
    ```
@@ -820,16 +801,34 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    data.classList.add(`range-temp`)
    tr.insertCell().append(data)
    ```
-
-2. Adjust the width of the new columns to better accommodate the information, by writing a new rule in `style.css` that will select the first `th` of the `.ranges` table, giving it a `width: 30%`:
-
-   ```css
-   .ranges th:nth-child(1) {
-      width: 30%;
-   }
+1. Within the  `addForecastRange` function, `add()` the class `range` to the element's `classList`
+   ```javascript
+   let tbody = document.createElement(`tbody`)
+   tbody.setAttribute(`id`, type.mode)
+   tbody.classList.add(`range`)
    ```
+1. Write a new rule for `.range` panels that are also `.active`, which will overwrite the `display: none` declaration, by setting the `tbody` back to its default `display: table-row-group`
+
+      ```css
+      .range {
+         font-size: 1.25rem;
+         display: none;
+      }
+      .range.active {
+         display: table-row-group;
+      }
+      ```
+
 
 #### E. Tab control buttons
+
+1. Update the `addForecastRange` function definition, adding a second parameter named `i`, which will automatically be stored with a Number representing the number of times the `forEach()` loop has run (starting from `0` for the first time)
+
+   ```javascript
+   let addForecastRange = (type, i) => {
+
+   }
+   ```
 
 1. Within the `addForecastRange` function (directly above the `addForecastRow` function), create a `<li>` and a `<button>`, giving the button:
    1. The class `btn` 
@@ -847,14 +846,6 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    mode.setAttribute(`aria-controls`, type.mode)
    tab.append(mode) // <button> into <li>
    tabs.append(tab) // <li> into <ul>
-   ```
-
-1. Update the `addForecastRange` function definition, adding a second parameter named `i`, which will automatically be stored with a Number representing the number of times the `forEach()` loop has run (starting from `0` for the first time)
-
-   ```javascript
-   let addForecastRange = (type, i) => {
-
-   }
    ```
 
 1. Within the `addForecastRange` function (directly below the `addForecastRow` function), write a condition statement that checks if the `i` (representing the loop iteration number) exactly matches `0`, meaning its the first time the function is being called for this loop. In the condition block:
@@ -910,6 +901,14 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
       let tbodyRange = document.querySelector(`#${tbodyId}`)
       tbodyRange.classList.add(`active`)
       ```
+
+1. Adjust the width of the new columns to better accommodate the information, by writing a new rule in `style.css` that will select the first `th` of the `.ranges` table, giving it a `width: 30%`:
+
+   ```css
+   .ranges th:nth-child(1) {
+      width: 30%;
+   }
+   ```
 
 ### Part 4: Units weather
 
@@ -1020,38 +1019,38 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
 
 #### C. Generalize conversions
 
-1. Within the existing function `displayMetricUnits`, replace the final three lines (that convert units for only `tempEle`, `highEle` and `lowEle`) with a function named `convertToC`, that will be called once `forEach()` element that's found in a query of all `data` elements (`document.querySelectorAll('data')`) and catches a reference to the found element as the parameter `ele`
+1. Within the existing function `displayMetricUnits`, replace the final three lines (that convert units for only `tempEle`, `highEle` and `lowEle`) with a function named `convertToF`, that will be called once `forEach()` element that's found in a query of all `data` elements (`document.querySelectorAll('data')`) and catches a reference to the found element as the parameter `ele`
 
    ```javascript
-   let convertToC = (ele) => {
+   let convertToF = (ele) => {
 
    }
-   document.querySelectorAll(`data`).forEach(convertToC)
+   document.querySelectorAll(`data`).forEach(convertToF)
    ```
 
-1. Within the function `convertToC`, write a condition statement that will check if the `ele` element passed to the function `matches()` the selector `#currTemp` (it has `id="currTemp"`):
+1. Within the function `convertToF`, write a condition statement that will check if the `ele` element passed to the function `matches()` the selector `#currTemp` (it has `id="currTemp"`):
    1. If it does match, call `setTempToUnit` as we did before, passing the third parameter to append the `<abbr>` element to the end, displaying the unit
-   2. If it does NOT match, simply call `setTempToUnit` with only the first two parameters: `(ele, toCelsius)`
+   2. If it does NOT match, simply call `setTempToUnit` with only the first two parameters: `(ele, toFahrenheit)`
    
       ```javascript
       if (ele.matches(`#currTemp`)) {
-         setTempToUnit(ele, toCelsius, `<abbr title="Degrees celsius" class="unit">C</abbr>`)
+         setTempToUnit(ele, toFahrenheit, `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`)
       } else {
-         setTempToUnit(ele, toCelsius)
+         setTempToUnit(ele, toFahrenheit)
       }
       ```
 
-1. Finally, replicate the previous two steps within the function `displayImperialUnits`, creating a new function named `convertToF`, this time checking the exact same parameters, but converting the opposite direction (from celsius, `toFahrenheit`)
+1. Finally, replicate the previous two steps within the function `displayImperialUnits`, creating a new function named `convertToC`, this time checking the exact same parameters, but converting the opposite direction (from fahrenheit, `toCelsius`)
    
    ```javascript
-   let convertToF = (ele) => {
+   let convertToC = (ele) => {
       if (ele.matches(`#currTemp`)) {
-      setTempToUnit(ele, toFahrenheit, `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`)
+      setTempToUnit(ele, toCelsius, `<abbr title="Degrees celsius" class="unit">C</abbr>`)
       } else {
-      setTempToUnit(ele, toFahrenheit)
+      setTempToUnit(ele, toCelsius)
       }
    }
-   document.querySelectorAll(`data`).forEach(convertToF)
+   document.querySelectorAll(`data`).forEach(convertToC)
    ```
 
 
