@@ -336,7 +336,7 @@ body {
 <script src=""></script>
 ```
 
-1. Optionally, you may test to ensure the script is attached by writing `console.log(‘Hello world’)` in the script, saving, then checking your browser’s "Console" tab in the developer tools for the message "Hello world"
+Optionally, you may test to ensure the script is attached by writing `console.log(‘Hello world’)` in the script, saving, then checking your browser’s "Console" tab in the developer tools for the message "Hello world"
    - Remember to remove this before proceeding
 
 
@@ -435,7 +435,7 @@ body {
    descEle.textContent = data.condition.desc
    ```
 
-1. Using the `time.light` and `condition.type` values within the `setCurrentWeather` function, build a string that will point to the images in both `-lg` and `-sm` form, then apply the path to the `srcset` and `src` attribute values of the current weather condition images (don't forget to update the `alt` as well with the `condition.desc`!):
+1. Using the `time.light` and `condition.type` values within the `setCurrentWeather` function, build a string that will point to the images in both `-lg` and `-sm` form. Then, apply the path to the `srcset` and `src` attribute values of the current weather condition images (don't forget to update the `alt` as well with the `condition.desc`!):
 
 ```js
 // Condition image (large)
@@ -447,13 +447,13 @@ iconSm.setAttribute(`alt`, data.condition.desc)
 ```
 
 
-### Part 2: Converting temperature units
+### Part 3: Converting temperature units
 
 #### A. Prepare static HTML elements
 
 1. In preparation for dynamic content, make the following modifications to elements within the `.units` unordered list in `index.html`
 
-   1. Add an `id` attributes with values `setC` and `setF` for both of the respective `<button>` elements nested within the list-items:
+   1. Add an `id` attribute with values `setC` and `setF` for both of the respective `<button>` elements nested within the list-items:
       ```html
       <ul class="no-markers units">
          <li><button class="btn active" id="setC"><abbr title="Degrees celsius">C</abbr></button></li>
@@ -539,7 +539,7 @@ iconSm.setAttribute(`alt`, data.condition.desc)
    }
    ```
 
-1. Update the `setTempToUnit` function definition to accept a second parameter named `toUnit` (a reference to one of the previously defined `toCelsius` or `toFahrenheit` functions), then within `setTempToUnit`, call `toUnit()` as a function, passing it the previously stored `currValue` and saving the result as `newValue`
+1. Update the `setTempToUnit` function definition to accept a second parameter named `toUnit` (a reference to one of the previously defined `toCelsius` or `toFahrenheit` functions). Then within `setTempToUnit`, call `toUnit()` as a function, passing it the previously stored `currValue` and saving the result as `newValue`
    ```javascript
    let setTempToUnit = (ele, toUnit) => {
       let currValue = ele.getAttribute(`value`)
@@ -547,7 +547,7 @@ iconSm.setAttribute(`alt`, data.condition.desc)
    }
    ```
 
-1. Assign the `newValue` (which is the newly converted temperature) back to the `ele` element as both its content and `value` attribute (be sure to use `Math.round()` when assigning the content value, as temperature decimal are not a necessary part of the UI, but should remain part of the `value` attribute)
+1. Assign the `newValue` (the newly converted temperature) back to the `ele` element as both its content and `value` attribute. Be sure to use `Math.round()` when assigning the content value, as temperature decimal are not a necessary part of the UI, but should remain part of the `value` attribute
    ```javascript
    let setTempToUnit = (ele, toUnit) => {
       let currValue = ele.getAttribute(`value`)
@@ -582,7 +582,7 @@ iconSm.setAttribute(`alt`, data.condition.desc)
 
 #### E. Event management
 
-Because the interface will begin displaying in metric units (`C`), the only option to click should be to set fahrenheit (and the inverse when `F` are set). Optimize the interface by using `addEventListener` and `removeEventListener` to only have one unit button listening for a click at any given time.
+Given that the interface will begin displaying in metric units (`C`), the only option to click should be to set fahrenheit (and the inverse when `F` units are set). Optimize the interface by using `addEventListener` and `removeEventListener` to only have one unit button listening for a click at any given time.
 
 1. Move the previously written event listener for `setC` into the `displayImperialUnits` function definition, leaving only the listener for `setF` in the global space:
    ```javascript
