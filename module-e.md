@@ -1,4 +1,4 @@
-# Module D
+# Module E
 
 ## Starting code
 
@@ -482,7 +482,7 @@ setF.addEventListener(`click`, displayImperialUnits) // F
    window.addEventListener(`load`, appIsLoaded)
    ```
 
-1. Within `appIsLoaded`, `await fetch()` one of the data files (`data/london.json`, for example), then `await` the `response.json()`
+1. Within `appIsLoaded`, `await fetch()` one of the data files (`data/london.json` for example), then `await` the `response.json()`
    ```javascript
    let appIsLoaded = async () => {
       let response = await fetch(`data/london.json`)
@@ -496,14 +496,14 @@ setF.addEventListener(`click`, displayImperialUnits) // F
    setCurrentWeather(json)
    ```
 
-1. Remove the `current` sample data set (the object being used to seed the data to this point), from the top of the file `js/script.js`
+1. Remove the `current` sample data set from the top of the file `js/script.js`
 
 
 ### Part 2: Current weather
 
 #### A. Export/import
 
-1. Within the `js` folder, create a new file named `current.js` and move the entire function `setCurrentWeather`, and all of the relevant element references
+1. Within the `js` folder, create a new file named `current.js`. Move the entire function `setCurrentWeather`, and all of the relevant element references
 
    ```javascript
    // current.js
@@ -562,7 +562,7 @@ setF.addEventListener(`click`, displayImperialUnits) // F
    }
    ```
 
-1. The cities loaded may default to either metric (C) or imperial (F). Within `setCurrentWeather`, store `data.unit` as a new variable simply named `unit` and then write a condition statement checking for the value of either `"metric"` or `"imperial"`, and assign the appropriate `<abbr>` element (for "C" or "F") to `tempEle.innerHTML`:
+1. The cities loaded may default to either metric (C) or imperial (F). Within `setCurrentWeather`, store `data.unit` as a new variable simply named `unit` and then write a condition statement checking for the value of either `"metric"` or `"imperial"`. Assign the appropriate `<abbr>` element (for "C" or "F") to `tempEle.innerHTML`:
    ```javascript
    let unit = data.unit
    
@@ -575,7 +575,7 @@ setF.addEventListener(`click`, displayImperialUnits) // F
 
 #### C. Dynamic background gradient
 
-1. Review the new rules added to `css/style.css` for classes `day`, `day-precip`, `night` and `night-precip`, then modify the `linear-gradient()` to have `var(--grad-light)` replacing the first color and `var(--grad-dark)` replacing the second color:
+1. Review the new rules added to `css/style.css` for classes `day`, `day-precip`, `night` and `night-precip`. Modify the `linear-gradient()` to have `var(--grad-light)` replacing the first color and `var(--grad-dark)` replacing the second color:
    ```css
    body {
       /* Existing properties */
@@ -613,13 +613,13 @@ setF.addEventListener(`click`, displayImperialUnits) // F
    }
    ```
 
-1. Within `setCurrentWeather`, assign `data.current.time.light` and `data.current.condition.type` to variables `time` and `condition` respectively (simply to make it easier to reference the data)
+1. Within `setCurrentWeather`, assign `data.current.time.light` and `data.current.condition.type` to variables `time` and `condition` respectively (making it easier to reference the data)
    ```javascript
    let time = data.current.time.light
    let condition = data.current.condition.type
    ```
 
-1. Write an `if` statement to check if the `condition` variable matches either `"rain"`, `"sleet"` or `"snow"`, if so, `add()` the class name of the string value of `time`, appended with `-precip` to the `document.body`, or `else`, simply add the string value stored within the variable `time`
+1. Write an `if` statement to check if the `condition` variable matches either `"rain"`, `"sleet"` or `"snow"`. If so, `add()` the class name of the string value of `time`, appended with `-precip` to the `document.body`. Or `else`, simply add the string value stored within the variable `time`
    ```javascript
    // Set the current background based on the light condition (day/night)
    if (condition === `rain` || condition === `sleet` || condition === `snow`) {
@@ -666,7 +666,7 @@ setF.addEventListener(`click`, displayImperialUnits) // F
 
 #### B. Prepare the HTML
 
-1. Remove the existing `<tbody>` element (currently holding sample forecast data) in its entirety, from within the `<table>` element, sitting inside of the `<aside class="forecast">`
+1. Remove the existing `<tbody>` element (currently holding sample forecast data) from within the `<table>` element, sitting inside of the `<aside class="forecast">`
    - Be sure to leave the `<thead>` in place to keep the column headings for the table
    ```html
    <table class="ranges">
@@ -694,7 +694,7 @@ setF.addEventListener(`click`, displayImperialUnits) // F
    let table = document.querySelector(`#ranges`)
    ```
 
-1. Remove the three `<li>` elements from the `<ul>` with the class `tabs` (used to hold the tabs labeled "Hourly", "Tomorrow" and "Week") from within `<aside class="forecast">`, leaving the `<ul>` itself in-place
+1. Remove the three `<li>` elements from the `<ul>` with the class `tabs` (used to hold the tabs labeled "Hourly", "Tomorrow" and "Week") from within `<aside class="forecast">`, leaving the `<ul>` itself in place
    ```html
    <aside class="forecast">
       <ul class="no-markers tabs">
@@ -717,8 +717,8 @@ setF.addEventListener(`click`, displayImperialUnits) // F
 #### C. Create range tables and rows
 
 1. To setup for the dynamic weather range panels:
-   1. Update the definition for the rule that selects the `.range` elements in `style.css`, setting `display: none`, so they're all hidden by default
-   2. Write a new rule for `.range` panels that are also `.active`, which will overwrite the `display: none` declaration, by setting the `tbody` back to its default `display: table-row-group`
+   1. Update the definition for the rule that selects the `.range` elements in `style.css`, setting `display: none` so they're all hidden by default
+   2. Write a new rule for `.range` panels that are also `.active`, which will overwrite the `display: none` declaration by setting the `tbody` back to its default `display: table-row-group`
 
       ```css
       .range {
@@ -742,14 +742,14 @@ setF.addEventListener(`click`, displayImperialUnits) // F
    data.forecast.ranges.forEach(addForecastRange)
    ```
 
-4. Create one `tbody` elements for each range, by using `document.createElement()` within the  `addForecastRange` function, storing the element reference as `tbody` and assigning it the `type.mode` value as its `id` using `setAttribute()`, and `add()` the class `range` to the element's `classList`
+4. Create one `tbody` elements for each range by using `document.createElement()` within the  `addForecastRange` function, storing the element reference as `tbody` and assigning it the `type.mode` value as its `id` using `setAttribute()`. Then, `add()` the class `range` to the element's `classList`
    ```javascript
    let tbody = document.createElement(`tbody`)
    tbody.setAttribute(`id`, type.mode)
    tbody.classList.add(`range`)
    ```
 
-5. Append the new `<tbody>` element created, to the `table` element, at the bottom of the `addForecastRange` function
+5. Append the new `<tbody>` element created to the `table` element, at the bottom of the `addForecastRange` function
    ```javascript
    table.append(tbody)
    ```
@@ -849,7 +849,7 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    tabs.append(tab) // <li> into <ul>
    ```
 
-1. Update the `addForecastRange` function definition, adding a second parameter named `i`, which will automatically be stored with a Number representing the number of times the `forEach()` loop has run (starting from `0` for the first time)
+1. Update the `addForecastRange` function definition, adding a second parameter named `i`. This will automatically be stored with a Number representing the number of times the `forEach()` loop has run (starting from `0` for the first time)
 
    ```javascript
    let addForecastRange = (type, i) => {
@@ -869,7 +869,7 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    }
    ```
 
-1. Within `setForecastWeather` (directly under the function `addForecastRange`), write a function named `handleModesClicked`, which is the event handler for a `click` of the entire `tabs` unordered list that was just constructed (it should also catch the details of the click to a parameter named `event`)
+1. Within `setForecastWeather` (directly under the function `addForecastRange`), write a function named `handleModesClicked`. This is the event handler for a `click` of the entire `tabs` unordered list that was just constructed. It should also catch the details of the click to a parameter named `event`
 
    ```javascript
    let handleModesClicked = (event) => {
@@ -878,7 +878,7 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    tabs.addEventListener(`click`, handleModesClicked)
    ```
 
-1. Within the `handleModesClicked` function, store the `event.target` as a variable `modeBtn`, then write a condition statement to check if `modeBtn.matches('button.btn')` (if what was clicked, is a `<button>` with a class of `btn`)
+1. Within the `handleModesClicked` function, store the `event.target` as a variable `modeBtn`. Then, write a condition statement to check if `modeBtn.matches('button.btn')`., if what was clicked is a `<button>` with a class of `btn`
    ```javascript
    let modeBtn = event.target
    if (modeBtn.matches(`button.btn`)) {
@@ -896,14 +896,14 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
       modeBtn.classList.add(`active`)
       ```
 
-   2. Query the `document` for any `.range` element that's current `.active` (`.range.active`), then remove the `active` class from the element's `classList`
+   2. Query the `document` for any `.range` element that's currently `.active` (`.range.active`), then remove the `active` class from the element's `classList`
 
       ```js
       let prevActiveTbody = document.querySelector(`.range.active`)
       prevActiveTbody.classList.remove(`active`)
       ```
 
-   3. Activate the `tbody` that corresponds with the tab button clicked by storing the value of `getAttribute('aria-controls')` as a variable (`tbodyId`), then combining that `id` with a `#` symbol to build a selector query that will find the matching `tbody`. Once found, `add()` the `active` class to the `classList` of the `tbody`
+   3. Activate the `tbody` that corresponds with the tab button clicked by storing the value of `getAttribute('aria-controls')` as a variable (`tbodyId`). Combine that `id` with a `#` symbol to build a selector query that will find the matching `tbody`. Once found, `add()` the `active` class to the `classList` of the `tbody`
 
       ```javascript
       let tbodyId = modeBtn.getAttribute(`aria-controls`)
@@ -983,7 +983,7 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
 
 #### B. Assign starting unit
 
-1. In the new function named `setUnitToggle`, write a condition statement that will first check `if (unit === 'metric')`, otherwise, it will catch the case where `else if (unit === 'imperial')`
+1. In the new function named `setUnitToggle`, write a condition statement that will first check `if (unit === 'metric')`. Otherwise, it will catch the case where `else if (unit === 'imperial')`
 
    ```javascript
    let setUnitToggle = (unit) => {
@@ -995,7 +995,7 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    }
    ```
 
-2. Within the `units.js` file, there are two lines of code written in a previous lesson, that will `add('active')` to the `C` button, and add a `click` listener to the `F` button. Move both of these lines (cut/paste) into the first condition (where `unit === 'metric'`)
+2. Within the `units.js` file, there are two lines of code written in a previous lesson that will `add('active')` to the `C` button, and add a `click` listener to the `F` button. Move both of these lines (cut/paste) into the first condition (where `unit === 'metric'`)
    ```javascript
    if (unit === `metric`) {
       setC.classList.add(`active`)
@@ -1005,7 +1005,7 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
    }
    ```
 
-3. Complete the code for the `else if` condition block, by inverting the procedures:
+3. Complete the code for the `else if` condition block by inverting the procedures:
    1. `add('active')` to the `classList` of the `setF` button
    1. Add a `click` listener to the `setC` button that will call `displayMetricUnits` when it occurs
       ```javascript
@@ -1020,7 +1020,7 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
 
 #### C. Generalize conversions
 
-1. Within the existing function `displayMetricUnits`, replace the final three lines (that convert units for only `tempEle`, `highEle` and `lowEle`) with a function named `convertToC`, that will be called once `forEach()` element that's found in a query of all `data` elements (`document.querySelectorAll('data')`) and catches a reference to the found element as the parameter `ele`
+1. Within the existing function `displayMetricUnits`, replace the final three lines (that convert units for only `tempEle`, `highEle` and `lowEle`) with a function named `convertToC`. This will be called once `forEach()` element that's found in a query of all `data` elements (`document.querySelectorAll('data')`) and catches a reference to the found element as the parameter `ele`
 
    ```javascript
    let convertToC = (ele) => {
@@ -1041,7 +1041,7 @@ The method `insertCell()` (which is a method of a table row: `<tr>`) will be use
       }
       ```
 
-1. Finally, replicate the previous two steps within the function `displayImperialUnits`, creating a new function named `convertToF`, this time checking the exact same parameters, but converting the opposite direction (from celsius, `toFahrenheit`)
+1. Finally, replicate the previous two steps within the function `displayImperialUnits`, creating a new function named `convertToF`. Check the exact same parameters, but convert the opposite direction (from celsius, `toFahrenheit`)
    
    ```javascript
    let convertToF = (ele) => {
