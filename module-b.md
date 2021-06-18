@@ -24,7 +24,7 @@
 #### A. Document setup
 1. To the `<title>` element within the `<head>`, add the content: "Weatherful Weather"
 1. To the `<meta name="description">` element within the `<head>`, update its `content=""` attribute to have a value of "A weatherful weather application interface"
-1. Add `<header>`, `<main>` and `<footer>` elements to the exiting `<body>` in the given template, adding the following classes to each:
+1. Add `<header>`, `<main>` and `<footer>` elements to the existing `<body>` in the given template, adding the following classes to each:
    - `<header>`: `class="container"`
    - `<main>`: `class="container"`
    - `<footer>`: `class="footer container"`
@@ -47,7 +47,7 @@
    ```html
    <img src="img/day-snow-sm.svg" width="320" height="384" alt="Snowy weather in Toronto">
    ```
-1. Below the current condition image, add the following heading and description
+1. Below the current condition image, add the following heading and description:
    ```html
    <h1 class="heading">Current Conditions</h1>
    <p class="desc">Get your shovels ready, Toronto. Today it's going to snow!</p>
@@ -155,7 +155,7 @@
 ### Part 2: CSS (`style.css`)
 
 #### A. Styling setup and defaults
-1. Create a folder named `css` in the project root and add a new file named `style.css` to it
+1. Create a folder named `css` in the project root and add a new file named `style.css` within it
 1. Use the `<link>` element in the `<head>` of `index.html` to attach the new stylesheet from its relative path at `css/style.css`
 1. At the very top of the new `style.css` document, import the `Roboto` font in both `400` (normal) and `700` (bold) weights: `@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');`
 1. Setup a few variables in a `:root` rule that will store colors to be used for the gradient and accents:
@@ -178,7 +178,7 @@
    ```
 
 #### B. Write utility class rules
-1. The `<header>`, `<main>` and `<footer>` all use the `.container` class to add padding to the elements, add the following class definition to create uniform spacing around those elements:
+1. The `<header>`, `<main>` and `<footer>` all use the `.container` class to add padding to the elements. Add the following class definition to create uniform spacing around those elements:
    ```css
    .container {
       padding: 0 1rem;
@@ -202,7 +202,7 @@
       border-radius: 0.25rem;
    }
    ```
-1. Write a class for `.active` elements, that when combined with `.btn` elements, will change the background colour slightly to bring attention to the element as being "active"
+1. Write a class for `.active` elements that, when combined with `.btn` elements, will change the background colour slightly. This will bring attention to the element being "active"
    ```css
    .btn.active {
       border-color: var(--col-a);
@@ -291,7 +291,7 @@
      margin-top: 2rem;
    }
    ```
-1. Remove the margin from the `.tagline` and `.madeby` to prepare them for future styling, this can be done in one single rule:
+1. Remove the margin from the `.tagline` and `.madeby` to prepare them for future styling. This can be done in one single rule:
    ```css
    .tagline, .madeby {
      margin: 0;
