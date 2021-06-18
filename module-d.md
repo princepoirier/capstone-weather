@@ -327,30 +327,35 @@ body {
 
 ## Steps
 
-### Part 1: Setup script
+### Part 1: Setup script 
+**Step 1: Create and attach js file**<br />
+Create a folder named `js` in the project root and add a new file named `script.js` to it
 
-1. Create a folder named `js` in the project root and add a new file named `script.js` to it
-
-1. Add the `<script src=""></script>` element to the bottom of the `<body>` (directly before the closing `</body>` tag) in `index.html`, assigning the new file’s relative path (`js/script.js`) to the value of the `src` attribute
+**Step 2: Attach script in HTML** <br />
+Add the `<script src=""></script>` element to the bottom of the `<body>` (directly before the closing `</body>` tag) in `index.html`, assigning the new file’s relative path (`js/script.js`) to the value of the `src` attribute
 ```html
 <script src=""></script>
 ```
 
-Optionally, you may test to ensure the script is attached by writing `console.log(‘Hello world’)` in the script, saving, then checking your browser’s "Console" tab in the developer tools for the message "Hello world"
-   - Remember to remove this before proceeding
+Optionally, you may test to ensure the script is attached by writing `console.log(‘Hello world’)` in the script, saving, then checking your browser’s "Console" tab in the developer tools for the message "Hello world". Remember to remove this before proceeding
 
 
 ### Part 2: Current weather
 
 #### A. Prepare static HTML elements
 
-1. In preparation for dynamic content, make the following modifications to elements within the `.current` article block in `index.html`
+In preparation for dynamic content, make the following modifications to elements within the `.current` article block in `index.html`
 
-    1. Remove the contents and `value` attribute of the `.temp` data, then add an `id`:
+**Step 3: Clear static data from `.temp` data**<br />
+Remove the contents and `value` attribute of the `.temp` data, then add an `id`:
+
       ```html
       <data value="" class="temp" id="currTemp"></data>
       ```
-    1. For both the `.low` and `.high` list-items, remove the contents and `value` attribute of the `<data>` elements, then add an `id` to them both:
+      
+**Step 4: Clear static data from high and low elements**<br />
+For both the `.low` and `.high` list-items, remove the contents and `value` attribute of the `<data>` elements, then add an `id` to them both:
+
       ```html
       <li class="low">
          <img src="img/temp-low.svg" alt="Daily low">
@@ -361,20 +366,27 @@ Optionally, you may test to ensure the script is attached by writing `console.lo
          <img src="img/temp-high.svg" alt="Daily high">
       </li>
       ```
-    1. Remove the contents of the `.desc` paragraph, then add an `id`:
+      
+**Step 5: Clean up desc paragraph**<br />
+Remove the contents of the `.desc` paragraph, then add an `id`:
+
       ```html
       <p class="desc" id="desc"></p>
       ```
+      
+**Step 6: Clear static data from picture element**<br />
+Remove the static `srcset` and `src` values, the `alt` value, and add `id` attributes for the two children of the `<picture>` element:
 
-    1. Remove the static `srcset` and `src` values, the `alt` value, and add `id` attributes for the two children of the `<picture>` element:
       ```html
       <picture>
          <source srcset="" media="(min-width: 50rem)" id="iconLg">
          <img src="" alt="" id="iconSm">
       </picture>
       ```
+      
+**Step 7: Write variables in js for all previous elements**<br />
+In `js/script.js`, write a `document.querySelector()` for each of the modified elements, storing each reference as a variable
 
-1. In `js/script.js`, write a `document.querySelector()` for each of the modified elements, storing each reference as a variable
    ```javascript
    let tempEle = document.querySelector(`#currTemp`)
    let highEle = document.querySelector(`#highTemp`)
@@ -386,7 +398,9 @@ Optionally, you may test to ensure the script is attached by writing `console.lo
 
 #### B. Building content dynamically
 
-1. To help build the dynamic user interface, copy and paste the given sample data set at the top of `js/script.js`
+**Step 8: Copy/paste sample data at the top of js**<br />
+To help build the dynamic user interface, copy and paste the given sample data set at the top of `js/script.js`
+
    ```js
    let current = {
       time: {
@@ -404,7 +418,9 @@ Optionally, you may test to ensure the script is attached by writing `console.lo
    }
    ```
 
-1. Write a function named `setCurrentWeather` that will receive an Object parameter named `data`, then call the new function directly below the definition, passing the `current` object holding the data as the argument:
+**Step 9: Write a function named setCurrentWeather**<br />
+Write a function named `setCurrentWeather` that will receive an Object parameter named `data`, then call the new function directly below the definition, passing the `current` object holding the data as the argument:
+
    ```js
    let setCurrentWeather = (data) => {
 
@@ -412,8 +428,10 @@ Optionally, you may test to ensure the script is attached by writing `console.lo
    setCurrentWeather(current)
    ```
 
-1. Within the `setCurrentWeather` function, assign the numerical temperatures stored in the Object's `temp`, `high` and `low` properties to the appropriate elements as both content and the `value` attribute
+**Step 10: Assign values to new function**<br />
+Within the `setCurrentWeather` function, assign the numerical temperatures stored in the Object's `temp`, `high` and `low` properties to the appropriate elements as both content and the `value` attribute
    - Note: The degrees symbol (°) can be shown using the HTML special character short-code `&deg;`. Be sure to assign the element's content to the `.innerHTML` property instead of `.textContent` as it will render HTML as elements and symbols, rather than as plain text
+    
    ```javascript
    // Current temp
    tempEle.innerHTML = `${data.temp}&deg;<abbr title="Degrees celsius" class="unit">C</abbr>`
@@ -428,12 +446,15 @@ Optionally, you may test to ensure the script is attached by writing `console.lo
    lowEle.setAttribute(`value`, data.low)
    ```
 
-1. Within the `setCurrentWeather` function, assign the `condition.desc` to the appropriate HTML element:
+**Step 11: Assign condition.desc to HTML**<br />
+Within the `setCurrentWeather` function, assign the `condition.desc` to the appropriate HTML element:
+
    ```javascript
    descEle.textContent = data.condition.desc
    ```
 
-1. Using the `time.light` and `condition.type` values within the `setCurrentWeather` function, build a string that will point to the images in both `-lg` and `-sm` form. Then, apply the path to the `srcset` and `src` attribute values of the current weather condition images (don't forget to update the `alt` as well with the `condition.desc`!):
+**Step 12: Build a string that will point to images**<br />
+Using the `time.light` and `condition.type` values within the `setCurrentWeather` function, build a string that will point to the images in both `-lg` and `-sm` form. Then, apply the path to the `srcset` and `src` attribute values of the current weather condition images (don't forget to update the `alt` as well with the `condition.desc`!):
 
 ```js
 // Condition image (large)
@@ -449,9 +470,11 @@ iconSm.setAttribute(`alt`, data.condition.desc)
 
 #### A. Prepare static HTML elements
 
-1. In preparation for dynamic content, make the following modifications to elements within the `.units` unordered list in `index.html`
+In preparation for dynamic content, make the following modifications to elements within the `.units` unordered list in `index.html`
 
-   1. Add an `id` attribute with values `setC` and `setF` for both of the respective `<button>` elements nested within the list-items:
+**Step 13: Add id attributes to units list**<br />
+Add an `id` attribute with values `setC` and `setF` for both of the respective `<button>` elements nested within the list-items:
+
       ```html
       <ul class="no-markers units">
          <li><button class="btn active" id="setC"><abbr title="Degrees celsius">C</abbr></button></li>
@@ -459,12 +482,15 @@ iconSm.setAttribute(`alt`, data.condition.desc)
       </ul>
       ```
 
-   1. Remove the `active` class value from the "C" button, as it will be set dynamically:
+Remove the `active` class value from the "C" button, as it will be set dynamically:
+
       ```html
       <li><button class="btn" id="setC"><abbr title="Degrees celsius">C</abbr></button></li>
       ```
 
-1. In `js/script.js`, write a `document.querySelector()` for each of the modified elements, storing each reference as a variable:
+**Step 14: Write document.querySelector for modified elements**<br />
+In `js/script.js`, write a `document.querySelector()` for each of the modified elements, storing each reference as a variable:
+
    ```javascript
    let setC = document.querySelector(`#setC`)
    let setF = document.querySelector(`#setF`)
@@ -472,7 +498,9 @@ iconSm.setAttribute(`alt`, data.condition.desc)
 
 #### B. Button events
 
-1. Write a function for each of the conversions from F-to-C and from C-to-F, named `displayMetricUnits` and `displayImperialUnits` respectively:
+**Step 15: Write functions for temperature conversions**<br />
+Write a function for each of the conversions from F-to-C and from C-to-F, named `displayMetricUnits` and `displayImperialUnits` respectively:
+
    ```javascript
    let displayMetricUnits = () => {
    }
@@ -480,13 +508,17 @@ iconSm.setAttribute(`alt`, data.condition.desc)
    }
    ```
 
-1. Write an `addEventListener` for the two unit buttons (`setC` and `setF`), associating the corresponding functions (`displayMetricUnits` and `displayImperialUnits`) to their respective buttons to handle their `click`
+**Step 16: Add Event Listeners for two unit buttons**<br />
+Write an `addEventListener` for the two unit buttons (`setC` and `setF`), associating the corresponding functions (`displayMetricUnits` and `displayImperialUnits`) to their respective buttons to handle their `click`
+
    ```javascript
    setC.addEventListener(`click`, displayMetricUnits)
    setF.addEventListener(`click`, displayImperialUnits)
    ```
 
-1. Within each handler function, `add()` the `active` class to the `classList` of the `<button>` that triggered the event handler, and `remove()` it from the opposite button:
+**Step 17: Add and remove active class to buttons**<br />
+Within each handler function, `add()` the `active` class to the `classList` of the `<button>` that triggered the event handler, and `remove()` it from the opposite button:
+
    ```javascript
    let displayMetricUnits = () => {
       setF.classList.remove(`active`)
@@ -498,14 +530,17 @@ iconSm.setAttribute(`alt`, data.condition.desc)
    }
    ```
 
-1. Before testing the toggling of the units visually, assign `active` to the `setC` button using JavaScript, on the line immediately before the recently assigned listeners:
+**Step 18: Assign 'active' set to C button**<br />
+Before testing the toggling of the units visually, assign `active` to the `setC` button using JavaScript, on the line immediately before the recently assigned listeners:
    ```javascript
    setC.classList.add(`active`)
    ```
 
 #### C. Unit conversion
 
-1. Write a function named `toCelsius` that will receive a `fahrenheit` Number as an argument, and will `return` the result of `(fahrenheit - 32) * 5/9` - which is the equivalent celsius value
+**Step 19: Write a function that will receive an F argument**<br />
+Write a function named `toCelsius` that will receive a `fahrenheit` Number as an argument, and will `return` the result of `(fahrenheit - 32) * 5/9` - which is the equivalent celsius value
+
    ```javascript
    // Convert F to C
    let toCelsius = (fahrenheit) => {
@@ -513,7 +548,9 @@ iconSm.setAttribute(`alt`, data.condition.desc)
    }
    ```
 
-1. Write a function named `toFahrenheit` that will receive a `celsius` Number as an argument, and will `return` the result of `celsius * 9/5 + 32` - which is the equivalent fahrenheit value
+**Step 20: Write a function that will receive a C argument**<br />
+Write a function named `toFahrenheit` that will receive a `celsius` Number as an argument, and will `return` the result of `celsius * 9/5 + 32` - which is the equivalent fahrenheit value
+
    ```javascript
    // Convert C to F
    let toFahrenheit = (celsius) => {
@@ -523,21 +560,27 @@ iconSm.setAttribute(`alt`, data.condition.desc)
 
 #### D. Update the current temperature
 
-1. Write a function named `setTempToUnit`
+**Step 21: Write a function named setTempToUnit**<br />
+Write a function named `setTempToUnit`
+
    ```javascript
    let setTempToUnit = () => {
 
    }
    ```
 
-1. Update the `setTempToUnit` function definition to accept a parameter named `ele` (a reference to an element to update), then within `setTempToUnit`, store the `value` attribute value of the `ele` to a variable named `currValue`
+**Step 22: Update the function to accept ele parameter**<br />
+Update the `setTempToUnit` function definition to accept a parameter named `ele` (a reference to an element to update), then within `setTempToUnit`, store the `value` attribute value of the `ele` to a variable named `currValue`
+
    ```javascript
    let setTempToUnit = (ele) => {
       let currValue = ele.getAttribute(`value`)
    }
    ```
 
-1. Update the `setTempToUnit` function definition to accept a second parameter named `toUnit` (a reference to one of the previously defined `toCelsius` or `toFahrenheit` functions). Then within `setTempToUnit`, call `toUnit()` as a function, passing it the previously stored `currValue` and saving the result as `newValue`
+**Step 23: Update the function to accept a second parameter**<br />
+Update the `setTempToUnit` function definition to accept a second parameter named `toUnit` (a reference to one of the previously defined `toCelsius` or `toFahrenheit` functions). Then within `setTempToUnit`, call `toUnit()` as a function, passing it the previously stored `currValue` and saving the result as `newValue`
+
    ```javascript
    let setTempToUnit = (ele, toUnit) => {
       let currValue = ele.getAttribute(`value`)
@@ -545,7 +588,9 @@ iconSm.setAttribute(`alt`, data.condition.desc)
    }
    ```
 
-1. Assign the `newValue` (the newly converted temperature) back to the `ele` element as both its content and `value` attribute. Be sure to use `Math.round()` when assigning the content value, as temperature decimal are not a necessary part of the UI, but should remain part of the `value` attribute
+**Step 24: Assign newValue back to ele element** <br />
+Assign the `newValue` (the newly converted temperature) back to the `ele` element as both its content and `value` attribute. Be sure to use `Math.round()` when assigning the content value, as temperature decimal are not a necessary part of the UI, but should remain part of the `value` attribute
+
    ```javascript
    let setTempToUnit = (ele, toUnit) => {
       let currValue = ele.getAttribute(`value`)
@@ -556,7 +601,9 @@ iconSm.setAttribute(`alt`, data.condition.desc)
    }
    ```
 
-1. Update the `setTempToUnit` function definition to accept a third parameter named `unit` (will receive the string `"F"` or `"C"`), then append the value at the end of the content assignment.
+**Step 25: Update the function to accept a third parameter**<br />
+Update the `setTempToUnit` function definition to accept a third parameter named `unit` (will receive the string `"F"` or `"C"`), then append the value at the end of the content assignment.
+
    ```javascript
    let setTempToUnit = (ele, toUnit, unit) => {
       let currValue = ele.getAttribute(`value`)
@@ -567,7 +614,9 @@ iconSm.setAttribute(`alt`, data.condition.desc)
    }
    ```
 
-1. Finally, update the function definition for `setTempToUnit`, adding `=""` to the incoming parameter `unit`, which will make it an optional argument. This will assign a blank string to `unit` if a third argument is not supplied when calling the function. This is necessary for assigning to temperatures in the UI without a unit (specifically, the high and low):
+**Step 26: Update unit parameter to make it an optional argument**<br />
+Finally, update the function definition for `setTempToUnit`, adding `=""` to the incoming parameter `unit`, which will make it an optional argument. This will assign a blank string to `unit` if a third argument is not supplied when calling the function. This is necessary for assigning to temperatures in the UI without a unit (specifically, the high and low):
+
    ```javascript
    let setTempToUnit = (ele, toUnit, unit=``) => {
       let currValue = ele.getAttribute(`value`)
@@ -579,7 +628,8 @@ iconSm.setAttribute(`alt`, data.condition.desc)
    ```
 #### E. Execute the conversions
 
-1. At the bottom of the function definition for `displayImperialUnits`, make three calls to `setTempToUnit` for `tempEle`, `highEle` and `lowEle`, each sending `toFahrenheit` as the second argument, and a "F" `<abbr>` for only `tempEle`:
+**Step 27: Execute conversion to F**<br />
+At the bottom of the function definition for `displayImperialUnits`, make three calls to `setTempToUnit` for `tempEle`, `highEle` and `lowEle`, each sending `toFahrenheit` as the second argument, and a "F" `<abbr>` for only `tempEle`:
 
    ```javascript
    setTempToUnit(tempEle, toFahrenheit, `<abbr title="Degrees fahrenheit" class="unit">F</abbr>`)
@@ -587,7 +637,8 @@ iconSm.setAttribute(`alt`, data.condition.desc)
    setTempToUnit(lowEle, toFahrenheit)
    ```
 
-1. At the bottom of the function definition for `displayMetricUnits`, make three calls to `setTempToUnit` for `tempEle`, `highEle` and `lowEle`, each sending `toCelsius` as the second argument, and a "C" `<abbr>` for only `tempEle`:
+**Step 28: Execute conversion to C**<br />
+At the bottom of the function definition for `displayMetricUnits`, make three calls to `setTempToUnit` for `tempEle`, `highEle` and `lowEle`, each sending `toCelsius` as the second argument, and a "C" `<abbr>` for only `tempEle`:
 
    ```javascript
    setTempToUnit(tempEle, toCelsius, `<abbr title="Degrees celsius" class="unit">C</abbr>`)
@@ -599,7 +650,9 @@ iconSm.setAttribute(`alt`, data.condition.desc)
 
 Given that the interface will begin displaying in metric units (`C`), the only option to click should be to set fahrenheit (and the inverse when `F` units are set). Optimize the interface by using `addEventListener` and `removeEventListener` to only have one unit button listening for a click at any given time.
 
-1. Move the previously written event listener for `setC` into the `displayImperialUnits` function definition, leaving only the listener for `setF` in the global space:
+**Step 29: Remove listener for C, leaving one only for F**<br />
+Move the previously written event listener for `setC` into the `displayImperialUnits` function definition, leaving only the listener for `setF` in the global space:
+
    ```javascript
    let displayMetricUnits = () => {
       setF.classList.remove(`active`)
@@ -615,7 +668,9 @@ Given that the interface will begin displaying in metric units (`C`), the only o
    setF.addEventListener(`click`, displayImperialUnits)
    ```
 
-1. Directly above the `addEventListener` within the `displayImperialUnits` function definition, use `removeEventListener()` for the `setF` element to make "F" un-clickable immediately before making "C" clickable
+**Step 30: Make F unclickable before making C clickable**<br />
+Directly above the `addEventListener` within the `displayImperialUnits` function definition, use `removeEventListener()` for the `setF` element to make "F" un-clickable immediately before making "C" clickable
+
    ```javascript
    let displayImperialUnits = () => {
       setC.classList.remove(`active`)
@@ -626,7 +681,9 @@ Given that the interface will begin displaying in metric units (`C`), the only o
    }
    ```
 
-1. Replicate the above `addEventListener()` and `removeEventListener()` process within the function `displayMetricUnits`
+**Step 31: Replicate process within displayMetricUnits**<br />
+Replicate the above `addEventListener()` and `removeEventListener()` process within the function `displayMetricUnits`
+
    ```javascript
    let displayMetricUnits = () => {
       setF.classList.remove(`active`)
