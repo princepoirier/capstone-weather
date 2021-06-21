@@ -158,26 +158,36 @@ Before beginning the project, ensure you download the browser previous add-on fo
 
 #### A. Styling setup and defaults
 1. Create a folder named `css` in the project root and add a new file named `style.css` within it
+
 1. Use the `<link>` element in the `<head>` of `index.html` to attach the new stylesheet from its relative path at `css/style.css`
+
 1. Setup a few variables in a `:root` rule that will store colors to be used for the gradient and accents:
    - `--col-a: rgb(255, 255, 247);`
    - `--col-b: rgb(177, 213, 255);`
    - `--col-c: rgb(184, 187, 205);`
    - `--shade-dark: rgba(0, 0, 0, 0.1);`
    - `--shade-light: rgba(255, 255, 255, 0.1);`
-1. At the very top of the new `style.css` document, import the `Roboto` font in both `400` (normal) and `700` (bold) weights: `@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');`
-3. Establish some default styling properties with a rule that applies to the `body`:
+
+1. At the very top of the new `style.css` document (line 1), import the `Roboto` font in both `400` (normal) and `700` (bold) weights: 
    ```css
-   body {
-     background-color: rgb(90, 154, 232);
-     background-image: linear-gradient(rgb(90, 154, 232), rgb(21, 101, 162));
-     background-attachment: fixed;
-     font: normal 400 1rem/1 'Roboto', helvetica, arial, sans-serif;
-     color: var(--col-a);
-     text-align: center;
-     margin: 0;
-   }
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
    ```
+
+1. Establish some default styling properties with a rule that applies to the `body`, setting the following properties:
+   1. `background-color` with a value `rgb(90, 154, 232)`
+   1. `font` with the value `normal 400 1rem/1 'Roboto', helvetica, arial, sans-serif`, representing `font-style`, `font-weight`, `font-size` and `line-height`, then a `font-family` set
+   2. `color` value that is set with `var(--col-a)`
+   3. `text-align` the document to `center`
+   4. Remove all existing `margin` by setting it to a value `0`
+      ```css
+      body {
+         background-color: rgb(90, 154, 232);
+         font: normal 400 1rem/1 'Roboto', helvetica, arial, sans-serif;
+         color: var(--col-a);
+         text-align: center;
+         margin: 0;
+      }
+      ```
 
 #### B. Write utility class rules
 1. Write a rule to select `no-marker` elements to clear default list styling
@@ -301,6 +311,26 @@ Before beginning the project, ensure you download the browser previous add-on fo
    }
    ```
 
+#### F. Background gradient
+
+1. To create a gradient that will reflect the weather condition and add some visual interest to the document, add a `background-image` property to the `body` rule (near the top of `style.css`), setting its value to a `linear-gradient()` that goes from colour `rgb(90, 154, 232)` to `rgb(21, 101, 162)`
+
+```css
+body {
+  /* previous declarations */
+  background-image: linear-gradient(rgb(90, 154, 232), rgb(21, 101, 162));
+}
+```
+
+1. To ensure the gradient is omnipresent, to the same `body` rule, set the `background-attachment` to a value of `fixed`
+
+```css
+body {
+  /* previous declarations */
+  background-image: linear-gradient(rgb(90, 154, 232), rgb(21, 101, 162));
+  background-attachment: fixed;
+}
+```
 
 
 ## Final Code
