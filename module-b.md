@@ -21,22 +21,32 @@
 
 ### Part 1: HTML (`index.html`)
 
-Before beginning the project, ensure you download the browser previous add-on for VSCode.
+Before beginning the project, ensure you download the browser preview add-on for VSCode.
 
 #### A. Document setup
-1. To the `<title>` element within the `<head>`, add the content: "Weatherful Weather"
-1. To the `<meta name="description">` element within the `<head>`, update its `content=""` attribute to have a value of "A weatherful weather application interface"
-1. Add `<header>`, `<main>` and `<footer>` elements to the existing `<body>` in the given template, adding the following classes to each:
+
+**Step 1: Add a title**<br />
+To the `<title>` element within the `<head>`, add the content: "Weatherful Weather"
+
+**Step 2: Update the content attribute**<br />
+To the `<meta name="description">` element within the `<head>`, update its `content=""` attribute to have a value of "A weatherful weather application interface"
+
+**Step 3: Add header, main, and footer elements**<br />
+Add `<header>`, `<main>` and `<footer>` elements to the existing `<body>` in the given template, adding the following classes to each:
    - `<header>`: `class="container"`
    - `<main>`: `class="container"`
    - `<footer>`: `class="footer container"`
 
 #### B. Header
-1. Add a clickable image to the `<header>` 
+
+**Step 4: Add header image**<br />
+Add a clickable image to the `<header>` 
    ```html
    <a href="index.html" class="logo"><img src="img/weather-logo.svg" height="46" width="160" alt="Weatherful Weather logo"></a>
    ```
-1. Also within the `<header>`, add the code below. Note the inclusion of abbreviations, which will make your code semantically legible while optimizing the user reading experience.
+
+**Step 5: Add buttons to the header**<br />
+Also within the `<header>`, add the code below. Note the inclusion of abbreviations, which will make your code semantically legible while optimizing the user reading experience.
    ```html
    <ul class="no-markers">
       <li><button class="btn active"><abbr title="Degrees celsius">C</abbr></button></li>
@@ -45,17 +55,22 @@ Before beginning the project, ensure you download the browser previous add-on fo
    ```
 
 #### C. Main (Current weather & Forecast)
-1. Add an `<article>` to the `<main>`, which will hold the current weather. Also add an `<aside>` which will be used to hold the forecast condition
-1. Within the `<article>`, add a sample weather condition image:
+
+Add an `<article>` to the `<main>`, which will hold the current weather. Also add an `<aside>` which will later be used to hold the forecast condition.
+
+**Step 6: Add a weather image**<br />
+Within the `<article>`, add a sample weather condition image:
    ```html
    <img src="img/day-snow-sm.svg" width="320" height="384" alt="Snowy weather in Toronto">
    ```
-1. Below the current condition image, add the following heading and description:
+**Step 7: Add a heading and description**<br />
+Below the current condition image, add the following heading and description:
    ```html
    <h1 class="heading">Current Conditions</h1>
    <p class="desc">Get your shovels ready, Toronto. Today it's going to snow!</p>
    ```
-1. To represent the current temp, as well as the high/low, add the following below the condition description paragraph (still within the `<article>`):
+**Step 8: Add elements to show temperature data**<br />
+To represent the current temp, as well as the high/low, add the following below the condition description paragraph (still within the `<article>`):
    ```html
    <data value="0" class="temp">0&deg;<abbr title="Degrees celsius" class="unit">C</abbr></data>
    <ul class="no-markers high-low">
@@ -69,11 +84,13 @@ Before beginning the project, ensure you download the browser previous add-on fo
       </li>
    </ul>
    ```
-1.  Below the `<article>` (but still within the `<main>`) add an image to separate the current condition from the forecast
+**Step 9: Add a squiggly line image**<br />
+Below the `<article>` (but still within the `<main>`) add an image to separate the current condition from the forecast
    ```html
    <img src="img/squiggly-line.svg" alt="A squiggly line">
    ```
-1. Within the new `<aside>`, add three buttons structured within an unordered list, which will be used to toggle between condition ranges
+**Step 10: Create time frame buttons**<br />
+Within the new `<aside>`, add three buttons structured within an unordered list, which will be used to toggle between condition ranges
    ```html
    <ul class="no-markers">
       <li><button class="btn active">Hourly</button></li>
@@ -81,8 +98,8 @@ Before beginning the project, ensure you download the browser previous add-on fo
       <li><button class="btn">Week</button></li>
    </ul>
    ```
-1. Add a forecast `<table class="ranges">` to hold the forecast data
-1. The table should have the following row of column headings (wrapped within a `<thead>`):
+**Step 11: Create table headings**<br />
+Add a forecast `<table class="ranges">` to hold the forecast data. The table should have the following row of column headings (wrapped within a `<thead>`):
    ```html
    <thead>
       <tr>
@@ -93,8 +110,8 @@ Before beginning the project, ensure you download the browser previous add-on fo
       </tr>
    </thead>
    ```
-1. Add `<tbody class="range">` to the table, which will hold all the forecast weather temperatures
-1. Add the following sample rows to the new `<tbody>`:
+**Step 12: Create the table body**<br />
+Add `<tbody class="range">` to the table, which will hold all the forecast weather temperatures. Add the following sample rows to the new `<tbody>`:
    ```html
    <tr>
      <td>3:00 pm</td>
@@ -147,7 +164,9 @@ Before beginning the project, ensure you download the browser previous add-on fo
    ```
 
 #### D. Footer
-1. In the `<footer>` of the document, add the following elements:
+
+**Step 13: Create a footer**<br />
+In the `<footer>` of the document, add the following elements:
    ```html
    <p class="tagline">It's not always wonderful, but it is always Weatherful!</p>
    <p class="madeby">Created with ❤️ by You!</p>
@@ -157,28 +176,44 @@ Before beginning the project, ensure you download the browser previous add-on fo
 ### Part 2: CSS (`style.css`)
 
 #### A. Styling setup and defaults
-1. Create a folder named `css` in the project root and add a new file named `style.css` within it
 
-1. Use the `<link>` element in the `<head>` of `index.html` to attach the new stylesheet from its relative path at `css/style.css`
+**Step 14: Create a CSS document**<br />
+Create a folder named `css` in the project root and add a new file named `style.css` within it
 
-1. Setup a few variables in a `:root` rule that will store colors to be used for the gradient and accents:
+**Step 15: Link the CSS document**<br />
+Use the `<link>` element in the `<head>` of `index.html` to attach the new stylesheet from its relative path at `css/style.css`
+
+**Step 16: Add a background color**<br />
+Add the blue color to the background. The gradient effect will come later
+```css
+body {
+   background-color: rgb(90, 154, 232);
+   }
+   ```
+**Step 17: Organize CSS document**<br />
+Using comments, organize your CSS document into different categories
+
+**Step 18: Create some root variables**<br /> 
+Setup a few variables in a `:root` rule that will store colors to be used for the gradient and accents:
    - `--col-a: rgb(255, 255, 247);`
    - `--col-b: rgb(177, 213, 255);`
    - `--col-c: rgb(184, 187, 205);`
    - `--shade-dark: rgba(0, 0, 0, 0.1);`
    - `--shade-light: rgba(255, 255, 255, 0.1);`
 
-1. At the very top of the new `style.css` document (line 1), import the `Roboto` font in both `400` (normal) and `700` (bold) weights: 
+**Step 19: Add a new font**<br />
+At the very top of the new `style.css` document (line 1), import the `Roboto` font in both `400` (normal) and `700` (bold) weights: 
    ```css
    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
    ```
 
-1. Establish some default styling properties with a rule that applies to the `body`, setting the following properties:
-   1. `background-color` with a value `rgb(90, 154, 232)`
-   1. `font` with the value `normal 400 1rem/1 'Roboto', helvetica, arial, sans-serif`, representing `font-style`, `font-weight`, `font-size` and `line-height`, then a `font-family` set
-   2. `color` value that is set with `var(--col-a)`
-   3. `text-align` the document to `center`
-   4. Remove all existing `margin` by setting it to a value `0`
+**Step 20: Create default styling rules**<br />
+Establish some default styling properties with a rule that applies to the `body`, setting the following properties:
+   - `background-color` with a value `rgb(90, 154, 232)`
+   - `font` with the value `normal 400 1rem/1 'Roboto', helvetica, arial, sans-serif`, representing `font-style`, `font-weight`, `font-size` and `line-height`, then a `font-family` set
+   - `color` value that is set with `var(--col-a)`
+   - `text-align` the document to `center`
+   - Remove all existing `margin` by setting it to a value `0`
       ```css
       body {
          background-color: rgb(90, 154, 232);
@@ -190,14 +225,17 @@ Before beginning the project, ensure you download the browser previous add-on fo
       ```
 
 #### B. Write utility class rules
-1. Write a rule to select `no-marker` elements to clear default list styling
+
+**Step 21: Write a no-markers utility rule**<br />
+Write a rule to select `no-marker` elements to clear default list styling
    ```css
    .no-markers {
       list-style-type: none;
       padding: 0;
    }
    ```
-1. Add a `.btn` rule to transform the default styling of the many `<button>` elements that exist in the document
+**Step 22: Write a button utility rule**<br />
+Add a `.btn` rule to transform the default styling of the many `<button>` elements that exist in the document
    ```css
    .btn {
       background-color: transparent;
@@ -208,14 +246,16 @@ Before beginning the project, ensure you download the browser previous add-on fo
       border-radius: 0.25rem;
    }
    ```
-1. Write a class for `.active` elements that, when combined with `.btn` elements, will change the background colour slightly. This will bring attention to the element being "active"
+**Step 23: Write a class for active elements**<br />
+Write a class for `.active` elements that, when combined with `.btn` elements, will change the background colour slightly. This will bring attention to the element being "active"
    ```css
    .btn.active {
       border-color: var(--col-a);
       font-weight: 700;
    }
    ```
-1. Ensure the `.logo` has adequate spacing above and below to match the unit buttons:
+**Step 24: Write a logo rule**<br />
+Ensure the `.logo` has adequate spacing above and below to match the unit buttons:
    ```css
    .logo {
      margin: 1rem 0;
@@ -223,18 +263,25 @@ Before beginning the project, ensure you download the browser previous add-on fo
    ```
 
 #### C. Current weather
-1. Style the "Current conditions" heading and the description below with the following rules
+
+**Step 25: Write "Current conditions" heading rule**<br />
+Style the "Current conditions" heading with the following rules
    ```css
    .heading {
       font-size: 1rem;
       color: var(--col-b);
       text-transform: uppercase;
    }
+   ```
+**Step 26: Write description rule**<br />
+Style the "Current conditions" description below with the following rule
+   ```
    .desc {
       font-size: 1.25rem;
    }
    ```
-1. Style the current `.temp` as well the `.unit` of measurement (C or F) using the following rules:
+**Step 27: Write temp and unit rules**<br />
+Style the current `.temp` as well the `.unit` of measurement (C or F) using the following rules:
    ```css
    .temp {
      font-size: 2.75rem;
@@ -245,7 +292,8 @@ Before beginning the project, ensure you download the browser previous add-on fo
      font-size: 2rem;
    }
    ```
-1. Set the styling of the daily `.high-low` temperatures, then overwrite the `.low` temperature to a slightly lighter colour:
+**Step 28: Write high and low rules**<br />
+Set the styling of the daily `.high-low` temperatures, then overwrite the `.low` temperature to a slightly lighter colour:
    ```css
    .high-low {
      font-size: 2rem;
@@ -256,7 +304,9 @@ Before beginning the project, ensure you download the browser previous add-on fo
    ```
 
 #### D. Forecast 
-1. Style the `<table>` with a rule that selects it by its class `.ranges`, setting a few basic properties:
+
+**Step 29: Create a ranges class for the forecast**<br />
+Style the `<table>` with a rule that selects it by its class `.ranges`, setting a few basic properties:
    ```css
    .ranges {
       background-color: var(--shade-dark);
@@ -264,7 +314,8 @@ Before beginning the project, ensure you download the browser previous add-on fo
       margin: 1rem 0;
    }
    ```
-1. Quickly style the `<th>` (table headings) to look like the sample design by selecting `.ranges th` (table headings that descend from a `.range` element):
+**Step 30: Make a table heading rule**<br />
+Quickly style the `<th>` (table headings) to look like the sample design by selecting `.ranges th` (table headings that descend from a `.range` element):
    ```css
    .ranges th {
      font-weight: 400;
@@ -272,13 +323,15 @@ Before beginning the project, ensure you download the browser previous add-on fo
      line-height: 2;
    }
    ```
-1. Size-up the text within the `.range` table body `<tbody>` using the following rule:
+**Step 31: Write a range rule for the table body**<br />
+Size-up the text within the `.range` table body `<tbody>` using the following rule:
    ```css
    .range {
      font-size: 1.25rem;
    }
    ```
-1. Further increase the size of the temperature on each row of the forecast, as well as bolding it, using:
+**Step 32: Write a range-temp rule**<br />
+Further increase the size of the temperature on each row of the forecast, as well as bolding it, using:
    ```css
    .range-temp {
       font-size: 1.5rem;
@@ -288,7 +341,8 @@ Before beginning the project, ensure you download the browser previous add-on fo
 
 #### E. Header and footer
 
-1. Setup the `.footer` to have a shaded (translucent) background to sit over the gradient background of the body, as well as some other spacing and font styles:
+**Step 33: Create footer styling rules**<br />
+Setup the `.footer` to have a shaded (translucent) background to sit over the gradient background of the body, as well as some other spacing and font styles:
    ```css
    .footer {
      background-color: var(--shade-dark);
@@ -298,13 +352,14 @@ Before beginning the project, ensure you download the browser previous add-on fo
      margin-top: 2rem;
    }
    ```
-1. Remove the margin from the `.tagline` and `.madeby` to prepare them for future styling. This can be done in one single rule:
+Remove the margin from the `.tagline` and `.madeby` to prepare them for future styling. This can be done in one single rule:
    ```css
    .tagline, .madeby {
      margin: 0;
    }
    ```
-1. The `<header>`, `<main>` and `<footer>` all use the `.container` class to add padding to the elements, add the following class definition to create uniform spacing around those elements:
+**Step 34: Create a container rule**<br />
+The `<header>`, `<main>` and `<footer>` all use the `.container` class to add padding to the elements, add the following class definition to create uniform spacing around those elements:
    ```css
    .container {
       padding: 0 1rem;
@@ -313,7 +368,8 @@ Before beginning the project, ensure you download the browser previous add-on fo
 
 #### F. Background gradient
 
-1. To create a gradient that will reflect the weather condition and add some visual interest to the document, add a `background-image` property to the `body` rule (near the top of `style.css`), setting its value to a `linear-gradient()` that goes from colour `rgb(90, 154, 232)` to `rgb(21, 101, 162)`
+**Step 35: Add a background gradient**<br />
+To create a gradient that will reflect the weather condition and add some visual interest to the document, add a `background-image` property to the `body` rule (near the top of `style.css`), setting its value to a `linear-gradient()` that goes from colour `rgb(90, 154, 232)` to `rgb(21, 101, 162)`
 
 ```css
 body {
@@ -322,7 +378,7 @@ body {
 }
 ```
 
-1. To ensure the gradient is omnipresent, to the same `body` rule, set the `background-attachment` to a value of `fixed`
+To ensure the gradient is omnipresent, to the same `body` rule, set the `background-attachment` to a value of `fixed`
 
 ```css
 body {
