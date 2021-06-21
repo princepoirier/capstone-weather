@@ -21,6 +21,8 @@
 
 ### Part 1: HTML (`index.html`)
 
+Before beginning the project, ensure you download the browser previous add-on for VSCode.
+
 #### A. Document setup
 1. To the `<title>` element within the `<head>`, add the content: "Weatherful Weather"
 1. To the `<meta name="description">` element within the `<head>`, update its `content=""` attribute to have a value of "A weatherful weather application interface"
@@ -34,7 +36,7 @@
    ```html
    <a href="index.html" class="logo"><img src="img/weather-logo.svg" height="46" width="160" alt="Weatherful Weather logo"></a>
    ```
-1. Also within the `<header>`, add the following:
+1. Also within the `<header>`, add the code below. Note the inclusion of abbreviations, which will make your code semantically legible while optimizing the user reading experience.
    ```html
    <ul class="no-markers">
       <li><button class="btn active"><abbr title="Degrees celsius">C</abbr></button></li>
@@ -42,7 +44,8 @@
    </ul>
    ```
 
-#### C. Main (Current weather & Forecast)1. Add an `<article>` to the `<main>`, which will hold the current weather
+#### C. Main (Current weather & Forecast)
+1. Add an `<article>` to the `<main>`, which will hold the current weather. Also add an `<aside>` which will be used to hold the forecast condition
 1. Within the `<article>`, add a sample weather condition image:
    ```html
    <img src="img/day-snow-sm.svg" width="320" height="384" alt="Snowy weather in Toronto">
@@ -62,7 +65,7 @@
       </li>
       <li>
          <data value="3" class="high">3&deg;</data>
-         <img src="img/temp-high.svg" alt="Daily hight">
+         <img src="img/temp-high.svg" alt="Daily high">
       </li>
    </ul>
    ```
@@ -70,7 +73,6 @@
    ```html
    <img src="img/squiggly-line.svg" alt="A squiggly line">
    ```
-1. As the third and final child element of the `<main>`, add an `<aside>` which will be used to hold the forecast condition
 1. Within the new `<aside>`, add three buttons structured within an unordered list, which will be used to toggle between condition ranges
    ```html
    <ul class="no-markers">
@@ -157,14 +159,14 @@
 #### A. Styling setup and defaults
 1. Create a folder named `css` in the project root and add a new file named `style.css` within it
 1. Use the `<link>` element in the `<head>` of `index.html` to attach the new stylesheet from its relative path at `css/style.css`
-1. At the very top of the new `style.css` document, import the `Roboto` font in both `400` (normal) and `700` (bold) weights: `@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');`
 1. Setup a few variables in a `:root` rule that will store colors to be used for the gradient and accents:
    - `--col-a: rgb(255, 255, 247);`
    - `--col-b: rgb(177, 213, 255);`
    - `--col-c: rgb(184, 187, 205);`
    - `--shade-dark: rgba(0, 0, 0, 0.1);`
    - `--shade-light: rgba(255, 255, 255, 0.1);`
-1. Establish some default styling properties with a rule that applies to the `body`:
+1. At the very top of the new `style.css` document, import the `Roboto` font in both `400` (normal) and `700` (bold) weights: `@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');`
+3. Establish some default styling properties with a rule that applies to the `body`:
    ```css
    body {
      background-color: rgb(90, 154, 232);
@@ -178,12 +180,6 @@
    ```
 
 #### B. Write utility class rules
-1. The `<header>`, `<main>` and `<footer>` all use the `.container` class to add padding to the elements. Add the following class definition to create uniform spacing around those elements:
-   ```css
-   .container {
-      padding: 0 1rem;
-   }
-   ```
 1. Write a rule to select `no-marker` elements to clear default list styling
    ```css
    .no-markers {
@@ -207,6 +203,12 @@
    .btn.active {
       border-color: var(--col-a);
       font-weight: 700;
+   }
+   ```
+1. Ensure the `.logo` has adequate spacing above and below to match the unit buttons:
+   ```css
+   .logo {
+     margin: 1rem 0;
    }
    ```
 
@@ -275,12 +277,7 @@
    ```
 
 #### E. Header and footer
-1. Ensure the `.logo` has adequate spacing above and below to match the unit buttons:
-   ```css
-   .logo {
-     margin: 1rem 0;
-   }
-   ```
+
 1. Setup the `.footer` to have a shaded (translucent) background to sit over the gradient background of the body, as well as some other spacing and font styles:
    ```css
    .footer {
@@ -295,6 +292,12 @@
    ```css
    .tagline, .madeby {
      margin: 0;
+   }
+   ```
+1. The `<header>`, `<main>` and `<footer>` all use the `.container` class to add padding to the elements, add the following class definition to create uniform spacing around those elements:
+   ```css
+   .container {
+      padding: 0 1rem;
    }
    ```
 
