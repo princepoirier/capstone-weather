@@ -226,22 +226,26 @@ body {
 ### Part 1: Layout
 
 #### A. Document header
-1. In `index.html`, add value `units` to the `class` attribute for the `<ul>` that is within the `<header>`, then in `style.css`, write a rule to convert the element to a `flex` container:
+
+**Step 1: Add class value to ul and convert it to flex**<br />
+In `index.html`, add value `units` to the `class` attribute for the `<ul>` that is within the `<header>`, then in `style.css`, write a rule to convert the element to a `flex` container:
    ```css
    .units {
       display: flex;
    }
    ```
-   
-1. Add the class value `header` to the `<header>` element at the top of the `<body>` in `index.html`, then write a rule to convert the element to a `flex` container with its two items weighted to each end of the container:
+
+**Step 2: Convert header to flex**<br />   
+Add the class value `header` to the `<header>` element at the top of the `<body>` in `index.html`, then write a rule to convert the element to a `flex` container with its two items weighted to each end of the container:
    ```css
    .header {
       display: flex;
       justify-content: space-between;
    }
-   ```
+   ```   
 
-1. Write a rule for the `.logo` element to add space around the element using the `margin` box-model property
+**Step 3: Add space around logo**<br />
+Write a rule for the `.logo` element to add space around the element using the `margin` box-model property
    ```css
    .logo {
       margin: 1rem 1rem 1rem 0;
@@ -249,7 +253,9 @@ body {
    ```
 
 #### B. Current Weather
-1. Update the `.temp` rule to convert the `<data>` element (an `inline` element) to a `block`:
+
+**Step 4: Update the temp rule**<br />
+Update the `.temp` rule to convert the `<data>` element (an `inline` element) to a `block`:
    ```css
    .temp {
       font-size: 2.75rem; /* existing declaration */
@@ -259,7 +265,8 @@ body {
    }
    ```
 
-1. Align the `<li>` within the `.high-low` element by adding a `high` and `low` class value to the items, then write a rule for the `.high` and update the existing `.low` rule to make them both `inline` elements
+**Step 5: Add classes to list elements**<br />
+Align the `<li>` within the `.high-low` element by adding a `high` and `low` class value to the items, then write a rule for the `.high` and update the existing `.low` rule to make them both `inline` elements
    ```css
    .high {
       display: inline; 
@@ -271,14 +278,17 @@ body {
    ```
 
 #### C. Forecast Weather
-1. Add a `tabs` class attribute value to the `<ul>` element at the start of the `<aside>` holding the weather forecast, then add this rule to setup the `tabs` element as a flex container with the items holding tab buttons, giving them `space-around`
+
+**Step 6: Create tabs class**<br />
+Add a `tabs` class attribute value to the `<ul>` element at the start of the `<aside>` holding the weather forecast, then add this rule to setup the `tabs` element as a flex container with the items holding tab buttons, giving them `space-around`
    ```css
    .tabs {
       display: flex;
       justify-content: space-around;
    }
    ```
-1. Stretch the `width` of the `<table>` to use `100%` of the available space, add some `padding` around the inside, and remove spaces between the cells. Do this by updating the `.ranges` rule:
+**Step 7: Update ranges class**<br />
+Stretch the `width` of the `<table>` to use `100%` of the available space, add some `padding` around the inside, and remove spaces between the cells. Do this by updating the `.ranges` rule:
    ```css
    .ranges {
       background-color: var(--shade-dark); /* existing declaration */
@@ -295,7 +305,8 @@ body {
 
 #### A. Layout
 
-1. Set an upper limit to the size of the `.container` elements, and ensure the content is centered horizontally using `margin`:
+**Step 8: Add max width to container**<br />
+Set an upper limit to the size of the `.container` elements, and ensure the content is centered horizontally using `margin`:
    ```css
    .container {
       padding: 0 1rem;  /* existing declaration */
@@ -304,7 +315,8 @@ body {
       margin: 0 auto;
    }
    ```
-1. Ensure the `padding` values are kept within the `width` of the containers (and all future elements) within a `*` (all elements) rule written at the top of the document:
+**Step 9: Write padding rule for all elements**<br />
+Ensure the `padding` values are kept within the `width` of the containers (and all future elements) within a `*` (all elements) rule written at the top of the document:
    ```css
    * {
       box-sizing: border-box;
@@ -313,34 +325,39 @@ body {
 
 #### B. Media query
 
-1. Create a breakpoint at `min-width: 50rem` by adding a `@media` query
+**Step 10: Add a media query**<br />
+Create a breakpoint at `min-width: 50rem` by adding a `@media` query
    ```css
    @media screen and (min-width: 50rem) {
 
    }
    ```
-1. Add the `<meta>` tag for `name="viewport"` to the top of `index.html` within the `<head>`:
+**Step 11: Add a meta viewport tag**<br />
+Add the `<meta>` tag for `name="viewport"` to the top of `index.html` within the `<head>`:
    ```html
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    ```
-1. Assign classes to the `<main>` element and its two children so they can be selected for styling:
+**Step 12: Assign classes to main element**<br />
+Assign classes to the `<main>` element and its two children so they can be selected for styling:
    - `<main>`: `class="container weather"`
    - `<article>`: `class="current"`
    - `<aside>`: `class="forecast"`
-1. Within the `@media` query, write a rule to select the `.weather` element, setting it to a `flex` container:
+
+**Step 13: Set weather element to flex and perform additional styling**<br />
+Within the `@media` query, write a rule to select the `.weather` element, setting it to a `flex` container:
    ```css
    .weather {
 		display: flex;
    }
    ```
-1. Within the `@media` query, write a rule to select the `.current` element, setting it to take the most width possible using `flex-grow: 1`, as well as margin on the right side:
+Then, still within the `@media` query, write a rule to select the `.current` element, setting it to take the most width possible using `flex-grow: 1`, as well as margin on the right side:
    ```css
    .current {
 		flex-grow: 1;
 		margin-right: 2rem;
    }
    ```
-1.  Within the `@media` query, write a rule to select the `.ranges` element, setting it to have a `min-width`
+Write a rule to select the `.ranges` element, setting it to have a `min-width`
    ```css
    .ranges {
       min-width: 25rem;
@@ -357,8 +374,8 @@ The `<picture>` element gives greater control for changing the image from one so
 For more information on the topic, [please read MDN's documentation on the `<picture>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture).
 ---
 
-
-1. Within `index.html`, remove the `height` and `width` properties from the current weather `<img>` (with the `src="img/day-snow-sm.svg"`), and then wrap in a set of `<picture></picture>` tags. Once complete, add a `<source>` element within it that will be displayed when the viewport is at `min-width: 50rem`, like this:
+**Step 14: Wrap image in picture tags**<br />
+Within `index.html`, remove the `height` and `width` properties from the current weather `<img>` (with the `src="img/day-snow-sm.svg"`), and then wrap in a set of `<picture></picture>` tags. Once complete, add a `<source>` element within it that will be displayed when the viewport is at `min-width: 50rem`, like this:
    ```html
    <picture>
       <source srcset="img/day-snow-lg.svg" media="(min-width: 50rem)">
@@ -366,7 +383,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
    </picture>
    ```
 
-1. Outside of the `@media` query, write a rule for the `.current` element that's wrapping around the weather condition image, to control its width and center it when slimmer than its parent:
+**Step 15: Write a rule for current element**<br />
+Outside of the `@media` query, write a rule for the `.current` element that's wrapping around the weather condition image, to control its width and center it when slimmer than its parent:
    ```css
    .current {
       max-width: 20rem;
@@ -374,7 +392,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
    }
    ```
 
-1. Within the `@media` query, update the existing rule that selects `.current` by reverting the `max-width` back to `auto`:
+**Step 16: Update current rule in media query**<br />
+Within the `@media` query, update the existing rule that selects `.current` by reverting the `max-width` back to `auto`:
    ```css
    .current {
       flex-grow: 1;      /* existing declaration */
@@ -382,7 +401,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
       max-width: none;
    }
    ```
-1. Have the color of each table row highlight when hovered over, by setting a rule for `range tr:hover`:
+**Step 17: Add table hover**<br />
+Have the color of each table row highlight when hovered over, by setting a rule for `range tr:hover`:
    ```css
    .range tr:hover {
       background-color: var(--shade-dark);
@@ -390,14 +410,16 @@ For more information on the topic, [please read MDN's documentation on the `<pic
    ```
 #### D. Buttons
 
-1. Write a rule that applies to `.btn` elements when they are in **both** the `:hover` and `:focus` pseudo state to update their `background-color`:
+**Step 18: Write hover and focus button rules**<br />
+Write a rule that applies to `.btn` elements when they are in **both** the `:hover` and `:focus` pseudo state to update their `background-color`:
    ```css
    .btn:hover, .btn:focus {
       background-color: var(--shade-white);
    }
    ```
-
-1. Write another rule that only selects the `.btn` in the `:focus` pseudo state, adding a border to accentuate the elements:
+   
+**Step 19: Write a focus button rule**<br />
+Write another rule that only selects the `.btn` in the `:focus` pseudo state, adding a border to accentuate the elements:
    ```css
    .btn:focus {
       border: 3px solid var(--col-b);
@@ -407,7 +429,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
 
 #### D. Footer
 
-1. Re organize the `<footer>` element in `index.html` so that the contents of the footer (two paragraphs) are wrapped in a `<div>` with a class attribute value of `footer-group`. Then move the `container` class to the new `<div>` from the `<footer>`, to create a footer-bar that uses the entire width of the viewport, but whose content is restricted by the `.container` definition to the center of the layout:
+**Step 20: Add a class to the footer and wrap in a div**<br />
+Reorganize the `<footer>` element in `index.html` so that the contents of the footer (two paragraphs) are wrapped in a `<div>` with a class attribute value of `footer-group`. Then move the `container` class to the new `<div>` from the `<footer>`, to create a footer-bar that uses the entire width of the viewport, but whose content is restricted by the `.container` definition to the center of the layout:
    ```html
    <footer class="footer">
       <div class="container footer-group">
@@ -417,7 +440,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
    </footer>
    ```
 
-1. Also within the `@media` query, write the rules to set the two `<p>` elements within the `.footer-group` on the outer edges:
+**Step 21: Write a footer-group rule within media query**<br />
+Also within the `@media` query, write the rules to set the two `<p>` elements within the `.footer-group` on the outer edges:
    ```css
 	.footer-group {
 		display: flex;
@@ -425,7 +449,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
 	}
    ```
    
-1. Within the `@media` query, write a rule for the `.footer` to adjust its `padding` and `line-height`:
+**Step 22: Adjust footer padding and line height**<br />
+Within the `@media` query, write a rule for the `.footer` to adjust its `padding` and `line-height`:
    ```css
    .footer {
 		padding: 1rem 0;
@@ -435,7 +460,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
 
 **Note**: Getting the `<footer>` to stick to the bottom of the viewport when the page is shorter than the full viewport can be accomplished a few ways, but one is to use a slight variation of the `flex` lessons where the flex container is turned sideways using `flex-direction: column` (the default is `flex-direction: row`). You can read more about [the `flex-direction` property here on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction).
 
-1. Both the `html` and `body` elements need to take the full height of the viewport:
+**Step 23: Give html and body elements a height of 100%**<br />
+Both the `html` and `body` elements need to take the full height of the viewport:
    ```css
    html {
       height: 100%;
@@ -454,7 +480,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
    }
    ```
 
-1. In `index.html` wrap the entire content within the `<body>` in a `<div>`, with a class of `layout` (this element will be the vertical `flex` container):
+**Step 24: Wrap body in a div**<br />
+In `index.html` wrap the entire content within the `<body>` in a `<div>`, with a class of `layout` (this element will be the vertical `flex` container):
    ```html
    <body>
       <div class="layout">
@@ -463,7 +490,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
    </body>
    ```
 
-1. Write a rule for the `.layout` to make it a vertical flex container (`column` direction) that uses *at least* the full viewport height:
+**Step 25: Make layout into column flex container**<br />
+Write a rule for the `.layout` to make it a vertical flex container (`column` direction) that uses *at least* the full viewport height:
    ```css
    .layout {
       display: flex;
@@ -471,8 +499,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
       min-height: 100%;
    }
    ```
-
-1. Write a rule for the `.weather` element to have it grow if there is available space at the end of the container:
+**Step 26: Write a flex rule for weather element**<br />
+Write a rule for the `.weather` element to have it grow if there is available space at the end of the container:
    ```css
    .weather {
       flex-grow: 1;
@@ -484,7 +512,8 @@ For more information on the topic, [please read MDN's documentation on the `<pic
 
 #### A. Pinstripe pattern
 
-1. Update the `background-image` for the `body` to also include a `repeating-linear-gradient()` before the existing `linear-gradient()` to add a pinstripe to the background:
+**Step 27: Add gradient to the body**<br />
+Update the `background-image` for the `body` to also include a `repeating-linear-gradient()` before the existing `linear-gradient()` to add a pinstripe to the background:
    ```css
    body {
       background-color: rgb(90, 154, 232);
@@ -511,12 +540,13 @@ For more information on the topic, [please read MDN's documentation on the `<pic
 
 #### B. Dividing line
 
-1. Remove the "squiggly line" `<img>` dividing the current and forecast weather from `index.html`
+**Step 28: Replace squiggly line with a pseudo element**<br />
+First, remove the "squiggly line" `<img>` dividing the current and forecast weather from `index.html`
    ```html
    <!-- <img src="img/squiggly-line.svg" alt="A squiggly line">  -->
    ```
 
-1. Rather than an HTML element, a pseudo element can do the job, since this line is purely ornamental. Write an `::after` rule for the `.current` element that will display a `1rem` tall `block` element with a `background-image` that points to the `../img/squiggly-line.svg` image file:
+Rather than an HTML element, a pseudo element can do the job, since this line is purely ornamental. Write an `::after` rule for the `.current` element that will display a `1rem` tall `block` element with a `background-image` that points to the `../img/squiggly-line.svg` image file:
    ```css
    .current::after {
       content: "";
