@@ -218,7 +218,7 @@ Before beginning the project, ensure you download the browser previous add-on fo
 1. Ensure the `.logo` has adequate spacing above and below to match the unit buttons:
    ```css
    .logo {
-     margin: 1rem 0;
+      margin: 1rem 0;
    }
    ```
 
